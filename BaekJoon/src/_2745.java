@@ -14,8 +14,14 @@ public class _2745 {
 
         int result = 0;
         for (int i = b.length() - 1; i >= 0 ; i--) {
-            int num = b.charAt(i) - 55;
-            result += num * Math.pow(n, i);
+            char c = b.charAt(i);
+            int num;
+            if (c >= 'A' && c <='Z') {
+                num = c - 'A' + 10;
+            } else {
+                num = c - '0';
+            }
+            result += num * Math.pow(n, b.length() - 1 - i);
         }
         System.out.println(result);
     }
