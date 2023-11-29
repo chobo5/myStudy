@@ -1,5 +1,7 @@
 package bitcamp.myapp;
 
+import java.util.Scanner;
+
 public class MyApp {
     private static final String RESET = "\u001B[0m";
     private static final String FONT_RED_BOLD = "\033[1;31m";
@@ -16,6 +18,22 @@ public class MyApp {
         System.out.println(menu3);
         System.out.println(menu4);
 
+        Scanner sc = new Scanner(System.in);
+        int menuId = sc.nextInt();
+        switch (menuId) {
+            case 1:
+                System.out.println("과제입니다.");
+                break;
+            case 2:
+                System.out.println("게시글입니다.");
+                break;
+            case 3:
+                System.out.println("도움말입니다.");
+                break;
+            case 4:
+                System.out.println("종료합니다.");
+                break;
+        }
 
     }
 }
