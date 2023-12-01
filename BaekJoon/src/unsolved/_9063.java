@@ -1,3 +1,5 @@
+package unsolved;
+
 import java.util.Scanner;
 
 public class _9063 {
@@ -8,7 +10,7 @@ public class _9063 {
         int x1, y1 = 0;
 
         for (int i = 0; i < n; i++) {
-            int x1 = i;
+
         }
 
     }
