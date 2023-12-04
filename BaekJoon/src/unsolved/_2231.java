@@ -17,8 +17,13 @@ public class _2231 {
         } else {
             for (int i = start; i < n; i++) {
                 int sum = i;
-
-                for (int j = 0; j < x; j++) {
+                int range = 0;
+                if (n < 100) {
+                    range = x-1;
+                } else {
+                    range = x;
+                }
+                for (int j = 0; j < range; j++) {
                     String strI = String.valueOf(i);
                     int y = Integer.parseInt(strI.substring(j, j+1));
 
