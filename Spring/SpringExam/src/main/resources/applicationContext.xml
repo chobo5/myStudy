@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		https://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="book1" class="exam.Book"></bean> <!--bean 1개에 대한 설정 -->
+    <bean id="book2" class="exam.Book"></bean>
+    <bean id="myService" class="com.example.spring01.component.MyService">
+<!--        setMyDao-->
+<!--        ref뒤는 bean을 말함-->
+        <property name="myDao" ref="myDao"></property>
+    </bean>
+    <bean id="myDao" class="com.example.spring01.component.MyDao"></bean>
+</beans>
+<!-- 가장 기본적인 형태이며 ApplicationContext는 Bean들을 관리한다. -->
