@@ -10,7 +10,7 @@ public class _2231 {
 
         int x = strN.length();
         int n = Integer.parseInt(strN);
-        int start = n - (9 * (x-1));
+        int start = n - (9 * (x - 1));
 
         if (n < 10) {
             System.out.println(n);
@@ -19,13 +19,13 @@ public class _2231 {
                 int sum = i;
                 int range = 0;
                 if (n < 100) {
-                    range = x-1;
+                    range = x - 1;
                 } else {
                     range = x;
                 }
                 for (int j = 0; j < range; j++) {
                     String strI = String.valueOf(i);
-                    int y = Integer.parseInt(strI.substring(j, j+1));
+                    int y = Integer.parseInt(strI.substring(j, j + 1));
 
                     sum += y;
                 }
@@ -39,3 +39,4 @@ public class _2231 {
         }
     }
 }
+

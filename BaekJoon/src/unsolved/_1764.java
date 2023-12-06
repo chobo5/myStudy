@@ -1,3 +1,5 @@
+package unsolved;
+
 import java.util.Scanner;
 
 public class _1764 {
@@ -23,8 +25,10 @@ public class _1764 {
         int left = 0;
         int right = array.length - 1;
         int middle = (left + right) >> 1;
-        while (left < right) {
-            if (array[middle] >)
-        }
+//        while (left < right) {
+//            if (array[middle] >)
+//        }
     }
+
+
 }
