@@ -1,4 +1,5 @@
 *.exe
+eclipse/
 temp/
 # Created by https://www.toptal.com/developers/gitignore/api/intellij,eclipse,visualstudiocode,macos,linux,windows,java,c++,c,node,gradle,maven
 # Edit at https://www.toptal.com/developers/gitignore?templates=intellij,eclipse,visualstudiocode,macos,linux,windows,java,c++,c,node,gradle,maven

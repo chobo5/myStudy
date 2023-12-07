@@ -5,20 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="068b8540-3036-4b43-8099-b1f2aae2d312" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/exam/ApplicationContext.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/exam/ApplicationContextMain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/exam/Book.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Beans.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../BaekJoon/src/unsolved/_2231.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../BaekJoon/src/unsolved/_2231.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MakeApplicationContext.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Book.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../note.md" beforeDir="false" afterPath="$PROJECT_DIR$/../note.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../eclipse/java-basic/.gitattributes" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../eclipse/java-basic/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../eclipse/java-basic/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
@@ -26,10 +14,13 @@
       <change beforePath="$PROJECT_DIR$/../../eclipse/java-basic/gradlew" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../eclipse/java-basic/gradlew.bat" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../../eclipse/java-basic/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../myapp/src/bitcamp/myapp/Assignment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../myapp/src/bitcamp/myapp/Assignment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../myapp/src/bitcamp/myapp/AssignmentMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../myapp/src/bitcamp/myapp/AssignmentMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../myapp/src/bitcamp/myapp/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../myapp/src/bitcamp/myapp/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../myapp/src/bitcamp/myapp/BoardMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../myapp/src/bitcamp/myapp/BoardMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../myapp/src/bitcamp/myapp/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../myapp/src/bitcamp/myapp/MainMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../myapp/src/bitcamp/myapp/Prompt.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../myapp/src/bitcamp/myapp/Prompt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../myapp/src/bitcamp/myapp/UserMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../myapp/src/bitcamp/myapp/UserMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,6 +60,7 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
     "vue.rearranger.settings.migration": "true"
   }
@@ -101,7 +93,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1701769923108</updated>
-      <workItem from="1701769925268" duration="5770000" />
+      <workItem from="1701769925268" duration="17174000" />
     </task>
     <servers />
   </component>

@@ -1,7 +1,7 @@
 package bitcamp.myapp;
 
 public class MainMenu {
-    private static final String[] MAIN_MENUS = {"과제관리 시스템", "1.과제", "2.게시글", "3.회원관리", "4.도움말", "0.종료"};
+    private static final String[] MAIN_MENUS = {"과제관리 시스템", "1.과제", "2.게시글", "3.회원관리", "4.가입인사", "5.도움말", "0.종료"};
 
     private static void printMenu() {
         MenuProvider.showMenu(MAIN_MENUS);
@@ -21,6 +21,9 @@ public class MainMenu {
                 case "3":
                     MemberMenu.execute();
                 case "4":
+                    GreetingBoardMenu.execute();
+                    break;
+                case "5":
                     System.out.println("도움말입니다.");
                     break;
                 case "0":
