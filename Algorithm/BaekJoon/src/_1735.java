@@ -9,5 +9,21 @@ public class _1735 {
         int up2 = sc.nextInt();
         int down2 = sc.nextInt();
         sc.close();
+
+        int up = up1 * down2 + up2 * down1;
+        int down = down1 * down2;
+        int value = gcd(up, down);
+        System.out.println(up / value + " " + down / value);
+
+
+    }
+
+    static int gcd(int a, int b) {
+        while (b != 0) {
+            int r = a % b;
+            a = b;
+            b = r;
+        }
+        return a;
     }
 }
