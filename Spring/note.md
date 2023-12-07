@@ -70,3 +70,23 @@ implementation 'org.springframework:spring-context:5.3.23'
 
 ### 2-5. ApplicationContext xml설정 파일
 SpringApplicationContextExam
+
+---
+
+## 3.AnnotationConfigApplicationContext , JavaConfig, Component Scan 
+
+### 3.1 xml파일을 통한 설정은 불편하다
+- (IDE가  error를 찾기 어렵고, java개발자가 xml파일을 작성하기는 짜증난다.)
+
+```agsl
+Package org.springframework.context.annotation
+Class AnnotationConfigApplicationContext
+```
+
+
+### 3.2 AnnotationConfigApplicationContext
+
+- AnnotationConfigApplicationContext(Spring 3.0) 등장
+    - (ClassPathXmlApplicationContext는 Spring의 등장과 함께 생김)
+- Annotation 기반(aka.Java Config, Component Scan을 한다.)
+- 
