@@ -1,11 +1,10 @@
-package bitcamp.myapp;
-
+package bitcamp.util;
 import java.util.Scanner;
 
 public class Prompt {
     private Scanner sc;
 
-    Prompt() {
+    public Prompt() {
         sc = new Scanner(System.in);
     }
     public String getUserInput(String currentPath, String explain) {
