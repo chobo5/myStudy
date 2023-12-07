@@ -6,29 +6,35 @@ public class MainMenu {
     private static void printMenu() {
         MenuProvider.showMenu(MAIN_MENUS);
     }
-
     public static void execute() {
+        Prompt prompt = new Prompt();
+        AssignmentMenu assignmentMenu = new AssignmentMenu("과제", prompt);
+        BoardMenu boardMenu = new BoardMenu("게시", prompt);
+        BoardMenu greetingBoardMenu = new BoardMenu("가입인사", prompt);
+        MemberMenu memberMenu = new MemberMenu("회원관리", prompt);
+
+
         printMenu();
         while (true) {
-            String input = Prompt.getUserInput("메인", "");
+            String input = prompt.getUserInput("메인", "");
             switch (input) {
                 case "1":
-                    AssignmentMenu.execute();
+                    assignmentMenu.execute();
                     break;
                 case "2":
-                    BoardMenu.execute();
+                    boardMenu.execute();
                     break;
                 case "3":
-                    MemberMenu.execute();
+                    memberMenu.execute();
                 case "4":
-                    GreetingBoardMenu.execute();
+                    greetingBoardMenu.execute();
                     break;
                 case "5":
                     System.out.println("도움말입니다.");
                     break;
                 case "0":
                     System.out.println("종료합니다.");
-                    Prompt.close();
+                    prompt.close();
                     return;
                 case "menu":
                     MainMenu.printMenu();

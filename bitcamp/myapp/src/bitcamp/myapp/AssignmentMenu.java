@@ -3,18 +3,29 @@ package bitcamp.myapp;
 import java.util.Arrays;
 
 public class AssignmentMenu {
-    private static final String[] ASSIGNMENT_MENUS = {"과제", "1.등록", "2.조회", "3.변경", "4.삭제", "5.목록", "0.이전"};
 
-    static Assignment[] assignments = new Assignment[3];
 
-    static int currentIndex = 0;
+    private Assignment[] assignments = new Assignment[3];
 
-    static int newLenth = 0;
+    private int currentIndex = 0;
 
-    public static void execute() {
+    private int newLenth = 0;
+
+    private String title;
+
+    //의존 객체(dependency object - dependency)
+    private Prompt prompt;
+
+    public AssignmentMenu(String title, Prompt prompt) {
+        this.title = title;
+        this.prompt = prompt;
+    }
+
+    public void execute() {
         while (true) {
+            final String[] ASSIGNMENT_MENUS = {this.title, "1.등록", "2.조회", "3.변경", "4.삭제", "5.목록", "0.이전"};
             MenuProvider.showMenu(ASSIGNMENT_MENUS);
-            String input = Prompt.getUserInput("메인/과제", "");
+            String input = prompt.getUserInput("메인/" + this.title, "");
             switch (input) {
                 case "1":
                     add();
@@ -43,12 +54,12 @@ public class AssignmentMenu {
             }
         }
     }
-    private static void add() {
+    private void add() {
         System.out.println("=> 과제 등록");
         Assignment assignment = new Assignment();
-        assignment.title = Prompt.getUserInput("메인/과제", "과제명: ");
-        assignment.content = Prompt.getUserInput("메인/과제", "내용: ");
-        assignment.deadLine = Prompt.getUserInput("메인/과제", "제출 마감일: ");
+        assignment.title = prompt.getUserInput("메인/과제", "과제명: ");
+        assignment.content = prompt.getUserInput("메인/과제", "내용: ");
+        assignment.deadLine = prompt.getUserInput("메인/과제", "제출 마감일: ");
         assignments[currentIndex] = assignment;
         System.out.println("과제등록이 완료되었습니다.");
 
@@ -62,10 +73,9 @@ public class AssignmentMenu {
 
     }
 
-    private static void find() {
+    private void find() {
         System.out.println("과제 상세조회입니다.");
-        String strIndex = Prompt.getUserInput("메인/과제", "조회할 과제의 번호를 입력하세요.");
-        int index = Integer.parseInt(strIndex);
+        int index = prompt.inputInt("메인/과제", "조회할 과제의 번호를 입력하세요.");
         if (index >= 0 && index < currentIndex) {
             System.out.printf("과제명: %s\n", assignments[index].title);
             System.out.printf("내용: %s\n", assignments[index].content);
@@ -77,14 +87,13 @@ public class AssignmentMenu {
 
     }
 
-    private static void modify() {
+    private void modify() {
         System.out.println("과제 변경입니다.");
-        String strIndex = Prompt.getUserInput("메인/과제", "변경할 과제의 번호를 입력하세요.");
-        int index = Integer.parseInt(strIndex);
+        int index = prompt.inputInt("메인/과제", "변경할 과제의 번호를 입력하세요.");
         if (index >= 0 && index < currentIndex) {
-            assignments[index].title = Prompt.getUserInput("메인/과제", "과제명 수정: ");
-            assignments[index].content = Prompt.getUserInput("메인/과제", "내용 수정: ");
-            assignments[index].deadLine = Prompt.getUserInput("메인/과제", "제출 마감일 수정: ");
+            assignments[index].title = prompt.getUserInput("메인/과제", "과제명 수정: ");
+            assignments[index].content = prompt.getUserInput("메인/과제", "내용 수정: ");
+            assignments[index].deadLine = prompt.getUserInput("메인/과제", "제출 마감일 수정: ");
             System.out.println("과제 변경이 완료되었습니다..");
         } else {
             System.out.println("과제가 존재하지 않습니다.");
@@ -92,10 +101,9 @@ public class AssignmentMenu {
 
     }
 
-    private static void delete() {
+    private void delete() {
         System.out.println("과제 삭제입니다.");
-        String strIndex = Prompt.getUserInput("메인/과제", "삭제할 과제 번호를 입력하세요.");
-        int index = Integer.parseInt(strIndex);
+        int index = prompt.inputInt("메인/과제", "삭제할 과제 번호를 입력하세요.");
         if (index >= 0 && index < currentIndex) {
             for (int i = index; i < currentIndex - 1 ; i++) {
                 assignments[i] = assignments[i + 1];
@@ -110,7 +118,7 @@ public class AssignmentMenu {
 
     }
 
-    private static void list() {
+    private void list() {
         System.out.println("과제 목록입니다.");
         System.out.printf("%-20s\t%s\n", "과제", "제출 마감일");
         for (int i = 0; i < currentIndex; i++) {
