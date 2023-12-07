@@ -1,7 +1,7 @@
 package bitcamp.myapp;
 
 public class MainMenu {
-    private static final String[] MAIN_MENUS = {"과제관리 시스템", "1.과제", "2.게시글", "3.도움말", "4.종료"};
+    private static final String[] MAIN_MENUS = {"과제관리 시스템", "1.과제", "2.게시글", "3.회원관리", "4.도움말", "0.종료"};
 
     private static void printMenu() {
         MenuProvider.showMenu(MAIN_MENUS);
@@ -10,7 +10,7 @@ public class MainMenu {
     public static void execute() {
         printMenu();
         while (true) {
-            String input = Prompt.getUserInput("메인");
+            String input = Prompt.getUserInput("메인", "");
             switch (input) {
                 case "1":
                     AssignmentMenu.execute();
@@ -19,9 +19,11 @@ public class MainMenu {
                     BoardMenu.execute();
                     break;
                 case "3":
+                    MemberMenu.execute();
+                case "4":
                     System.out.println("도움말입니다.");
                     break;
-                case "4":
+                case "0":
                     System.out.println("종료합니다.");
                     Prompt.close();
                     return;
