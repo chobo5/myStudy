@@ -185,3 +185,49 @@ intelliJ에서 만들기
    
 http://localhost:8080 으로 실행되려면?
 - Edit Configuration -> Deployment(배포) -> Application context를 / 만 남긴다
+
+---
+
+## 5.Http 프로토콜과 서블릿이 실행되는 과정 이해하기
+1. 브라우저로 http://google.com(google.com = 도메인주소)을 입력하면
+2. OS 의 DomainNameServer(DNS)에 도메인주소를 활용해 google의 IP를 얻는다.
+   - Terminal 명령어 nslookup을 사용해 확인할 수 있다.
+   - http://google.com 뒤에는 :80/가 생략되어있다.
+3. IP에 접속한다.
+4. 요청 정보를 서버에 보낸다(요청라인 + 헤더 + 빈줄 + 바디)
+5. Body에 index.html, css, javascript 파일들이 포함된다.
+6. html문서에서 img 태그를 보고 서버에게 요청한다.
+
+
+### 5.1 intelliJ로 프로젝트를 생성하면 자동으로 만들어주는 Servlet이 있다.
+- HelloServlet 파일로 이동
+- class HelloServlet은 HttpServlet을 상속받고 있다. 그래서 Servlet이라고 한다.
+
+### 5.2 Servlet 이란?
+- HttpServlet을 상속받고 있는 class를 말한다.
+  - HttpServlet은 http요청을 처리해주는 클래스이다.
+  - JSP도 특수한 Servlet이다.
+
+#### 5.2.1 Servlet 실행
+```angular2html
+@WebServlet(name = "helloServlet", value = "/hello-servlet")
+```
+1. http://localhost:8080/hello-servlet 접속
+2. 서버에게 GET /hello-servlet 이라는 요청을 보낸다.
+3. 서버에 ____/hello-servlet(언더바 부분을 Application context부분이라고함)라는 요청이온다
+   - Application context가 /로 된것을 찾아 Tomcat이 대신 실행한다.
+   - 즉 Tomcat이 HelloServlet 클래스를 대신 실행한다.
+     - doGet이라는 메서드를 실행한다.(GET이라는 요청을 받았기 때문에)
+     - HttpServletRequest, HttpServletResponse을 Tomcat이 넣어준다.
+     - 그 결과를 응답으로 보낸다.
+
+### 5.3 Tomcat이 http요청을 처리하는 방법
+keyword: 관련된을 모은다 -> 응집도가 높다.
+- tomcat은 Java로 만들어진 프로그램이다.
+- Tomcat은 브라우저로 부터 받은 요청을 HttpServletRequest에 넣어준다.
+- Tomcat은 누구에게 응답할지를 알기 때문에 미리 HttpServletResponse을 생성한다.
+- 이렇게 두개의 인스턴스가 생성된다.
+- GET요청이 왔기 때문에 2개의 인스턴스를 doGet메서드의 parameter로 넣어준다.
+- 그리고 개발자는 두개의 인스턴스를 이용해 프로그래밍 한다.
+
+
