@@ -230,4 +230,129 @@ keyword: 관련된을 모은다 -> 응집도가 높다.
 - GET요청이 왔기 때문에 2개의 인스턴스를 doGet메서드의 parameter로 넣어준다.
 - 그리고 개발자는 두개의 인스턴스를 이용해 프로그래밍 한다.
 
+---
 
+## 6. Servlet, JSP라이프 싸이클, Servlet vs JSP , 포워딩 맛보기
+
+<br>
+
+### 6.1 Java Web Application을 WAS에 배포하는 방법
+
+- WEB-INF 폴더가 있어야한다.
+  - web.xml(discriptor) - 웹어플리케이션을 설명하는 파일  
+  - classes 폴더
+    - 우리가 만든 class들
+  - lib 폴더
+    - 라이브러리 파일(~.jar)
+- html, jsp, js, 이미지들
+
+1. 이것들을 하나의 파일로 묶어 압출시킬 수 있다(ex- ROOT.war)
+2. 이 파일을(.war) WAS에 배포한다.
+   - ROOT.war은 자동으로 압축이 해제된다.
+3. WAS가 서비스를 해준다.
+4. WAS가 8080포트로 동작하고 있다면, http://localhost:8008/index.jsp을 입력했을때 WAS에 요청을 보내고 WAS가 요청을 처리해 응답을 보낸다.
+   
+1, 2과정을 intelliJ가 해준다.
+
+### 6.2 class HttpServlet
+Methods
+- init()
+- destory()
+- service() <- parameter로 request, response
+
+#### 6.2.1. Servlet 실행과정
+1. 사용자가 /hello-servlet 으로 요청을 보낸다.
+2. /hello-servlet이라는 url path로 등록된 servlet을 찾는다.
+3. 메모리에 있는지 확인한다.
+   - 있다면 (2번째 이상 실행)
+     - service() 바로 호출
+   - 없다면 인스턴스를 생성한다.(첫번째 실행)
+     - init() 호출
+     - service() 호출
+즉, Servlet은 메모리에 하만 올라간다.
+
+       
+### 6.3 JSP
+- 특수한 형태의 서블릿
+- MicroSoft사의 스크립트 기술을 보고 Java에서 만듬
+
+```angular2html
+/System/Volumes/Data/Users/wonjun-yeon/Library/Caches/JetBrains/IntelliJIdea2023.3/tomcat/e2a561d4-3212-40cb-897d-c2d805fec4ad/work/Catalina/localhost/ROOT/org/apache/jsp
+```
+WAS는 다음과 같은 작업을 실행한다.
+1. index.jsp가 처음 실행되면
+2. 위의 경로에 index_jsp.java가 생성되고 이파일에 문법적 오류가 없으면
+3. index_jsp.class가 생성되어 실행된다.
+4. 2번쨰 이상 실행되면 _jspService()가 바로 호출된다.
+
+#### 6.3.1 index_jsp
+
+- index_jsp파일은 org.apache.jasper.runtime.HttpJsBase 를 상속받는다.
+- HttpJsBase는 HttpServlet과 같은 역할
+- Servlet init() = _jspInit()
+- Servlet destory() = _jspDestroy()
+- Servlet service() = _jspService(req, resp)
+
+#### 6.3.2 _jspService() 메서드
+```angular2html
+파라미터
+final javax.servlet.http.HttpServletRequest request, final javax.servlet.http.HttpServletResponse response
+
+지역 변수
+final javax.servlet.jsp.PageContext pageContext;
+    javax.servlet.http.HttpSession session = null;
+    final javax.servlet.ServletContext application;
+    final javax.servlet.ServletConfig config;
+    javax.servlet.jsp.JspWriter out = null;
+    final java.lang.Object page = this;
+    javax.servlet.jsp.JspWriter _jspx_out = null;
+    javax.servlet.jsp.PageContext _jspx_page_context = null;
+```
+다음과 같은 변수들이 선언되어있다.(JSP 내장변수)
+
+```angular2html
+      out.write("\n");
+      out.write("<!DOCTYPE html>\n");
+      out.write("<html>\n");
+      out.write("<head>\n");
+      out.write("  <title>JSP - Hello World</title>\n");
+      out.write("</head>\n");
+      out.write("<body>\n");
+      out.write("<h1>");
+      out.print( "Hello World!" );
+      out.write("</h1>\n");
+      out.write("<br/>\n");
+      out.write("<img src=\"Java_Logo.png\">\n");
+      out.write("<a href=\"hello-servlet\">Hi Servlet</a>\n");
+      out.write("</body>\n");
+      out.write("</html>");
+```
+Servlet과 같이 html을 출력해준다.
+Servlet과 전체적으로 비슷하며
+index_jsp.java가 생성후 컴파일해 index_jsp.class를 만드는 부분만 다르다.
+
+다른점
+- Servlet은 클래스파일로 되어있고
+- JSP는 일반적인 text파일처럼 되어있다.
+
+따라서 그 역할을 구분하여 사용한다.
+
+### 6.4 Servlet vs JSP
+- Servlet은 Java코드
+  - java 코드를 넣어서 개발한다.
+  - 자바코드로 작성하는 비즈니스 로직
+  - 하지만 HTML, CSS입력이 어렵
+
+- JSP
+  - HTML
+  - Java코드를 넣을 수 있다.(하지만 되도록 넣지 않는다.)
+  - 프론트개발자, 퍼플리셔들과 코드가 섞인다.
+  - => 사용하지말고 다른 템플릿 기술을 사용하자.(Thymeleaf 등등..)
+    
+=> DMBS가 관리하는 DataBase의 Tabled에서 CRUD하는 객체(DAO)를 만들어
+프로그래밍한다(데이터 베이스 프로그래밍)
+데이터베이스 프로그래밍 기술
+- JDBC
+- Spring JDBC
+- MyBatis 등등
+- ![스크린샷 2023-12-09 오후 6.22.37.png](..%2F..%2F..%2F..%2F%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202023-12-09%20%EC%98%A4%ED%9B%84%206.22.37.png)

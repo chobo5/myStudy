@@ -5,11 +5,12 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.util.Enumeration;
 
-@WebServlet(name = "helloServlet", value = "/hello-servlet")
+@WebServlet(name = "helloServlet", value = "/hello-servlet") //servlet path를 설정
 public class HelloServlet extends HttpServlet {
     private String message;
 
     public void init() {
+        System.out.println("init() 호출");
         message = "Hello World!";
     }
 
