@@ -356,3 +356,29 @@ index_jsp.java가 생성후 컴파일해 index_jsp.class를 만드는 부분만 
 - Spring JDBC
 - MyBatis 등등
 - ![스크린샷 2023-12-09 오후 6.22.37.png](..%2F..%2F..%2F..%2F%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202023-12-09%20%EC%98%A4%ED%9B%84%206.22.37.png)
+
+---
+
+## 7.서블릿에서 JSP로 포워딩하기, EL표기법맛보기, Heroku에 웹 어플리케이션 배포하기
+
+### 7.1 index.jspd의 Plus form
+- http://localhost:8080/
+  - ==> index.jsp를 요청
+  - http://localhost:8080/index.jsp
+
+webapp/index.jsp를 webapp/form/index.jsp로 이동
+= http://localhost:8080/form/
+= http://localhost:8080/form/index.jsp
+
+```angular2html
+<form method="get" action="/plus"> <!-- 초보들이 /를 빼먹는 실수를 자주한다.-->
+    x: <input type="text" name="x"> <br>
+    y: <input type="text" name="y"> <br>
+    <input type="submit" value="plus">
+</form>
+```
+- submit을 하면
+  - http://localhost:8080/form/plus?x=50&y=100
+    - action="plus"이면 상대경로이고
+    - http://localhost:8080/form/ + plus 이런식으로 호출하지만
+    - http://localhost:8080/plus <--이게 호출되어야한다.

@@ -17,14 +17,15 @@
   <title>JSP - Hello World</title>
 </head>
 <body>
-<h1><%= "Hello World!" %></h1>
+<h1>Plus</h1>
 <br/>
-<img src="Java_Logo.png">
-<a href="hello-servlet">Hi Servlet</a>
-<%
-  for (int i = 0; i < 10; i++) {
-    out.write("Hello World<br>");
-  }
-%>
+<%--<img src="Java_Logo.png">--%>
+<form method="get" action="/plus">
+    x: <input type="text" name="x"> <br>
+    y: <input type="text" name="y"> <br>
+    <input type="submit" value="plus">
+</form>
+
+
 </body>
 </html>

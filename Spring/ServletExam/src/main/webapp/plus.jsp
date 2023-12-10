@@ -18,6 +18,9 @@
     out.write(" = ");
     out.write(request.getAttribute("value").toString());
 %>
-
+<%--Servlet을 사용하는것과 별반 다르지 않다.--%>
+<%--그래서 다음과 같이 작성할 수 있다.--%>
+<%--el표기법--%>
+<h1>${x} + ${y} = ${value}</h1>
 </body>
 </html>
