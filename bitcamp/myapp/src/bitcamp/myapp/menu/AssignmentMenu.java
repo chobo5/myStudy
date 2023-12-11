@@ -1,10 +1,8 @@
-package bitcamp.myapp.menu.ui;
+package bitcamp.myapp.menu;
 
 import bitcamp.myapp.menu.MenuService;
 import bitcamp.util.Prompt;
 import bitcamp.myapp.vo.Assignment;
-
-import java.util.Arrays;
 
 public class AssignmentMenu {
     private String title;

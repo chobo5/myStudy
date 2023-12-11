@@ -1,6 +1,5 @@
-package bitcamp.myapp.menu.ui;
+package bitcamp.myapp.menu;
 
-import bitcamp.myapp.menu.MenuService;
 import bitcamp.util.Prompt;
 
 public class MainMenu {

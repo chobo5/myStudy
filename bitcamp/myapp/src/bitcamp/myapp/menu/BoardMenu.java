@@ -1,7 +1,6 @@
-package bitcamp.myapp.menu.ui;
+package bitcamp.myapp.menu;
 
 import bitcamp.myapp.menu.MenuService;
-import bitcamp.myapp.vo.Assignment;
 import bitcamp.util.Prompt;
 import bitcamp.myapp.vo.Board;
 import java.util.Date;
