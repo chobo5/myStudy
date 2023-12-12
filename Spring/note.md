@@ -382,3 +382,85 @@ webapp/index.jsp를 webapp/form/index.jsp로 이동
     - action="plus"이면 상대경로이고
     - http://localhost:8080/form/ + plus 이런식으로 호출하지만
     - http://localhost:8080/plus <--이게 호출되어야한다.
+
+---
+
+## 8. Spring 프레임워크를 이용해 hello 출력하기
+
+#### 8.1.1 서블릿에서 서블릿 인스턴스를 생성하는 것은 누구일까?
+
+우리는 HelloServlet hello = new HelloServlet(); 이라는 코드를 작성한적이 없음
+<br>
+- Tomcat 이라는 WAS가 생성함
+- /hello요청을 받으면, 해당 PATH를 처리하는 서블릿이 메모리에 있는가?
+  - 없다면 hello.init() 실행
+  - 있다면 hello.service(req, resp); 실행
+    - GET방식으로 요청했다면 WAS가 doGet(req, resp)호출
+      - service나 doGet을 overriding하면 service가 동작한다.
+
+#### 8.1.2 Bean이란?
+- Spring Container가 관리하는 객체
+
+#### 8.1.3 Spring으로 WebApplication 만들기
+-----WEB-INF --- classes --- 개발자가 만든 package, class 등<--
+             --- lib --- spring과 관련된 각종 jar파일          |
+             --- web.xml 알맞은 설정 -> javaConfig로 설정------
+             --- 각종 리소스 hello.png // 포워딩하는 경로로는 접근할 수 있다.
+-----각종 이미지, JSP, logo.png
+
+이것들은 전부 묶어서 war파일을 만듬 -> Tomcat 서버에 배포
+
+### 8.2 SpringWeb 프로젝트생성(Java EE)
+- 오른쪽 코끼리 아이콘 Tasks/build/war 더블클릭
+- 왼쪽 navigation에 build/libs/war파일 생성
+
+External Libraries/Gradle: javax.servlet/javax.servlet/http/HttpServlet을 상속받아 만든다.
+build.gradle에 compileOnly('javax.servlet:javax.servlet-api:4.0.1')는
+배포 단계에서는 Tomcat이 HttpsServlet을 가지고 있어 lib폴더에 servlet이 필요없지만 컴파일시 IDE는 필요하기때문에 compileOnly다.
+
+
+### 8.3 Spring 설정파일 작성(WebConfig.java)
+
+```angular2html
+@Configuration //Spring Java Config
+@EnableWebMvc //xml에서는 <mvc:annotation-drive />
+public class WebConfig implements WebMvcConfigurer {
+
+    public WebConfig() {
+        System.out.println("WebConfig가 실행됩니다.");
+    }
+}
+```
+- Spring 설정을 읽어들이는것은 ApplicationContext interface를 구현하고있는 Container(스프링컨테이너)
+  - web.xml, Servlet파일 등은 Tomcat이 이해할수 있지만 Java Config는 Tomcat이 이해할 수 없다.
+  - -> ApplicationContext가 읽어들이도록 해야한다.
+  - Spring이 제공해주는 WebApplicationInitializer interface를 구현한 class 생성
+    - onStartup을 overriding하면 Tomcat이 실행되면서 자동으로 실행시켜준다.
+      - Tomcat이 실행될떄 자동으로 읽어들이는 파일을 Spring jar파일이 제공하는데
+      - 자동으로 제공하는 클래스가 WebApplicationInitializer를 구현하고 있는 클래스를 실행한다.
+
+
+DispatcherServlet이란?
+
+### 8.4 Spring MVC의 핵심 서블릿
+
+- DispatcherServlet
+
+1. 브라우저가 /hello 요청을 보내면 Tomcat이 받는다.
+2. Tomcat이 /hello 경로가 붙어있는 Servlet을 실행한다.
+3. 이때, 브라우저가 보내는 모든 요청을 /라고 설정된 Servlet(DispatcherServlet)이 다 받는다.
+   - 모든 요청을 다 받기 때문에 단일 진입점 or frontController라고 한다.
+왜? 
+- DispatcherServlet이 ApplicationContext를 가지고 있다.
+- ApplicationContext가 Bean을 관리한다.
+
+#### DispatcherServlet을 사용하는 이유
+1. Spring을 사용한다는것은 Spring Container가 Bean을 관리해주길 바라는것인데, 
+2. HttpServlet은 Tomcat이 관리하기 때문에, 일단 Servlet이 모든 요청을 받아들이도록 하고
+3. Servlet과 유사한 기능을 제공해주는 Controller라는 Bean을 생성한다.
+4. Controller("/hello")을 생성하게 되면
+5. 브라우저로부터 /hello라는 요청을 받고 DispatcherServlet이 /hello를 처리해주는 Controller에게 요청을 넘긴다.
+6. 
+
+
+ 
