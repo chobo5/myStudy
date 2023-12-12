@@ -1,5 +1,6 @@
 package bitcamp.menu;
 
+import bitcamp.util.AnsiEscape;
 import bitcamp.util.Prompt;
 
 public class MenuGroup implements Menu {
@@ -73,7 +74,7 @@ public class MenuGroup implements Menu {
     }
 
     private void printMenu() {
-        System.out.printf("[%s]\n", this.title);
+        System.out.printf(AnsiEscape.ANSI_BOLD_RED +"[%s]\n" + AnsiEscape.ANSI_CLEAR, this.title);
 
         for (int i = 0; i < this.menuSize; i++) {
             System.out.printf("%d. %s\n", (i + 1), menus[i].getTitle());

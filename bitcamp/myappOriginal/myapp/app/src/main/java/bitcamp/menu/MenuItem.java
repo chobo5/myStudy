@@ -21,7 +21,7 @@ public class MenuItem implements Menu {
     @Override
     public void execute(Prompt prompt) {
         if(this.menuHandler != null) {
-            this.menuHandler.action(prompt);
+            this.menuHandler.action(this);
         }
     }
 

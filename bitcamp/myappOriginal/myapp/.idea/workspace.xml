@@ -72,7 +72,7 @@
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_directory_selection": "/Users/eomjinyoung/git/bitcamp-study/myapp/app/src/main/java/bitcamp/myapp",
-    "last_opened_file_path": "/Users/wonjun-yeon/Desktop/bitcamp/git/myStudy/bitcamp/myappOriginal/myapp",
+    "last_opened_file_path": "/Users/wonjun-yeon/Desktop/bitcamp/git/myStudy/bitcamp/myappOriginal/myapp/app/src/main/java/bitcamp/myapp/handler/member",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -84,6 +84,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/handler/member" />
       <recent name="$PROJECT_DIR$/app/src/test/resources" />
     </key>
     <key name="MoveMembersDialog.RECENTS_KEY">
@@ -92,6 +93,7 @@
       <recent name="bitcamp.myapp.AssignmentMenu" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="bitcamp.util" />
       <recent name="bitcamp.myapp.menu" />
       <recent name="bitcamp.myapp" />
     </key>
@@ -102,7 +104,7 @@
       <module name="myapp.app.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="bitcamp.myapp.vo.*" />
+          <option name="PATTERN" value="bitcamp.myapp.vo.Board" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -115,7 +117,7 @@
       <module name="myapp.app.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="bitcamp.myapp.vo.*" />
+          <option name="PATTERN" value="bitcamp.myapp.vo.Board" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -217,7 +219,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1700621272510</updated>
-      <workItem from="1702256849241" duration="20595000" />
+      <workItem from="1702256849241" duration="44582000" />
     </task>
     <servers />
   </component>
