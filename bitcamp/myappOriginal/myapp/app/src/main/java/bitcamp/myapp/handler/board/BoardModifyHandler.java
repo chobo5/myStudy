@@ -7,12 +7,14 @@ import bitcamp.util.AnsiEscape;
 import bitcamp.util.ObjectRepository;
 import bitcamp.util.Prompt;
 
+import java.util.ArrayList;
+
 //게시글의 '등록'메뉴를 선택했을 때 작업을 수행하는 클래스
 public class BoardModifyHandler implements MenuHandler {
-    ObjectRepository objectRepository;
+    ArrayList<Board> objectRepository;
     Prompt prompt;
 
-    public BoardModifyHandler(Prompt prompt, ObjectRepository objectRepository) {
+    public BoardModifyHandler(Prompt prompt, ArrayList<Board> objectRepository) {
         this.objectRepository = objectRepository;
         this.prompt = prompt;
     }
@@ -21,7 +23,7 @@ public class BoardModifyHandler implements MenuHandler {
         System.out.printf(AnsiEscape.ANSI_BOLD + "[%s]\n" + AnsiEscape.ANSI_CLEAR, menu.getTitle());
         int index = this.prompt.inputInt("번호? ");
 
-        Board oldBoard = (Board) this.objectRepository.get(index);
+        Board oldBoard = this.objectRepository.get(index);
         Board newBoard = new Board();
 
         if (oldBoard == null) {
@@ -34,7 +36,7 @@ public class BoardModifyHandler implements MenuHandler {
         newBoard.writer = this.prompt.input("작성자(%s)? ", oldBoard.writer);
         newBoard.createdDate = this.prompt.input("작성일(%s)? ", oldBoard.createdDate);
 
-        this.objectRepository.set(index, (Object) newBoard);
+        this.objectRepository.set(index, newBoard);
 
     }
 }

@@ -7,13 +7,15 @@ import bitcamp.util.AnsiEscape;
 import bitcamp.util.ObjectRepository;
 import bitcamp.util.Prompt;
 
+import java.util.ArrayList;
+
 //게시글의 '등록'메뉴를 선택했을 때 작업을 수행하는 클래스
 public class BoardViewHandler implements MenuHandler {
 
-    ObjectRepository objectRepository;
+    ArrayList<Board> objectRepository;
     Prompt prompt;
 
-    public BoardViewHandler(Prompt prompt, ObjectRepository objectRepository) {
+    public BoardViewHandler(Prompt prompt, ArrayList<Board> objectRepository) {
         this.objectRepository = objectRepository;
         this.prompt = prompt;
     }
@@ -23,7 +25,7 @@ public class BoardViewHandler implements MenuHandler {
 
         int index = this.prompt.inputInt("번호? ");
 
-        Board board = (Board)this.objectRepository.get(index);
+        Board board = this.objectRepository.get(index);
 
         if (board == null) {
             System.out.println("게시글 번호가 유효하지 않습니다.");
