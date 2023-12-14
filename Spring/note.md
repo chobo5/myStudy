@@ -460,7 +460,61 @@ DispatcherServlet이란?
 3. Servlet과 유사한 기능을 제공해주는 Controller라는 Bean을 생성한다.
 4. Controller("/hello")을 생성하게 되면
 5. 브라우저로부터 /hello라는 요청을 받고 DispatcherServlet이 /hello를 처리해주는 Controller에게 요청을 넘긴다.
-6. 
+
+---
+
+## 9. Spring MVC - DefaultServlet, ViewResolver의 동작에 대한 이해
+
+### 9.1 이미지와 jsp 호출하기
+
+http://localhost:8080   +   Context Path(/)   +   PATH(/car.png)   +   ? 파라미터들
+내컴퓨터의 8080서버에 접속
+
+http://localhost:8080/car.png
+
+        /car.png                    / (단일 진입점)
+브라우저 -------> Tomcat ------> 서블릿(DispatcherServlet) ------> ApplicationContext ------> Bean(Controller("/car.png"))
+<br>
+                                                       ------> Tomcat DefaultServlet ---> /webapp/car.png
+- img,html등은 정적파일이다.
+- car.png를 처리하는 Bean이 없음으로 404를 띄운다.
+- WebApplicationInitializer는 DispatcherServlet을 등록해주고 Spring이나 Bean에 대한 설정은 WebConfig가 설정해줬음
+- 만약 car.png를 처리하는 Controller가 없다면 DispatcherServlet이 Tomcat의 DefaultServlet에게 떠넘긴다.
 
 
- 
+http://localhost:8080/hello.jsp
+        /hello.jsp                    / (단일 진입점)
+브라우저 -------> Tomcat ------> 서블릿(DispatcherServlet) ------> ApplicationContext ------> Bean(Controller(없음))
+<br>
+                                                        ------> Tomcat DefaultServlet ---> hello.jsp
+
+ - JSP에서는 Java코드를 최대한 줄이고
+ - 결과는 Servlet or Controller에서 만들고 JSP에게 결과를 전달한다.
+
+
+### 9.2 Spring MVC는 여러개의 ViewResolver를 가질 수 있다.
+- Spring Container는 ViewResolver 인터페이를 구현하고 있는 Bean이 어떤것들이 있는지 알고 있다.
+- ViewResolver인터페이스를 구현하는 Bean을 가질 수 있다.
+- Spring은 사용자가 JSP를 사용하도록 설정한것을 알고있다. 그런데 Bean중에 InternalResourceViewResolver가 있다면
+- Controller가 리턴하는 문자열을 InternalResourceViewResolver가 처리하도록한다.
+        /hello                    / (단일 진입점)
+브라우저 -------> Tomcat ------> 서블릿(DispatcherServlet) ------> ApplicationContext ------> Bean(Controller("/car.png"))
+<br>                                                                ---> Controller가값을리턴 ---> InternalResourceViewResolver가 동작하며
+                                                                                           /WEB-INF/view/hello.jsp로 포워딩한다
+
+### 9.3 JSP는 결과를 보여주는 역할만
+
+
+webapp/WEB-INF/view/hello.jsp 로 옮김
+
+http://localhost:8080//WEB-INF/view/hello.jsp
+
+--> 404 error
+
+#### 9.3.1 WEB-INF폴더는 외부에서 접근할 수 없다.
+- /WEB-INF는 서버 내부에서는 포워딩할 수 있다.
+
+
+### 9.4 Controller와 ViewResolver
+- Controller는 로직을 수행하여 결과를 만들어낸다 --- InternalResourceViewResolver의 조건을 충족 ---> jsp는 결과만 출력한다.
+- Controller는 로직을 수행하여 결과를 만들어낸다 ----------------------------------------------> Excel파일을 다운로드 하도록 할 수 있다.
