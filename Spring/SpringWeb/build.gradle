@@ -22,6 +22,12 @@ tasks.withType(JavaCompile) {
 }
 
 dependencies {
+    //spring-data-jpa(인터페이스), jap를 구현한 hibernate(구현체)
+    implementation group: 'org.springframework.data', name: 'spring-data-jpa', version: '2.7.3'
+    implementation group: 'org.hibernate', name: 'hibernate-entitymanager', version: '5.6.11.Final'
+    //JDBC 프로그래밍
+    implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.30'
+
     implementation 'org.projectlombok:lombok:1.18.24'
     testImplementation 'org.projectlombok:lombok:1.18.24'
     annotationProcessor 'org.projectlombok:lombok:1.18.24'

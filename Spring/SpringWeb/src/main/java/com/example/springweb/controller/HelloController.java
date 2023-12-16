@@ -1,15 +1,20 @@
 package com.example.springweb.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
+import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.io.PrintWriter;
 
 @Controller
 public class HelloController {
+    @Autowired
+    DataSource dataSource;  //스프링이 Bean으로 관리되는 개체를 자동으로 주입
     @GetMapping("/hello") // /hello요청이 오면 해당 메소드를 실행하라.
 //    public void hello(HttpServletRequest request, HttpServletResponse response) throws IOException {
 //        response.setContentType("text/html");

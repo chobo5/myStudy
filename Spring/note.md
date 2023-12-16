@@ -518,3 +518,36 @@ http://localhost:8080//WEB-INF/view/hello.jsp
 ### 9.4 Controller와 ViewResolver
 - Controller는 로직을 수행하여 결과를 만들어낸다 --- InternalResourceViewResolver의 조건을 충족 ---> jsp는 결과만 출력한다.
 - Controller는 로직을 수행하여 결과를 만들어낸다 ----------------------------------------------> Excel파일을 다운로드 하도록 할 수 있다.
+
+---
+
+## 10. DataSource 선언하기 (@PropertySource와 Environment를 이용)
+
+브라우저 ----- /hello ----> Tomcat -- /(모든요청) ---> DispatcherServet ---요청을 넘김----> Controller("/hello")
+----결과----> JSP ---> 브라우저
+
+### 10.1 Controller가 결과를 만드는 방법
+Controller의 메서드의 가장 중요한 역할
+ - httpRequest를 받아서 httpResponse를 만들어내는게 목적
+ - 데이터베이스 프로그래밍(JDBC) 응답을 위해 DBMS(MySQL) 사용
+   - JDBC 프로그래밍을 좀더 간결하게 하는 방법 ---> Spring JDBC, Spring Data JPA(ORM기술), MyBatis
+ - DBMS안에는 여러개의 DataBase가 있을 수 있다.
+   - DataBase는 특정 사용자만 이용할 수 있다. 특정 사용자는 DBMS에서 관리되는 사용자를 말한다.
+   - Database 안에는 Table이 있다. 회원정보는 회원Table에, 상품정보는 상품Table에 저장한다.
+
+
+### 10.2 Database 프로그래밍
+1. SQL - SQL성능이 안나오면 실행계획을 볼줄 알아야 한다.
+2. SQL을 이용해서 JDBC 프로그래밍(데이터 베이스 프로그래밍)
+3. Spring JDBC
+4. Spring Data JPA(ORM기술) - 직접 SQL을 사용하지 않아도 된다. (내부적으로 SQL을 생성하여 동작) - 어떤 SQL을 생성할것인지 예상할 수 있어야함
+
+데이터 베이스 프로그래밍을 통해 데이터를 다루는 객체를 다루게 됨(DAO - Data Access Object, Repository)
+1. 비즈니스 로직을 수행(Service)
+   - 이자계산, 특정 사용자가 주문한 상품의 전체 가격을 구한다.
+   - 트랜젝션(Transaction)
+     - 여러개의 DAO or Repository를 하나의 논리적인 작업 단위로 실행할 수 있어야 한다.
+     
+2. 하나의 Controller는 여러개의 Service를 사용해서 어떤 결과를 만들어 낼 수 있다.
+3. DTO(Data Transfer Object) 각각의 layer(Controller, Service, Dao)를 넘나드는 객
+
