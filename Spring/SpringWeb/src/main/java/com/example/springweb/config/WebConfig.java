@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-@Configuration //Spring Java Config
+//@Configuration //Spring Java Config
 @EnableWebMvc //xml에서는 <mvc:annotation-drive />
 
 //com.example패키지 이하에서 @Controller가 붙어있는 클래스를 모두 Bean으로 등록해라(Spring Container가 관리하겠다)

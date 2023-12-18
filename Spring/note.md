@@ -551,3 +551,61 @@ Controller의 메서드의 가장 중요한 역할
 2. 하나의 Controller는 여러개의 Service를 사용해서 어떤 결과를 만들어 낼 수 있다.
 3. DTO(Data Transfer Object) 각각의 layer(Controller, Service, Dao)를 넘나드는 객
 
+---
+
+## 11. Spring Data JPA 설정하기
+
+### 11.1 DB 사용법
+1. DBMS에 접속, SQL 전송
+2. DB에서 SQL 실행
+3. SQL 실행결과 수신
+4. DBMS 접속 close
+
+비용이 발생한다.
+비용이 많이 발생했다.
+- 시간이 오래걸린다.
+- CPU 사용량이 많다.
+- 메모리 사용량이 많다
+
+**JDBC프로그래밍에서 DBMS 접속에서 비용이 많이 발생한다.**
+- 따라서 접속과 close의 반복은 많은 비용을 발생시킨다.
+
+### 11.2 커넥션 풀
+1. Java로 만든 DBMS를 사용하는 client(connection 객체)와 DBMS를 미리 연결시켜놓는다
+2. connection객체를 여러개 가지고 있는 connection pool에 필요할떄마다 connection을 빌려온다.
+3. connection을 통해 SQL을 전송하고 결과를 받으면 받은 connection을 connection pool에 돌려준다.
+DBCP, 히카리CP등 connection pool을 제공해주는 다양한 오픈소스가 있다.
+<br>
+connection객체들의 사용법을 통일하기 위해 Java(JaraktaEE, JavaEE)에서 DataSource interface를 제공해준다.
+따라서 이런한 DataSource interface를 구현하고있는 개체들을 connection pool이라고 부른다.
+
+
+### 11.3 Hibernate
+**JDBC**
+- MyBatis(SI)
+- Spring JDBC
+- Spring Data JPA(ORM 기술)
+
+**ORM**
+- SQL을 몰라도된다.
+- ORM이라는 기술의 자바표준이 JPA이다.
+- JPA라고 불리는 인터페이스들을 제공해주며 Spring과는 관계가 없다.
+- JPA의 구현체가 hibernate이다.
+- JPA를 편하게 쓰기 위해 제공해주는 기술이 Spring Data JPA이다.
+
+### 11.4 Spring Data JPA 맛보기
+
+![](https://www.baeldung.com/wp-content/uploads/2019/11/transition-persistence-context.png)
+
+- Persistence Context(영속성 관리자) 
+  - user1(Entity 객체)를 관리한다.
+  - DB와 통신하며 영속성을 관리한다.
+  - EntityManger가 필요하다(Entity Manager가 Persistence Context를 관리한다.)
+  - EntityManager는 ThreadSafe하다(동시에 사용불가)
+  - EntityManager-PersistenceContext는 JPA와 관련이 있고 JPA Exception을 발생시킬 수 있다.
+
+<br>
+
+이러한 것들을 편하게 사용할 수 있도록 해주는 것이 Spring Data JPA이다.
+  - Spring은 JPA가 제공해주는 것들을 Bean으로 관리하길 원한다. 
+ 
