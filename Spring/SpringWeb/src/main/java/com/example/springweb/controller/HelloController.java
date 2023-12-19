@@ -34,9 +34,9 @@ public class HelloController {
         //WebMvcConfigurer를 구현하고 있는 파일에서 설정해준다(WebConfig)
     }
 
-    @GetMapping("/add")
-    public String add() throws Exception {
-        toDoService.addToDo();
-        return "add";
-    }
+//    @GetMapping("/add")
+//    public String add() throws Exception {
+//        toDoService.addToDo();
+//        return "add";
+//    }
 }

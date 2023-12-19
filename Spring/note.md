@@ -609,3 +609,19 @@ connection객체들의 사용법을 통일하기 위해 Java(JaraktaEE, JavaEE)�
 이러한 것들을 편하게 사용할 수 있도록 해주는 것이 Spring Data JPA이다.
   - Spring은 JPA가 제공해주는 것들을 Bean으로 관리하길 원한다. 
  
+
+---
+
+## 12. 스프링을 이용한 웹 애플리케이션 만들기
+
+#### JSP에서 JSTL 사용하기
+```angular2html
+//taglib 설정을 한다. jstl core 라이브러리의 약자인 c를 네임스페이스로 사용한다.
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+
+//컨트롤러에서 보낸값을 받는다.
+<c:forEach var="todo" items="${todos}" varStatus="status">
+    <p>${todo.todo}</p> //EL 표기법 todo가 참조하는 객체의 todo 프로퍼티(getTodo())를 사용한다.
+</c:forEach>
+```
