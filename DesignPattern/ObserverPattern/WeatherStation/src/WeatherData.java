@@ -31,10 +31,22 @@ public final class WeatherData implements Subject{
         observerList.remove(observer);
     }
 
+    public float getTemperature() {
+        return temperature;
+    }
+
+    public float getHumidity() {
+        return humidity;
+    }
+
+    public float getPressure() {
+        return pressure;
+    }
+
     @Override
     public void notifyObserver() {
         for(Observer observer : observerList) {
-            observer.update(this.temperature, this.humidity, this.pressure);
+            observer.update();
         }
     }
 
