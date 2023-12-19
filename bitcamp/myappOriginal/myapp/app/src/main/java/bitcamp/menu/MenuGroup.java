@@ -3,13 +3,12 @@ package bitcamp.menu;
 import bitcamp.util.AnsiEscape;
 import bitcamp.util.Prompt;
 
-public class MenuGroup implements Menu {
-    String title;
-    Menu[] menus = new Menu[10];
-    int menuSize;
+public class MenuGroup extends AbstractMenu {
+    private Menu[] menus = new Menu[10];
+    private int menuSize;
 
     public MenuGroup(String title) {
-        this.title = title;
+        super(title);
     }
 
     @Override
@@ -17,7 +16,7 @@ public class MenuGroup implements Menu {
         this.printMenu();
 
         while (true) {
-            String input = prompt.input("%s> ", this.title);
+            String input = prompt.input("%s> ", this.getTitle());
             int menuNumber = Integer.parseInt(input);
             if (menuNumber < 0 || menuNumber > menuSize) {
                 System.out.println("메뉴 번호가 옳지 않습니다.");
@@ -28,11 +27,6 @@ public class MenuGroup implements Menu {
 
         }
 
-    }
-
-    @Override
-    public String getTitle() {
-        return title;
     }
 
     public void add(Menu menu) {
@@ -74,7 +68,7 @@ public class MenuGroup implements Menu {
     }
 
     private void printMenu() {
-        System.out.printf(AnsiEscape.ANSI_BOLD_RED +"[%s]\n" + AnsiEscape.ANSI_CLEAR, this.title);
+        System.out.printf(AnsiEscape.ANSI_BOLD_RED +"[%s]\n" + AnsiEscape.ANSI_CLEAR, this.getTitle());
 
         for (int i = 0; i < this.menuSize; i++) {
             System.out.printf("%d. %s\n", (i + 1), menus[i].getTitle());

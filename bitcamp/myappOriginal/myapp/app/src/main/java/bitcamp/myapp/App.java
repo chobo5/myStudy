@@ -29,7 +29,7 @@ public class App {
     assignmentMenu.add(new MenuItem("조회", new AssignmentViewHandler(prompt, assignmentRepository)));
     assignmentMenu.add(new MenuItem("수정", new AssignmentModifyHandler(prompt, assignmentRepository)));
     assignmentMenu.add(new MenuItem("삭제", new AssignmentDeleteHandler(prompt, assignmentRepository)));
-    assignmentMenu.add(new MenuItem("목록", new AssignmentListHandler(assignmentRepository)));
+    assignmentMenu.add(new MenuItem("목록", new AssignmentListHandler(prompt, assignmentRepository)));
     assignmentMenu.add(new MenuItem("이전"));
     mainMenu.add(assignmentMenu);
 
@@ -38,7 +38,7 @@ public class App {
     boardMenu.add(new MenuItem("조회", new BoardViewHandler(prompt, boardRepository)));
     boardMenu.add(new MenuItem("수정", new BoardModifyHandler(prompt, boardRepository)));
     boardMenu.add(new MenuItem("삭제", new BoardDeleteHandler(prompt, boardRepository)));
-    boardMenu.add(new MenuItem("목록", new BoardListHandler(boardRepository)));
+    boardMenu.add(new MenuItem("목록", new BoardListHandler(prompt, boardRepository)));
     boardMenu.add(new MenuItem("이전"));
     mainMenu.add(boardMenu);
 
@@ -52,7 +52,7 @@ public class App {
     memberMenu.add(new MenuItem("조회", new MemberViewHandler(prompt, memberRepository)));
     memberMenu.add(new MenuItem("수정", new MemberModifyHandler(prompt, memberRepository)));
     memberMenu.add(new MenuItem("삭제", new MemberDeleteHandler(prompt, memberRepository)));
-    memberMenu.add(new MenuItem("목록", new MemberListHandler(memberRepository)));
+    memberMenu.add(new MenuItem("목록", new MemberListHandler(prompt, memberRepository)));
     memberMenu.add(new MenuItem("이전"));
     mainMenu.add(memberMenu);
 

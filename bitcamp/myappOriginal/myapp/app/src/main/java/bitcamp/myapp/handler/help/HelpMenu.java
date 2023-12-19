@@ -1,23 +1,21 @@
 package bitcamp.myapp.handler.help;
 
-import bitcamp.menu.Menu;
+import bitcamp.menu.AbstractMenu;
 import bitcamp.util.Prompt;
 
-public class HelpMenu implements Menu {
+public class HelpMenu extends AbstractMenu {
     Prompt prompt;
-    String title;
 
-    public HelpMenu(Prompt prompt, String title) {
-        this.prompt = prompt;
-        this.title = title;
+    public HelpMenu(String title) {
+        super(title);
     }
 
     public void execute(Prompt prompt) {
         System.out.println("도움말 입니다.");
     }
 
-    @Override
+
     public String getTitle() {
-        return title;
+        return this.getTitle();
     }
 }

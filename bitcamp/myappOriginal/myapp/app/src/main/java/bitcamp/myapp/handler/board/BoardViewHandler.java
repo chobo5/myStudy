@@ -1,5 +1,6 @@
 package bitcamp.myapp.handler.board;
 
+import bitcamp.menu.AbstractMenuHandler;
 import bitcamp.menu.Menu;
 import bitcamp.menu.MenuHandler;
 import bitcamp.myapp.vo.Board;
@@ -10,18 +11,16 @@ import bitcamp.util.Prompt;
 import java.util.ArrayList;
 
 //게시글의 '등록'메뉴를 선택했을 때 작업을 수행하는 클래스
-public class BoardViewHandler implements MenuHandler {
+public class BoardViewHandler extends AbstractMenuHandler {
 
-    ArrayList<Board> objectRepository;
-    Prompt prompt;
+    private ArrayList<Board> objectRepository;
 
     public BoardViewHandler(Prompt prompt, ArrayList<Board> objectRepository) {
+        super(prompt);
         this.objectRepository = objectRepository;
-        this.prompt = prompt;
     }
     @Override
-    public void action(Menu menu) {
-        System.out.printf(AnsiEscape.ANSI_BOLD + "[%s]\n" + AnsiEscape.ANSI_CLEAR, menu.getTitle());
+    protected void action() {
 
         int index = this.prompt.inputInt("번호? ");
 
@@ -32,9 +31,9 @@ public class BoardViewHandler implements MenuHandler {
             return;
         }
 
-        System.out.printf("제목: %s\n", board.title);
-        System.out.printf("내용: %s\n", board.content);
-        System.out.printf("작성자: %s\n", board.writer);
-        System.out.printf("작성일: %s\n", board.createdDate);
+        System.out.printf("제목: %s\n", board.getTitle());
+        System.out.printf("내용: %s\n", board.getContent());
+        System.out.printf("작성자: %s\n", board.getWriter());
+        System.out.printf("작성일: %s\n", board.getCreatedDate());
     }
 }

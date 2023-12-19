@@ -1,17 +1,18 @@
 package bitcamp.myapp.handler;
 
+import bitcamp.menu.AbstractMenu;
 import bitcamp.menu.Menu;
 import bitcamp.menu.MenuGroup;
 import bitcamp.util.AnsiEscape;
 import bitcamp.util.Prompt;
 
-public class MainMenu implements Menu {
+public class MainMenu extends AbstractMenu {
 
-  static final String APP_TITLE =
+  private static final String APP_TITLE =
       AnsiEscape.ANSI_BOLD_RED
           + "[과제관리 시스템]"
           + AnsiEscape.ANSI_CLEAR;
-  static final String[] MENUS = {
+  private static final String[] MENUS = {
       "1. 과제",
       "2. 게시글",
       "3. 회원",
@@ -23,10 +24,11 @@ public class MainMenu implements Menu {
 
   // 의존 객체(Dependency Object ==> dependency);
   // - 클래스가 작업을 수행할 때 사용하는 객체
-  Prompt prompt;
+  private Prompt prompt;
 
   public MainMenu(Prompt prompt) {
-    this.prompt = prompt;
+      super("메인");
+      this.prompt = prompt;
   }
 
   static void printMenu() {
@@ -80,6 +82,6 @@ public class MainMenu implements Menu {
 
   @Override
   public String getTitle() {
-    return null;
+    return getTitle();
   }
 }

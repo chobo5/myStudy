@@ -1,5 +1,6 @@
 package bitcamp.myapp.handler.member;
 
+import bitcamp.menu.AbstractMenuHandler;
 import bitcamp.menu.Menu;
 import bitcamp.menu.MenuHandler;
 import bitcamp.myapp.vo.Member;
@@ -10,17 +11,15 @@ import bitcamp.util.Prompt;
 import java.util.ArrayList;
 
 //게시글의 '등록'메뉴를 선택했을 때 작업을 수행하는 클래스
-public class MemberDeleteHandler implements MenuHandler {
-    ArrayList<Member> objectRepository;
-    Prompt prompt;
+public class MemberDeleteHandler extends AbstractMenuHandler {
+    private ArrayList<Member> objectRepository;
 
     public MemberDeleteHandler(Prompt prompt, ArrayList<Member> objectRepository) {
+        super(prompt);
         this.objectRepository = objectRepository;
-        this.prompt = prompt;
     }
     @Override
-    public void action(Menu menu) {
-        System.out.printf(AnsiEscape.ANSI_BOLD + "[%s]\n" + AnsiEscape.ANSI_CLEAR, menu.getTitle());
+    public void action() {
 
         int index = this.prompt.inputInt("번호? ");
 

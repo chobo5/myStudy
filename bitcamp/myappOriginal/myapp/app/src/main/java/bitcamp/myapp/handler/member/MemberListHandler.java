@@ -1,24 +1,26 @@
 package bitcamp.myapp.handler.member;
 
+import bitcamp.menu.AbstractMenuHandler;
 import bitcamp.menu.Menu;
 import bitcamp.menu.MenuHandler;
 import bitcamp.myapp.vo.Member;
 import bitcamp.util.AnsiEscape;
 import bitcamp.util.ObjectRepository;
+import bitcamp.util.Prompt;
 
 import java.util.ArrayList;
 
 //게시글의 '등록'메뉴를 선택했을 때 작업을 수행하는 클래스
-public class MemberListHandler implements MenuHandler {
+public class MemberListHandler extends AbstractMenuHandler {
 
-    ArrayList<Member> objectRepository;
+    private ArrayList<Member> objectRepository;
 
-    public MemberListHandler(ArrayList<Member> objectRepository) {
+    public MemberListHandler(Prompt prompt, ArrayList<Member> objectRepository) {
+        super(prompt);
         this.objectRepository = objectRepository;
     }
     @Override
-    public void action(Menu menu) {
-        System.out.printf(AnsiEscape.ANSI_BOLD + "[%s]\n" + AnsiEscape.ANSI_CLEAR, menu.getTitle());
+    public void action() {
         System.out.printf("%-10s\t%30s\t%s\n", "이름", "이메일", "가입일");
         Object[] objects = this.objectRepository.toArray();
         if (objects == null) {
@@ -27,7 +29,7 @@ public class MemberListHandler implements MenuHandler {
         }
         for (Object object : objects) {
             Member member = (Member) object;
-            System.out.printf("%-10s\t%30s\t%s\n", member.name, member.email, member.createdDate);
+            System.out.printf("%-10s\t%30s\t%s\n", member.getName(), member.getEmail(), member.getCreatedDate());
         }
     }
 }

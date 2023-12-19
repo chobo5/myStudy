@@ -11,7 +11,7 @@ public abstract class AbstractMenu implements Menu{
 
     @Override
     public String getTitle() {
-        return null;
+        return this.title;
     }
 
     public void setTitle(String title) {
