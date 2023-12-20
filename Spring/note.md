@@ -111,7 +111,7 @@ Class AnnotationConfigApplicationContext
 ### 4.5 Java 웹 프로그래밍
 1. Java언어로 웹어플리케이션을 만들겠다.
 2. 웹 어플리케이션을 실행할 WAS가 필요하다.
-3. Servlet/JSP를 실행할 수 있는 환(Servlet Container)
+3. Servlet/JSP를 실행할 수 있는 환경(Servlet Container)
    - JSP도 알고보면 Servlet 기술로 만들어진다.
    - Servlet Container는 WAS안에 있다.
    - WAS는 여러개의 WebAppliation을 실행할 수 있다.
@@ -222,7 +222,7 @@ http://localhost:8080 으로 실행되려면?
      - 그 결과를 응답으로 보낸다.
 
 ### 5.3 Tomcat이 http요청을 처리하는 방법
-keyword: 관련된을 모은다 -> 응집도가 높다.
+keyword: 관련된것을 모은다 -> 응집도가 높다.
 - tomcat은 Java로 만들어진 프로그램이다.
 - Tomcat은 브라우저로 부터 받은 요청을 HttpServletRequest에 넣어준다.
 - Tomcat은 누구에게 응답할지를 알기 때문에 미리 HttpServletResponse을 생성한다.
@@ -239,7 +239,7 @@ keyword: 관련된을 모은다 -> 응집도가 높다.
 ### 6.1 Java Web Application을 WAS에 배포하는 방법
 
 - WEB-INF 폴더가 있어야한다.
-  - web.xml(discriptor) - 웹어플리케이션을 설명하는 파일  
+  - web.xml(descriptor) - 웹어플리케이션을 설명하는 파일  
   - classes 폴더
     - 우리가 만든 class들
   - lib 폴더
@@ -269,7 +269,7 @@ Methods
    - 없다면 인스턴스를 생성한다.(첫번째 실행)
      - init() 호출
      - service() 호출
-즉, Servlet은 메모리에 하만 올라간다.
+즉, Servlet은 메모리에 하나만 올라간다.
 
        
 ### 6.3 JSP
@@ -349,7 +349,7 @@ index_jsp.java가 생성후 컴파일해 index_jsp.class를 만드는 부분만 
   - 프론트개발자, 퍼플리셔들과 코드가 섞인다.
   - => 사용하지말고 다른 템플릿 기술을 사용하자.(Thymeleaf 등등..)
     
-=> DMBS가 관리하는 DataBase의 Tabled에서 CRUD하는 객체(DAO)를 만들어
+=> DMBS가 관리하는 DataBase의 Table 에서 CRUD하는 객체(DAO)를 만들어
 프로그래밍한다(데이터 베이스 프로그래밍)
 데이터베이스 프로그래밍 기술
 - JDBC
