@@ -21,13 +21,14 @@ public class AssignmentDeleteHandler extends AbstractMenuHandler {
 
     @Override
     public void action() {
-
-        int index = this.prompt.inputInt("번호? ");
-        if (objectRepository.remove(index) == null) {
-            System.out.println("과제 번호가 유효하지 않습니다.");
-            return;
+        try {
+            int index = this.prompt.inputInt("번호? ");
+            objectRepository.remove(index);
+            System.out.println("성공적으로 삭제되었습니다.");
+        } catch (Exception e) {
+            System.out.println("삭제 오류");
         }
-        System.out.println("성공적으로 삭제되었습니다.");
+
 
     }
 }

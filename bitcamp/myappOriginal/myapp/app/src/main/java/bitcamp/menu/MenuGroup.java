@@ -17,14 +17,20 @@ public class MenuGroup extends AbstractMenu {
 
         while (true) {
             String input = prompt.input("%s> ", this.getTitle());
-            int menuNumber = Integer.parseInt(input);
-            if (menuNumber < 0 || menuNumber > menuSize) {
-                System.out.println("메뉴 번호가 옳지 않습니다.");
+
+            if (input.equals("menu")) {
+                this.printMenu();
                 continue;
-            } else {
-                menus[menuNumber - 1].execute(prompt);
+            } else if (input.equals("0")) {
+                break;
             }
 
+            try {
+                int menuNumber = Integer.parseInt(input);
+                menus[menuNumber - 1].execute(prompt);
+            } catch (Exception e) {
+                System.out.println("메뉴 번호가 옳지 않습니다.");
+            }
         }
 
     }

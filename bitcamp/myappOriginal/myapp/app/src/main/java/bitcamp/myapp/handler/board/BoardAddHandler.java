@@ -9,6 +9,7 @@ import bitcamp.util.ObjectRepository;
 import bitcamp.util.Prompt;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 //게시글의 '등록'메뉴를 선택했을 때 작업을 수행하는 클래스
 public class BoardAddHandler extends AbstractMenuHandler {
@@ -29,7 +30,7 @@ public class BoardAddHandler extends AbstractMenuHandler {
         board.setTitle(this.prompt.input("제목? "));
         board.setContent(this.prompt.input("내용? "));
         board.setWriter(this.prompt.input("작성자? "));
-        board.setCreatedDate(this.prompt.input("작성일? "));
+        board.setCreatedDate(new Date());
         objectRepository.add(board);
         //레퍼런스를 선언하는 시점에 지정된 타입이 아닌 값을 넣으려고 하면
         //컴파일 오류가 발생한다.

@@ -56,8 +56,15 @@ public class App {
     memberMenu.add(new MenuItem("이전"));
     mainMenu.add(memberMenu);
 
+    while(true) {
+      try {
+        mainMenu.execute(prompt);
+        break;
+      } catch (Exception e) {
+        System.out.println("오류가 발생했습니다. 프로그램을 재시작합니다.");
+      }
+    }
 
-    mainMenu.execute(prompt);
     prompt.close();
   }
 }

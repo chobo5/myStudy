@@ -20,19 +20,12 @@ public class AssignmentModifyHandler extends AbstractMenuHandler {
 
     @Override
     public void action() {
-
         int index = this.prompt.inputInt("번호? ");
         Assignment oldAssignment = (Assignment) objectRepository.get(index);
-
-        if (oldAssignment == null) {
-            System.out.println("과제 번호가 유효하지 않습니다.");
-            return;
-        }
-
         Assignment newAssignment = new Assignment();
         newAssignment.setTitle(this.prompt.input("과제명(%s)? ", oldAssignment.getTitle()));
         newAssignment.setContent(this.prompt.input("내용(%s)? ", oldAssignment.getContent()));
-        newAssignment.setDeadline(this.prompt.input("제출 마감일(%s)? ", oldAssignment.getDeadline()));
+        newAssignment.setDeadline(this.prompt.inputDate("제출 마감일(%s)? ", oldAssignment.getDeadline()));
         objectRepository.set(index, newAssignment);
     }
 }

@@ -29,7 +29,7 @@ public class MemberListHandler extends AbstractMenuHandler {
         }
         for (Object object : objects) {
             Member member = (Member) object;
-            System.out.printf("%-10s\t%30s\t%s\n", member.getName(), member.getEmail(), member.getCreatedDate());
+            System.out.printf("%-10s\t%30s\t%3$tY-%3$tm-%3$td\n", member.getName(), member.getEmail(), member.getCreatedDate());
         }
     }
 }

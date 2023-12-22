@@ -9,6 +9,7 @@ import bitcamp.util.ObjectRepository;
 import bitcamp.util.Prompt;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 //게시글의 '등록'메뉴를 선택했을 때 작업을 수행하는 클래스
 public class MemberModifyHandler extends AbstractMenuHandler {
@@ -32,7 +33,7 @@ public class MemberModifyHandler extends AbstractMenuHandler {
         newMember.setEmail(this.prompt.input("이메일(%s)? ", oldMember.getEmail()));
         newMember.setName(this.prompt.input("이름(%s)? ", oldMember.getName()));
         newMember.setPassword(this.prompt.input("새 암호? "));
-        newMember.setCreatedDate(this.prompt.input("가입일(%s)? ", oldMember.getCreatedDate()));
+        newMember.setCreatedDate(new Date());
         this.objectRepository.set(index, newMember);
     }
 }

@@ -21,7 +21,21 @@ public class MenuItem extends AbstractMenu {
     @Override
     public void execute(Prompt prompt) {
         if(this.menuHandler != null) {
-            this.menuHandler.action(this);
+            try {
+                this.menuHandler.action(this);
+            } catch (NumberFormatException e) {
+                System.out.println("번호를 입력하세요");
+                return;
+            } catch (IndexOutOfBoundsException e) {
+                System.out.println("번호가 유효하지 않습니다.");
+                return;
+            } catch (IllegalArgumentException e) {
+                System.out.println("입력 형식이잘못되었습니다, 다시 입력해주세요");
+                return;
+            } catch (Exception e) {
+                System.out.println("실행 오류");
+            }
+
         }
     }
 

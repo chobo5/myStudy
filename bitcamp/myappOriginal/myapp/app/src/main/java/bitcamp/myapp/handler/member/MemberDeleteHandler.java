@@ -20,14 +20,8 @@ public class MemberDeleteHandler extends AbstractMenuHandler {
     }
     @Override
     public void action() {
-
         int index = this.prompt.inputInt("번호? ");
-
-        if (this.objectRepository.remove(index) == null) {
-            System.out.println("회원 번호가 유효하지 않습니다.");
-            return;
-        }
-
+        this.objectRepository.remove(index);
         System.out.println("성공적으로 삭제되었습니다.");
     }
 }
