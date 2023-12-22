@@ -71,4 +71,73 @@ services:
 ### MySQL Workbench (Client)
 select version(), current date;
 - SQL ---> 전송 ---> MySQL DBMS(SQL 실행) ---> 결과를 MySQL Workbench로
-- 
+
+
+### SQL
+- 테이블 생성, 테이블 삭제, 테이블 수정
+- 값을 저장, 수정, 삭제, **조회**(중요)
+- 권한 부여, 데이터베이스 생성
+
+---
+
+## 02. SQL 부터 Spring Data JPA까지
+
+SELECT 구문의 기본문형
+- Table에서 데이터를 가져오기 위해 SELECT구문을 사용한다.
+- SELECT: 검색하고자 하는 데이터(칼럼)을 나열한다.
+- DISTINCT: 중복을 제거한다.
+- ALIAS: 나타날 칼럼에 다른 이름 부여
+- FROM: 선택한 칼럼이 있는 테이블을 명시한다.
+- DESC: 테이블의 구조를 보여준다.
+
+
+```SQL
+show tables; -- 테이블 목록을 보여달라
+select *from employees limit 0,10; -- 페이지별로 조회가 가능하다.
+desc employees;
+-- Key가 PRI(primary)이면 유일해야한다.
+select first_name, last_name, salary from employees;
+
+select first_name as 성, last_name as 이름, salary as 연봉 from employees;
+
+select concat(first_name,' ' ,last_name) as 이름, hire_date as 입사일 from employees;
+
+select distinct manager_id from employees; -- 중복제거
+
+select first_name, last_name, hire_date from employees order by hire_date asc;
+select first_name, last_name, hire_date from employees order by hire_date desc;
+
+select first_name, last_name, hire_date, salary from employees order by salary desc;
+```
+
+**WHERE와 함께 조회하기**
+- SELECT(DISTINCT) 칼럼명(ALIAS)
+- FROM 테이블명
+- WHERE 조건식
+- ORDER BY 칼럼이나 표현식(ASC or DESC)
+
+**문자형 함수 - UCASE, UPPER**
+- SELECT  UPPER('SEoul), UCASE('seOUL'); (UPPER = UCASE) //SEOUL
+- SELECT  LOWER('SEoul), LCASE('seOUL'); //seoul
+- SELECT SUBSTRING('happy day',3 ,2) //3번쨰 부터 2개잘라
+
+**좌변을 변형시키는 것은 성능을 하락시킬 수 있다.**
+
+**실행 계획보기**
+- 맨앞에 explain을 추가한다
+- 평상시에는 비슷하지만 index를 주면 상황이 달라진다.
+```SQL
+create index employees_hire_date_idx on employees (hire_date);
+
+show index from employees;
+
+explain select concat(first_name, last_name) as 이름, hire_date as 입사일 
+from employees 
+where substring(hire_date, 1, 4) = '1989'; -- 0.020 sec
+
+explain select concat(first_name, last_name) as 이름, hire_date as 입사일 
+from employees 
+where hire_date like '1987'; -- 0.018 sec
+```
+인덱스를 생성한후 실행계획을 보면 좌변을 변형하지 않은것은 인덱스를 탄다.
+인덱스를 최대한 이용하는것이 성능이 좋은 쿼리를 만드는 것이다.
