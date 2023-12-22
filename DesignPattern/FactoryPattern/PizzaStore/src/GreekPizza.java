@@ -1,2 +1,2 @@
-package PACKAGE_NAME;public class GreekPizza {
+public class GreekPizza extends Pizza{
 }

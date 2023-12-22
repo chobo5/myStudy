@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="757db2b9-27ed-4f2d-8232-a87566617739" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/CheesePizza.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GreekPizza.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PepperoniPizza.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Pizza.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PizzaStore.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PizzaType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/SimplePizzaFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../bitcamp/myapp/src/bitcamp/myapp/menu/AssignmentMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../bitcamp/myapp/src/bitcamp/myapp/menu/AssignmentMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../bitcamp/myapp/src/bitcamp/myapp/menu/BoardMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../bitcamp/myapp/src/bitcamp/myapp/menu/BoardMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../bitcamp/myapp/src/bitcamp/myapp/menu/CRUDOperations.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../bitcamp/myapp/src/bitcamp/myapp/menu/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../bitcamp/myapp/src/bitcamp/myapp/menu/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../bitcamp/myapp/src/bitcamp/myapp/menu/MemberMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../bitcamp/myapp/src/bitcamp/myapp/menu/MemberMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../bitcamp/myapp/src/bitcamp/myapp/menu/MenuService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../bitcamp/myapp/src/bitcamp/myapp/vo/Assignment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../bitcamp/myapp/src/bitcamp/myapp/vo/Board.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../bitcamp/myapp/src/bitcamp/myapp/vo/Member.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../bitcamp/myappOriginal/myapp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../bitcamp/myappOriginal/myapp/.idea/workspace.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Enum" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 5
+}]]></component>
+  <component name="ProjectId" id="2ZqgrsNQAxW7YIjfrWoNvY2dECF" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-11.0.21-corretto-11.0.21-3183f394aec4-26afc3bf" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="757db2b9-27ed-4f2d-8232-a87566617739" name="Changes" comment="" />
+      <created>1703155225400</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1703155225400</updated>
+      <workItem from="1703155229530" duration="2876000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
