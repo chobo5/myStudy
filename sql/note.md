@@ -141,3 +141,99 @@ where hire_date like '1987'; -- 0.018 sec
 ```
 인덱스를 생성한후 실행계획을 보면 좌변을 변형하지 않은것은 인덱스를 탄다.
 인덱스를 최대한 이용하는것이 성능이 좋은 쿼리를 만드는 것이다.
+
+---
+
+## 03. SQL 부터 Spring Data JPA까지
+
+
+**LPAD, RPAD**
+- select lpad('hi', 5, '?'), lpad('joe', 7, '*'); -- 5글자를 만드는데 왼쪽을 ?로 채워라
+
+- select employee_id, lpad(cast(salary as char), 10 , '*') from employees; -- salary를 char(문자열)로 casting함
+
+**TRIM**
+- select LTRIM('  hello   '), RTRIM('   hi   '); -- 공백 제거
+- select TRIM('.  hello.  '), TRIM(both'x' from 'xxxxhixxxx'); -- x제거
+
+**연산**
+- select ABS(-2); -- 절댓값
+- select mod(234, 10), 253 % 7, mod(29, 9); -- 나머지 연산자
+- select ceiling(1.23), ceiling(-1.23); -- 올림
+- select round(1.23), round(2,64), round(-1.67), round(1.298, 1); -- 반올림, 소숫점 선택
+- select POW(2, 3); -- 제곱
+- select sign(-32), sign(0), sign(17); -- 음수면 -1, 0은 0, 양수는 1
+- select greatest(2, 0), greatest(4.0, 3.0, 5.0), greatest("B", "A", "C");
+- select least(2, 0), least(4.0, 3.0, 5.0), least("b", "A", "C");
+
+
+**날짜**
+- select curdate(), current_date;
+- select curtime(), current_time;
+- select now(), sysdate(), current_timestamp();
+
+**날짜형 함수 - DATE_FORMAT(date, format): 입력된 date를 format형식으로 변환
+- select date_format(curdate(), '%W %M %Y');
+- select date_format(curdate(), '%Y %m %d');
+- https://devjhs.tistory.com/89
+
+**날짜형 함수 - PERIOD_DIFF(p1, p2): YYMM이나 YYYYMM으로 표기되는 p1, p2의 차이 개월을 반환**
+
+**날짜형 함수**
+- DATE_ADD(date, INTERVAL expr type)
+- DATE_SUB(date, INTERVAL expr type)
+- ADDDATE(date, INTERVAL expr type)
+- SUBDATE(date, INTERVAL expr type)
+- 날짜 date에 type형식으로 지정한 expr을 더하거나 뺸다
+- DATE_ADD()와 ADDDATE()는 같은 동작이고 DATE_SUB(), SUBDATE()는 같은 동작이다.
+
+**형변환**
+- CAST 함수는 type을 지정(변경)하는데 유용하다.
+- 사용법
+```
+CAST(expression AS type)
+CONVERT(expression, type)
+```
+
+- MySQL 타입
+  - BINARY
+  - CHAR
+  - DATE
+  - DATETIME
+  - SIGNED {INTEGER}
+  - TIME
+  - UNSIGNED {INTEGER} (양수값만 표현)
+
+**그룹 함수**
+- COUNT(expr): non-NULL인 row 숫자를 반환
+- COUNT(DISTINCT expr, [expr...]): non-NULL인 중복되지 않은 row의 숫자를 반환
+- COUNT(*): row의 숫자를 반환
+- AVG(expr): expr의 평균값을 반환
+- MIN(expr): expr의 최솟값을 반환
+- MAX(expr): expr의 최댓값을 반환
+- SUM(expr): expr의 합을 반환
+- GROUP_CONCAT(expr): 그룹에서 concatenated한 문자를 반환
+- VARIANCE(expr): 분산
+- STDDEV(expr): expr의 표준 편차를 반환
+
+
+**select 구문의 전체 문형**
+```
+SELECT(DISTINCT) 칼럼명(ALIAS)
+FROM 테이블명
+WHERE 조건식
+GROUP BY 칼럼명
+HAVING 조건식
+ORDER BY 칼럼이나 표현식(ASC 또는 DESC)
+```
+- GROUP BY: 전체 데이터를 소그룹이나 나눠 칼럼을 명식
+- HAVING: GROUP에 대한 조건을 기술
+
+**GROUP BY절의 사용**
+- GROUP BY 절에 기술되 칼럼이 반드시 SELECT절 뒤에 올 필요는 없으나 SELECT문 결과의 의미를 명확하게 하기 위해 기술하는 것이 좋다.
+
+
+
+
+
+
