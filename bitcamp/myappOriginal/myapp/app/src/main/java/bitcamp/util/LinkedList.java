@@ -1,21 +1,29 @@
 package bitcamp.util;
 
-public class LinkedList {
-    private Node first;
-    private Node last;
+public class LinkedList<E> {
+    private Node<E> first;
+    private Node<E> last;
     private int size = 0;
 
-    private Node findNode(int index) {
+    public int size() {
+        return size;
+    }
+
+    private Node<E> findNode(int index) {
         int cursor = 0;
-        Node node = first;
-        while(cursor++ < index) {
+        Node<E> node = first;
+        while (cursor++ < index) {
             node = node.next;
         }
         return node;
     }
 
-    public void add(Object value) {
-        Node node = new Node();
+//    private int findNode(E value) {
+//
+//    }
+
+    public void add(E value) {
+        Node<E> node = new Node<>();
         node.value = value;
         if (last == null) { //node가 한개도 만들어지지 않음
             first = last = node;
@@ -28,14 +36,14 @@ public class LinkedList {
         size++;
     }
 
-    public void add(int index, Object value) {
+    public void add(int index, E value) {
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException("유효하지 않은 인덱스");
         }
-        Node node = new Node();
+        Node<E> node = new Node<>();
         node.value = value;
 
-        if(size == 0) {
+        if (size == 0) {
             first = node;
             last = node;
         } else if (index == 0) {
@@ -45,9 +53,8 @@ public class LinkedList {
             last.next = node;
             last = node;
         } else {
-            int cursor = 0;
             //해당 인덱스의 이전 노드를 찾는다.
-            Node prevNode = findNode(index - 1);
+            Node<E> prevNode = findNode(index - 1);
             node.next = prevNode.next;
             prevNode.next = node;
         }
@@ -57,7 +64,7 @@ public class LinkedList {
 
     public Object[] toArray() {
         Object[] arr = new Object[size];
-        Node node = first;
+        Node<E> node = first;
         int index = 0;
         while (node != null) {
             arr[index] = node.value;
@@ -67,37 +74,37 @@ public class LinkedList {
         return arr;
     }
 
-    public Object get(int index) {
+    public E get(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("유효하지 않은 인덱스");
         }
-        Node node = findNode(index);
+        Node<E> node = findNode(index);
         return node.value;
     }
 
-    public Object set(int index, Object object) {
+    public E set(int index, E object) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("유효하지 않은 인덱스");
         }
-        Node node = findNode(index);
-        Object oldValue = node.value;
+        Node<E> node = findNode(index);
+        E oldValue = node.value;
         node.value = object;
         return oldValue;
     }
 
-    public Object remove(int index) {
+    public E remove(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("유효하지 않은 인덱스");
         }
-        Node node = first;
-        Object deleted;
+        Node<E> node = first;
+        E deleted;
         if (size == 1) {
             deleted = first.value;
             first = last = null;
-        } else if(index == 0) {
+        } else if (index == 0) {
             deleted = first.value;
             first = first.next;
-        }else if (index == size - 1) {
+        } else if (index == size - 1) {
             deleted = last.value;
             //index의 이전노드를 찾는다.
             node = findNode(index - 1);
@@ -114,9 +121,41 @@ public class LinkedList {
         return deleted;
     }
 
+    public boolean remove(E value) {
+        Node<E> prevNode = null;
+        Node<E> node = null;
+        Node<E> cursor = first;
 
-    private static class Node {
-        Object value;
-        Node next; //
+        while (cursor != null) {
+            if (cursor.value.equals(value)) {
+                node = cursor;
+                break;
+            }
+            prevNode = cursor;
+            cursor = cursor.next;
+        }
+
+        if (node == null) {
+            return false;
+        }
+
+        if (node == first) {
+            first = first.next;
+            if (first == null) { //first == null 인건 first.next가 null이었으니 사이즈가 1일떄를 의미한다.
+                last = null;
+            }
+        } else {
+            prevNode.next = node.next;
+        }
+
+        //찾고자하는 노드의 이전노드는 찾고자하는 노드의 다음노드이다.
+        size--;
+        return true;
+    }
+
+
+    private static class Node<E> {
+        E value;
+        Node<E> next; //
     }
 }

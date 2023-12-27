@@ -1,12 +1,11 @@
 package bitcamp.menu;
 
 import bitcamp.util.AnsiEscape;
+import bitcamp.util.LinkedList;
 import bitcamp.util.Prompt;
 
 public class MenuGroup extends AbstractMenu {
-    private Menu[] menus = new Menu[10];
-    private int menuSize;
-
+    private LinkedList<Menu> menus = new LinkedList<>();
     public MenuGroup(String title) {
         super(title);
     }
@@ -27,7 +26,7 @@ public class MenuGroup extends AbstractMenu {
 
             try {
                 int menuNumber = Integer.parseInt(input);
-                menus[menuNumber - 1].execute(prompt);
+                menus.get(menuNumber - 1).execute(prompt);
             } catch (Exception e) {
                 System.out.println("메뉴 번호가 옳지 않습니다.");
             }
@@ -36,37 +35,17 @@ public class MenuGroup extends AbstractMenu {
     }
 
     public void add(Menu menu) {
-        if (this.menuSize == this.menus.length) {
-            int oldSize = this.menus.length;
-            int newSize = oldSize + (oldSize >> 1);
-
-            Menu[] arr = new Menu[newSize];
-            for (int i = 0; i < oldSize; i++) {
-                arr[i] = this.menus[i];
-            }
-
-            this.menus = arr;
-        }
-
-        this.menus[this.menuSize++] = menu;
+       menus.add(menu);
     }
 
     public void remove(Menu menu) {
         int index = indexOf(menu);
-        if (index == -1) {
-            return;
-        }
-        for (int i = index; i < menuSize - 1 ; i++) {
-            menus[i] = menus[i + 1];
-        }
-        menus[--this.menuSize] = null;
-
-
+        menus.remove(index);
     }
 
     private int indexOf(Menu menu) {
-        for (int i = 0; i < menuSize; i++) {
-            if (menus[i].equals(menu)) {
+        for (int i = 0; i < menus.size(); i++) {
+            if (menus.get(i).equals(menu)) {
                 return i;
             }
         }
@@ -76,8 +55,8 @@ public class MenuGroup extends AbstractMenu {
     private void printMenu() {
         System.out.printf(AnsiEscape.ANSI_BOLD_RED +"[%s]\n" + AnsiEscape.ANSI_CLEAR, this.getTitle());
 
-        for (int i = 0; i < this.menuSize; i++) {
-            System.out.printf("%d. %s\n", (i + 1), menus[i].getTitle());
+        for (int i = 0; i < menus.size(); i++) {
+            System.out.printf("%d. %s\n", (i + 1), menus.get(i).getTitle());
         }
 
         System.out.printf("0. %s\n", "이전");
