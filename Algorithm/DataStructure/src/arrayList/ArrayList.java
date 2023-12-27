@@ -2,7 +2,7 @@ package arrayList;
 
 import java.util.Arrays;
 
-public class MiniArrayList<E> {
+public class ArrayList<E> {
     private Object[] arrayList = new Object[3];
     private int position = 0; //새로운 참조가 들어가야할 위치 = 현재의 길이
 
