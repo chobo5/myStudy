@@ -232,8 +232,41 @@ ORDER BY 칼럼이나 표현식(ASC 또는 DESC)
 **GROUP BY절의 사용**
 - GROUP BY 절에 기술되 칼럼이 반드시 SELECT절 뒤에 올 필요는 없으나 SELECT문 결과의 의미를 명확하게 하기 위해 기술하는 것이 좋다.
 
+---
 
+## 04. SQL 부터 Spring Data JPA까지
 
+### Join이란?
+- 하나 이상의 테이블로부터 연관된 데이터를 검색해 오는 방법
 
+### Cartesian Join
+- Join에 대한 조건이 생략되거나 잘못 기술되어 한 테이블에 있는 모든행들이 다른 테이블에 있는 모든 행들과 Join 되어
+  얻어진 경우를 Cartesian Join 이라고 한다(의미가 없는 데이터들)
+```SQL
+select * from employees, departments;
+```
+- Cartesian Product를 얻지 않기 위해 반드시 WHERE 절을 써준다.
+- (JOIN하는 테이블의 수 - 1)개의 JOIN조건이 필요하다.
+
+### Simple Join
+문법
+```
+SELECT t1.col1, t1.col2, t2.col1 ...
+FROM Table1 t1, Table2 t2
+WHERE t1.col3 = t2.col3
+```
+- FROM 절에 필요한 모든 테이블을 적는다.
+  - 칼럼 이름의 모호성을 피하기 위해 (어느 테이블에 속하는지 알 수 없을 수 있으므로 Table이름에 alias 사용) - 테이블 이름으로 직접 지칭 가능
+  - 적절한 Join조건을 WHERE절에 부여(일반으로 테이블 개수 - 1개의 조인 조건이 필요)
+  - 일반적으로 PK와 FK간의 = 조건이 붙는 경우가 많음
+
+### JOIN 종류
+- Cross Join(Cartesian Product): 모든 가능한 쌍이 나타남
+- Inner Join: Join 조건을 만족하는 튜플만 나타남
+- Outer Join: Join 조건을 만족하지 않는 튜플(짝이 없는 튜플)도 null과 함께 나타남
+- Theta Join: 조건(theta)에 의한 조인
+- Equi-Join: Theta Join & 조건이 Equal(=)
+- Natural Join: Equi-Join & 동일한 Column명 합쳐짐
+- Self Join: 자기 자신과 조인
 
 
