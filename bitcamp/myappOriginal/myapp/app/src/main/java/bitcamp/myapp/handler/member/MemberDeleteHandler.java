@@ -1,20 +1,17 @@
 package bitcamp.myapp.handler.member;
 
 import bitcamp.menu.AbstractMenuHandler;
-import bitcamp.menu.Menu;
-import bitcamp.menu.MenuHandler;
 import bitcamp.myapp.vo.Member;
-import bitcamp.util.AnsiEscape;
-import bitcamp.util.ObjectRepository;
+import bitcamp.util.List;
 import bitcamp.util.Prompt;
 
 import java.util.ArrayList;
 
 //게시글의 '등록'메뉴를 선택했을 때 작업을 수행하는 클래스
 public class MemberDeleteHandler extends AbstractMenuHandler {
-    private ArrayList<Member> objectRepository;
+    private List<Member> objectRepository;
 
-    public MemberDeleteHandler(Prompt prompt, ArrayList<Member> objectRepository) {
+    public MemberDeleteHandler(Prompt prompt, List<Member> objectRepository) {
         super(prompt);
         this.objectRepository = objectRepository;
     }

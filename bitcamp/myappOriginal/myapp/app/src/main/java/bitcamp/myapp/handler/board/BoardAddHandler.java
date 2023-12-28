@@ -1,11 +1,8 @@
 package bitcamp.myapp.handler.board;
 
 import bitcamp.menu.AbstractMenuHandler;
-import bitcamp.menu.Menu;
-import bitcamp.menu.MenuHandler;
 import bitcamp.myapp.vo.Board;
-import bitcamp.util.AnsiEscape;
-import bitcamp.util.ObjectRepository;
+import bitcamp.util.List;
 import bitcamp.util.Prompt;
 
 import java.util.ArrayList;
@@ -15,9 +12,9 @@ import java.util.Date;
 public class BoardAddHandler extends AbstractMenuHandler {
 
 
-    private ArrayList<Board> objectRepository;
+    private List<Board> objectRepository;
 
-    public BoardAddHandler(Prompt prompt, ArrayList<Board> objectRepository) {
+    public BoardAddHandler(Prompt prompt, List<Board> objectRepository) {
         super(prompt);
         this.objectRepository = objectRepository;
     }

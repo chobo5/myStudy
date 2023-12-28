@@ -1,13 +1,10 @@
 package bitcamp.util;
 
-public class LinkedList<E> {
+import java.util.Arrays;
+
+public class LinkedList<E> extends AbstractList<E> {
     private Node<E> first;
     private Node<E> last;
-    private int size = 0;
-
-    public int size() {
-        return size;
-    }
 
     private Node<E> findNode(int index) {
         int cursor = 0;
@@ -74,6 +71,22 @@ public class LinkedList<E> {
         return arr;
     }
 
+    public E[] toArray(final E[] arr) {
+        //parameter값을 변형하지 않도록 하기위해
+        E[] values = arr;
+        if (arr.length < size) {
+            values = Arrays.copyOf(arr, size);
+        }
+        int i = 0;
+        Node<E> node = first;
+
+        while(node != null) {
+            values[i++] = node.value;
+            node = node.next;
+        }
+        return values;
+    }
+
     public E get(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("유효하지 않은 인덱스");
@@ -97,28 +110,34 @@ public class LinkedList<E> {
             throw new IndexOutOfBoundsException("유효하지 않은 인덱스");
         }
         Node<E> node = first;
-        E deleted;
+        Node<E> deleted = null; //삭제할 노드 보관
         if (size == 1) {
-            deleted = first.value;
+            deleted = first;
             first = last = null;
         } else if (index == 0) {
-            deleted = first.value;
+            deleted = first;
             first = first.next;
+
         } else if (index == size - 1) {
-            deleted = last.value;
+            deleted = last;
             //index의 이전노드를 찾는다.
             node = findNode(index - 1);
             node.next = null;
             last = node;
+
         } else {
             //index의 이전노드를 찾는다
             node = findNode(index - 1);
-            deleted = node.next.value;
+            deleted = node.next;
+
             //이전노드의 다음노드는 다음다음 노드이다.
             node.next = node.next.next;
         }
         size--;
-        return deleted;
+        E value = deleted.value;
+        deleted.value = null; //garbage collector가 삭제하도록 null로 설정
+        deleted.next = null;
+        return value;
     }
 
     public boolean remove(E value) {

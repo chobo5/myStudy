@@ -1,11 +1,8 @@
 package bitcamp.myapp.handler.board;
 
 import bitcamp.menu.AbstractMenuHandler;
-import bitcamp.menu.Menu;
-import bitcamp.menu.MenuHandler;
 import bitcamp.myapp.vo.Board;
-import bitcamp.util.AnsiEscape;
-import bitcamp.util.ObjectRepository;
+import bitcamp.util.List;
 import bitcamp.util.Prompt;
 
 import java.util.ArrayList;
@@ -13,9 +10,9 @@ import java.util.ArrayList;
 //게시글의 '등록'메뉴를 선택했을 때 작업을 수행하는 클래스
 public class BoardViewHandler extends AbstractMenuHandler {
 
-    private ArrayList<Board> objectRepository;
+    private List<Board> objectRepository;
 
-    public BoardViewHandler(Prompt prompt, ArrayList<Board> objectRepository) {
+    public BoardViewHandler(Prompt prompt, List<Board> objectRepository) {
         super(prompt);
         this.objectRepository = objectRepository;
     }

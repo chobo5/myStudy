@@ -1,21 +1,25 @@
 package bitcamp.menu;
 
-import bitcamp.util.AnsiEscape;
-import bitcamp.util.LinkedList;
-import bitcamp.util.Prompt;
+import bitcamp.util.*;
 
 public class MenuGroup extends AbstractMenu {
-    private LinkedList<Menu> menus = new LinkedList<>();
-    public MenuGroup(String title) {
-        super(title);
+    private List<Menu> menus = new LinkedList<>();
+
+    private MenuGroup(String title, Stack<String> breadCrumb) {
+        super(title, breadCrumb);
+    }
+
+    public static MenuGroup getInstance(String title) {
+        return new MenuGroup(title, new Stack<String>());
     }
 
     @Override
     public void execute(Prompt prompt) {
+        breadCrumb.push(title);
         this.printMenu();
 
         while (true) {
-            String input = prompt.input("%s> ", this.getTitle());
+            String input = prompt.input("%s> ", this.getMenuPath());
 
             if (input.equals("menu")) {
                 this.printMenu();
@@ -31,25 +35,26 @@ public class MenuGroup extends AbstractMenu {
                 System.out.println("메뉴 번호가 옳지 않습니다.");
             }
         }
-
+        breadCrumb.pop();
     }
 
     public void add(Menu menu) {
        menus.add(menu);
     }
 
-    public void remove(Menu menu) {
-        int index = indexOf(menu);
-        menus.remove(index);
+    public MenuItem addItem(String title, MenuHandler handler) {
+        MenuItem menuItem = new MenuItem(title, handler, this.breadCrumb);
+        this.add(menuItem);
+        return menuItem;
     }
 
-    private int indexOf(Menu menu) {
-        for (int i = 0; i < menus.size(); i++) {
-            if (menus.get(i).equals(menu)) {
-                return i;
-            }
-        }
-        return -1;
+    public MenuGroup addGroup(String title) {
+        MenuGroup menuGroup = new MenuGroup(title, this.breadCrumb);
+        this.add(menuGroup);
+        return menuGroup;
+    }
+    public void remove(Menu menu) {
+        this.menus.remove(menu);
     }
 
     private void printMenu() {
