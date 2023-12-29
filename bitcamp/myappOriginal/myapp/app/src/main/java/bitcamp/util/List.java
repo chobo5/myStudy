@@ -4,19 +4,21 @@ import java.util.Arrays;
 
 public interface List<E> {
 
-  public void add(E object);
+    void add(E object);
 
-  public E remove(int index);
+    E remove(int index);
 
-  public boolean remove(E object);
+    boolean remove(E object);
 
-  public Object[] toArray();
+    Object[] toArray();
 
-  public E[] toArray(E[] arr);
+    E[] toArray(E[] arr);
 
-  public E get(int index);
+    E get(int index);
 
-  public E set(int index, E object);
+    E set(int index, E object);
 
-  public int size();
+    int size();
+
+    Iterator<E> iterator();
 }

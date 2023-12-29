@@ -2,6 +2,7 @@ package bitcamp.myapp.handler.board;
 
 import bitcamp.menu.AbstractMenuHandler;
 import bitcamp.myapp.vo.Board;
+import bitcamp.util.Iterator;
 import bitcamp.util.Prompt;
 import bitcamp.util.List;
 import java.util.ArrayList;
@@ -20,21 +21,12 @@ public class BoardListHandler extends AbstractMenuHandler {
     protected void action() {
         System.out.printf("%-20s\t%10s\t%s\n", "Title", "Writer", "Date");
 
-//        Board[] boards = new Board[this.objectRepository.size()];
-
-        Object[] objects = this.objectRepository.toArray();
-
-        if (objects == null) {
-            System.out.println("게시물이 존재하지 않습니다.");
-            return;
-        }
-
-        Board[] boards = this.objectRepository.toArray(new Board[0]);
-
-        for (Object object : objects) {
-            Board board = (Board) object;
+        Iterator<Board> iterator = objectRepository.iterator();
+        while (iterator.hasNext()) {
+            Board board = iterator.next();
             System.out.printf("%-20s\t%10s\t%3$tY-%3$tm-%3$td\n", board.getTitle(), board.getWriter(),
                     board.getCreatedDate());
         }
+
     }
 }

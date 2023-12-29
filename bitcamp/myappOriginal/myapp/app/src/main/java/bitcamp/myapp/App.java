@@ -9,11 +9,7 @@ import bitcamp.myapp.handler.member.*;
 import bitcamp.myapp.vo.Assignment;
 import bitcamp.myapp.vo.Board;
 import bitcamp.myapp.vo.Member;
-import bitcamp.util.List;
-import bitcamp.util.Prompt;
-
-import bitcamp.util.ArrayList;
-import bitcamp.util.Stack;
+import bitcamp.util.*;
 
 public class App {
 
@@ -22,8 +18,8 @@ public class App {
 
     MenuGroup mainMenu = MenuGroup.getInstance("메인");
 
-    List<Assignment> assignmentRepository = new ArrayList<>();
-    List<Board> boardRepository = new ArrayList<>();
+    List<Assignment> assignmentRepository = new LinkedList<>();
+    List<Board> boardRepository = new LinkedList<>();
     List<Member> memberRepository = new ArrayList<>();
     List<Board> greetingRepository = new ArrayList<>();
 

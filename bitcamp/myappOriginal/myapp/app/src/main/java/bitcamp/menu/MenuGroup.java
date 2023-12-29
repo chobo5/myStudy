@@ -60,8 +60,10 @@ public class MenuGroup extends AbstractMenu {
     private void printMenu() {
         System.out.printf(AnsiEscape.ANSI_BOLD_RED +"[%s]\n" + AnsiEscape.ANSI_CLEAR, this.getTitle());
 
-        for (int i = 0; i < menus.size(); i++) {
-            System.out.printf("%d. %s\n", (i + 1), menus.get(i).getTitle());
+        Iterator<Menu> iterator = menus.iterator();
+        int i = 1;
+        while(iterator.hasNext()) {
+            System.out.printf("%d. %s\n", i++, iterator.next().getTitle());
         }
 
         System.out.printf("0. %s\n", "이전");
