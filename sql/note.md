@@ -269,4 +269,71 @@ WHERE t1.col3 = t2.col3
 - Natural Join: Equi-Join & 동일한 Column명 합쳐짐
 - Self Join: 자기 자신과 조인
 
+---
 
+## 05. SQL 부터 Spring Data JPA까지
+
+### 조건(theta) Join
+- 임의의 조건을 Join조건으로 사용가능
+- Non-equi Join이라고도 함(=으로 나타낼수 없는)
+```SQL
+SELECT e.name, e.sal, s.grade
+FROM emp e, salgrade s
+Where e.sal BETWEEN s.local AND s.hisal
+```
+
+### Natural Join
+- 두 테이블에 공통 칼럼이 있는 경우 별다른 조인 조건없이 공통 칼럼처럼 묵시적으로 조인되는 유형
+- ANSI/ISO SQL1999를 따르는 ANSI JOIN 문법
+```SQL
+select * from departments natural join locations;
+```
+- 칼럼명이 같으면 무조건 join해주기 때문에 조심해서 써야한다.
+
+
+### INNER JOIN - JOIN~USING
+- Natural Join의 문제점 : 조인하고자 하는 두 테이블에 같은 이름이 칼럼에 많을 때 특정한 칼럼으로만 조인하고 싶다면 USING절을 이용한다.
+- ANSI/ISO SQL1999를 따르는 ANSI JOIN문법.
+```SQL
+select * from employees natural join departments;
+select * from employees join departments using(department_id);
+```
+
+### INNER JOIN - JOIN ~ON
+- 공통된 이름의 칼럼이 없는 경우 가장 보편적으로 사용할 수 있는 유형
+- WHERE절에 일반조건만 쓸수 있게 하고 조인 조건은 ON에 두어 보다 의미를 명확하게 하고 알아보기도 쉽다.
+- ANSI/ISO SQL1999를 따르는 ANSI JOIN문법.
+- ON부분을 WHERE절에서 작성 가능하다
+```
+select * from employees e join departments d on(e.department_id = d.department_id);
+```
+
+### OUTER JOIN
+정의
+- JOIN조건을 만족하지 않는 (짝이 없는) 튜플의 경우 NULL을 포함한 결과를 생성
+- 모든 행이 결과 테이블에 참여
+
+종류
+- Left Outer Join: 왼쪽의 모든 튜플은 결과 테이블에 나타남
+- Right Outer Join: 오른쪽의 모든 튜플은 결과 테이블에 나타남
+- Full Outer Join: 양쪽 모두 결과 테이블에 참여
+
+표현 방법
+- NULL이 나올 수 있는쪽 조건에 '(+)'를 붙인다(Oracle의 경우)
+
+
+### SELF JOIN
+- 반드시 alias를 사용해야 한다.
+```
+# 사원의 이름과 그 사원의 상사이름을 함꼐 출력하시오(employee_id는 사원의것이면서도 상사의 것이다.)
+select employee_id as '상사의 id', first_name as '상사의 이름' from employees where employee_id = 100;
+
+select concat(e.first_name, ' ', e.last_name) as '사원의 이름', concat(h.first_name, ' ', h.last_name) as '상사의 이름'
+from employees e, employees h where e.manager_id = h.employee_id;
+# ANSI JOIN으로 변경 
+select concat(e.first_name, ' ', e.last_name) as '사원의 이름', concat(h.first_name, ' ', h.last_name) as '상사의 이름'
+from employees e join employees h on(e.manager_id = h.employee_id);
+# 상사의 이름이 없는 경우도 출력
+select concat(e.first_name, ' ', e.last_name) as '사원의 이름', concat(h.first_name, ' ', h.last_name) as '상사의 이름'
+from employees e left join employees h on(e.manager_id = h.employee_id);
+```
