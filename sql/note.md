@@ -337,3 +337,79 @@ from employees e join employees h on(e.manager_id = h.employee_id);
 select concat(e.first_name, ' ', e.last_name) as '사원의 이름', concat(h.first_name, ' ', h.last_name) as '상사의 이름'
 from employees e left join employees h on(e.manager_id = h.employee_id);
 ```
+## 06. SQL 부터 Spring Data JPA까지
+
+### SubQuery란?
+- 하나의 SQL 질의문속에 다른 SQL 질의문이 포함되어있는 형태
+- SCOTT의 급여보다 높은 급여를 받는 사람의 이름을 출력하시오
+
+### Single-Row SubQuery
+- subquery의 결과가 한 row인 경우
+- single-row operator 사용해야함: =, >, <, >=, <=, <>
+
+### Multi-Row SubQuery
+- subqery의 결과가 둘 이상의 row
+- multi-row에 대한 연산을 사용해야: ANY, ALL, IN, EXIST...
+```
+SELECT ename, sal, deptno
+FROM emp
+WHERE ename = (SELECT min(ename) FROM emp GROUP BY deptno);
+// SELECT min(ename) FROM emp GROUP BY deptno 의 결과가 1건 이상이기 때문에 오류가 발생한다.
+// '='을 사용할 수 없다.
+```
+
+### ANY 
+- 다수의 비교 중 한개라도 만족하면 true이다.
+- IN과 다른점은 비교연산자를 사용한다는 점이다.
+```
+SELECT ename, sal, deptno
+FROM emp
+WHERE ename = ANY(SELECT MIN(ename)
+FROM emp GROUP BY deptno);
+```
+
+- 이 쿼리는 950보다 큰 값은 모두 출력하게 된다.
+  - 아래의 쿼리는 sal > 950과 같은 결과이다. ANY는 SubQuery와 함꼐 사용할떄 의미가 있다.
+```
+SELECT * FROM emp WHERE sal ANY(950, 3000, 1250);
+```
+
+### ALL
+- 전체값을 비교하여 모두 만족해야만 true이다.
+- 아래의 쿼리는 모두를 만족할수 없으므로 결과가 없다.
+- Oracle은 오류가 발생하지 않지만, MySQL은 SubQuery에서만 사용가능하다.
+```
+SELECT * FROM emp WHERE sal = ALL(950, 3000, 1250);
+```
+
+### Correlated Query
+- Outer Query와 Inner Query가 서로 연관되어 있음
+- 해석방법
+  - OuterQuery의 한 row를 얻는다.
+  - 해당 row를 가지고 Inner Query를 계산한다.
+  - 계산 결과를 이용 Outer Query의 WHERE절을 evalute
+  - 결과가 참이면 해당 Row를 결과에 포함시킨다.
+
+### 집합
+A: 1, 2, 3
+B: 2, 3, 4
+
+```
+//합집합
+select * from A union select * from B; //1 ,2, 3, 4
+
+// 전체집합
+select * from A union all select * from B // 1, 2, 2, 3, 3, 4, 
+
+//교집합
+select A.name from A, B where A.name = B.name;
+
+//차집합
+select A.name from A where A.name not in (select B.name from B);
+```
+
+### Rank()함수 - MySQL 8이상에서 사용가능
+```
+SELECT sal, ename, rank() over(order by sal desc) AS ranking
+FROM emp;
+```
