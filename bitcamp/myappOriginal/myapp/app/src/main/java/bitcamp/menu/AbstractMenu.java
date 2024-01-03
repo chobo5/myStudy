@@ -1,12 +1,11 @@
 package bitcamp.menu;
 
-import bitcamp.util.Prompt;
-import bitcamp.util.Stack;
+import java.util.Stack;
 
 public abstract class AbstractMenu implements Menu{
     protected Stack<String> breadCrumb;
     protected String title;
-    public AbstractMenu(String title,Stack<String> breadCrumb) {
+    public AbstractMenu(String title, Stack<String> breadCrumb) {
         this.title = title;
         this.breadCrumb = breadCrumb;
     }
