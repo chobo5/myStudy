@@ -1,5 +1,7 @@
 package bitcamp.myapp;
 
+import bitcamp.io.BufferedDataInputStream;
+import bitcamp.io.BufferedDataOutputStream;
 import bitcamp.io.DataInputStream;
 import bitcamp.io.DataOutputStream;
 import bitcamp.menu.Menu;
@@ -13,10 +15,6 @@ import bitcamp.myapp.vo.Board;
 import bitcamp.myapp.vo.Member;
 import bitcamp.util.*;
 
-import java.io.DataInput;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.nio.charset.StandardCharsets;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -88,9 +86,9 @@ public class App {
     }
 
     void loadAssignment() {
-        try (DataInputStream in = new DataInputStream("assignment.data")) {
-            byte[] bytes = new byte[60000];
-            int size = in.read() << 8 | in.read();
+        try (BufferedDataInputStream in = new BufferedDataInputStream("assignment.data")) {
+            int size = in.readInt();
+            long start = System.currentTimeMillis();
             for (int i = 0; i < size; i++) {
                 String title = in.readUTF();
                 String content = in.readUTF();
@@ -103,6 +101,8 @@ public class App {
 
                 assignmentRepository.add(assignment);
             }
+            long end = System.currentTimeMillis();
+            System.out.printf("걸린시간: %d\n", end - start);
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("과제데이터 로딩 오류");
@@ -111,17 +111,21 @@ public class App {
     }
 
     void saveAssignment() {
-        try (DataOutputStream out = new DataOutputStream("assignment.data")) {
-
+        try (BufferedDataOutputStream out = new BufferedDataOutputStream("assignment.data")) {
+            long start = System.currentTimeMillis();
             // 저장할 데이터 개수를 2바이트로 출력한다.
-            out.writeShort(assignmentRepository.size());
+            out.writeInt(assignmentRepository.size());
 
-            for (Assignment assignment : assignmentRepository) {
-                // assignment 객체에서 값을 꺼내 바이트 배열로 만든 다음에 출력한다.
-                out.writeUTF(assignment.getTitle());
-                out.writeUTF(assignment.getContent());
-                out.writeUTF(assignment.getDeadline().toString());
+            for (int i = 0; i < 10000; i++) {
+                for (Assignment assignment : assignmentRepository) {
+                    // assignment 객체에서 값을 꺼내 바이트 배열로 만든 다음에 출력한다.
+                    out.writeUTF(assignment.getTitle());
+                    out.writeUTF(assignment.getContent());
+                    out.writeUTF(assignment.getDeadline().toString());
+                }
             }
+            long end = System.currentTimeMillis();
+            System.out.printf("걸린시간: %d\n", end - start);
 
         }catch (Exception e) {
             System.out.println("과제데이터 저장 오류");
@@ -129,7 +133,7 @@ public class App {
     }
 
     void loadMember() {
-        try (DataInputStream in = new DataInputStream("member.data")) {
+        try (BufferedDataInputStream in = new BufferedDataInputStream("member.data")) {
             byte[] bytes = new byte[60000];
             int size = in.read() << 8 | in.read();
             for (int i = 0; i < size; i++) {
@@ -146,7 +150,7 @@ public class App {
     }
 
     void saveMember() {
-        try (DataOutputStream out = new DataOutputStream("member.data")) {
+        try (BufferedDataOutputStream out = new BufferedDataOutputStream("member.data")) {
             out.write(memberRepository.size() >> 8);
             out.write(memberRepository.size());
             for (Member member : memberRepository) {
@@ -161,7 +165,7 @@ public class App {
     }
 
     void loadBoard() {
-        try (DataInputStream in = new DataInputStream("board.data")) {
+        try (BufferedDataInputStream in = new BufferedDataInputStream("board.data")) {
             byte[] bytes = new byte[60000];
             int size = in.read() >> 8 | in.read();
             for (int i = 0; i < size; i++) {
@@ -178,7 +182,7 @@ public class App {
     }
 
     void saveBoard() {
-        try (DataOutputStream out = new DataOutputStream("board.data")) {
+        try (BufferedDataOutputStream out = new BufferedDataOutputStream("board.data")) {
             out.write(boardRepository.size() >> 8);
             out.write(boardRepository.size());
 
