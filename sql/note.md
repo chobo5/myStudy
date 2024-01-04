@@ -459,3 +459,45 @@ CREATE TABLE 테이블 이름
   - 또한, AUTO_INCREMENT를 사용하여 해당 필드의 값을 1부터 시작하여 새로운 레코드가 추가될때마 1씩 증가된 값을 자동으로 저장한다.
     이때, AUTO_INCREMENT 키워드 다음에 대입 연산자(=)를 사용하여 시작값을 변경할 수 있다.
     Oracle은 sequence객체를 이용해 자동으로 필드의 값을 증가시킬 수 있다.
+
+---
+
+## 08. SQL 부터 Spring Data JPA까지
+
+autocommit?
+- 입력, 수정, 삭제가 데이터베이스에 바로 반영되도록하고시싶다면 autocommit을 킨다.
+- DBMS session - DMBS와 연결된 상태
+- autocommit을 off하면 사용자가 수동으로 commit한다. = 사용자가 수동으로 트잭잭션을 제어한다.
+- 트랜잭션(transaction) - 논리적인 하나의 작업단위
+- MySQL에서 transaction 시작하기
+```
+begin;
+insert into role(role_id, name) values (2, 'ROLE_ADMIN');
+commit; //begin으로 시작하고 insert, update, delete등의 작업을 한 것을 DBMS에 반
+
+begin;
+insert into role(role_id, name) values (3, 'HELLO');
+rollback; //명령 취소
+
+트랜잭션은 commit하거나 rollback하면 끝난다.
+
+-----------------------------
+
+begin;
+insert into role(role_id, name) values (3, 'HELLO');
+select * from role;
+create table role(
+	role_id INT PRIMARY KEY,
+    name VARCHAR(20)
+);
+# DDL(CREATE, ALTER, DROP, RENAME, TRUNCATE) 데이터 정의어를 사용하면 commit이 이루어진다.
+
+
+```
+AutoCommit 확인, 켜기, 끄기
+- 현재 AutoCommit값 확인
+  - SELECT @@AUTOCOMMIT;
+- AutoCommit 설정
+  - SET AUTOCOMMIT = 1;
+- AutoCommit 해제
+  - SET AUTOCOMMIT = 0;
