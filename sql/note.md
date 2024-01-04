@@ -413,3 +413,49 @@ select A.name from A where A.name not in (select B.name from B);
 SELECT sal, ename, rank() over(order by sal desc) AS ranking
 FROM emp;
 ```
+---
+
+## 07. SQL 부터 Spring Data JPA까지
+
+**데이터 조작(DML: Data Manipulation Language)**
+ - SELECT
+   - 데이터베이스에 들어있는 데이터를 조회하거 검색하기위한 명령어로 RETRIEVE라고도 함
+ - INSERT, UPDATE, DELETE
+   - 데이터베이스 테이블에 들어있는 데이터에 변형을 가하는 종류(데이터 삽입, 수정, 삭제)의 명령어들
+
+**데이터 정의어(DDL: Data Definition Language)**
+- CREATE, ALTER, DROP, RENAME, TRUNCATE
+  - 테이블과 같은 데이터 구조를 정의하는데 사용되는 명령어들로 (생성, 변경 , 삭제, 이름변경) 데이터 구조와 관련된 명령어들
+
+**데이터 제어어(DCL: Data Control Language)**
+- GRANT, REVOKE
+  - 데이터에 접근하고 객체들을 사용하도록 권한을 주고 회수하는 명령어들
+
+**트랜젝션 제어어(TCL: Transaction Control Language)**
+- COMMIT, ROLLBACK, SAVEPOINT
+  - 논리적인 작업의 단위를 묶어서 DML에 의해 조직된 결과를 작업단위(트랜젝션)별로 제어하는 명령어
+
+**Create Table**
+```
+CREATE TABLE 테이블 이름
+(
+  필드이름1 필드타입1,
+  필드이름2 필드타입2,
+  ...
+  제약조건1,
+  제약조건2,
+  ...
+)
+```
+
+**제약조건(Constraint)**
+- 제약조건이란 데이터의 무결성을 지키기 위해 데이를 입력받을 때 실행되는 검사규칙
+- 이러한 제약조건은 CREATE으로 테이블을 생성할때, ALTER문으로 필드를 추가할 때도 설정할 수 있다.
+- NOT NULL: NULL을 허용하지 않는다.
+- UNIQUE: 해당 필드는 서로 다른값을 가져야 한다.
+- PRIMARY KEY: 해당 필드가 NOT NULL과 UNIQUE 제약조건의 특징을 모두가진다.
+- FOREIGN KEY: 특정 테이블의 칼럼이 특정 테이의 칼럼을 참조하게 한다.
+- DEFAULT: 해당필드의 기본값을 설정합니다.
+  - 또한, AUTO_INCREMENT를 사용하여 해당 필드의 값을 1부터 시작하여 새로운 레코드가 추가될때마 1씩 증가된 값을 자동으로 저장한다.
+    이때, AUTO_INCREMENT 키워드 다음에 대입 연산자(=)를 사용하여 시작값을 변경할 수 있다.
+    Oracle은 sequence객체를 이용해 자동으로 필드의 값을 증가시킬 수 있다.
