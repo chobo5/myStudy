@@ -1,10 +1,13 @@
 package bitcamp.myapp.vo;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.sql.Date;
 
-public class Assignment implements Serializable {
+public class Assignment implements Serializable, CsvString {
 
+  @Serial
+  private static final long serialVersionUID = 100L;
   private String title;
   private String content;
   private Date deadline;
@@ -31,5 +34,20 @@ public class Assignment implements Serializable {
 
   public void setDeadline(Date deadline) {
     this.deadline = deadline;
+  }
+
+  @Override
+  public String toCsvString() {
+    return String.format("%s,%s,%s", this.title, this.content, this.deadline);
+  }
+
+  //펙토리 메서드
+  public static Assignment createFromCsv(String csv) {
+    String[] values = csv.split(",");
+    Assignment obj = new Assignment();
+    obj.setTitle(values[0]);
+    obj.setContent(values[1]);
+    obj.setDeadline(Date.valueOf(values[2]));
+    return obj;
   }
 }
