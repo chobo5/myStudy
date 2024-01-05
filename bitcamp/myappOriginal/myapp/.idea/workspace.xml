@@ -105,7 +105,7 @@
       <recent name="bitcamp.myapp" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.App">
+  <component name="RunManager" selected="Gradle.myapp [run]">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="bitcamp.myapp.App" />
       <module name="myapp.app.main" />
@@ -218,9 +218,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.myapp [run]" />
         <item itemvalue="Application.App" />
         <item itemvalue="Application.Test" />
-        <item itemvalue="Gradle.myapp [run]" />
         <item itemvalue="Gradle.myapp [build]" />
       </list>
     </recent_temporary>
@@ -253,7 +253,8 @@
       <workItem from="1703723996075" duration="23098000" />
       <workItem from="1703811766230" duration="9876000" />
       <workItem from="1704156233012" duration="3018000" />
-      <workItem from="1704242469650" duration="34819000" />
+      <workItem from="1704242469650" duration="37961000" />
+      <workItem from="1704416978203" duration="10982000" />
     </task>
     <servers />
   </component>
@@ -266,6 +267,16 @@
       <path value="$PROJECT_DIR$/../../.." />
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.io.EOFException" package="java.io" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
