@@ -501,3 +501,44 @@ AutoCommit 확인, 켜기, 끄기
   - SET AUTOCOMMIT = 1;
 - AutoCommit 해제
   - SET AUTOCOMMIT = 0;
+
+---
+
+## 09. SQL 부터 Spring Data JPA까지
+**jdbcexam 프로젝트**
+
+### JDBC의 정의
+- 자바를 이용한 데이터베이 접속과 SQL문장 실행, 그리고 실행 결과로 얻어진 데이터의 핸들링을 제공하는 방법과 절차에 대한 규약
+- 자바 프로그램내에서 SQL문을 실행하기 위한 자바 API
+- SQL과 프로그래밍 언어의 통합 접근중 한 형태
+- JAVA는 표준 인터페이스인 JDBC API를 제공
+- 데이터베이스 벤더, 또는 기타 써드파에서는 JDBC 인터페이스를 구현한 driver 제공한다.
+
+### JDBC 프로그래밍 방법
+1. import java.sql.*;
+2. 드라이버를 로드한다.
+3. Connection 객체를 생성한다.
+4. PreparedStatement 객체를 생성한다.
+5. PreparedStatement값을 바인딩 한다.
+6. SELECT문일 경우 ResultSet을 이용하여 데이터를 읽어온다.
+7. Connection, PreparedStatement, ResultSet을 모두 close()한다.
+- Statement, PreparedStatement, CallableStatement를 이용해 SQL을 실행할 수 있다.
+- procedure는 CallableStatement를 이용해 실행한다. 그 외에는 PreparedStatement로 실행하는 것이 좋다.
+
+### JDBC 사용 - DB접속
+- import
+```java
+import java.sql.*;
+```
+- 드라이버 로드
+```java
+Class.forName( "com.mysql.cj.jdbc.Driver" ); //현재는 사용하지 않는다.
+```
+- Connection 얻기
+
+```java
+import java.sql.DriverManager;
+
+String dburl = "jdbc:mysql://localhost/dbName";
+Connection con = DriverManager.getConnection( dburl, ID, PWD); //대신 이 문장을 사용
+```
