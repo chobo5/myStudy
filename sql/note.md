@@ -542,3 +542,20 @@ import java.sql.DriverManager;
 String dburl = "jdbc:mysql://localhost/dbName";
 Connection con = DriverManager.getConnection( dburl, ID, PWD); //대신 이 문장을 사용
 ```
+
+---
+
+## 10. SQL 부터 Spring Data JPA까지
+
+### 트랜잭션 시작
+- autocommit을 끈다
+```java
+conn.setAutoCommit(false);
+```
+**SQL이 시작되면 트랜잭션을 자동 시작된다.**
+-트랜잭션 종료: commit or rollback
+```java
+conn.commit();
+or
+conn.rollback();
+```
