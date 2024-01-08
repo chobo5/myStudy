@@ -1,3 +1,5 @@
+package unsolved;
+
 import org.w3c.dom.ls.LSOutput;
 
 import javax.crypto.spec.PSource;
@@ -8,6 +10,9 @@ public class _과일장수 {
 
     public static void main(String[] args) {
         class Solution {
+            public Solution() {
+            }
+
             public int solution(int k, int m, int[] score) {
                 int answer = 0;
                 int[] scoreArr = score;

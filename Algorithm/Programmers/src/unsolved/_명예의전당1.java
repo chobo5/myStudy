@@ -1,8 +1,11 @@
+package unsolved;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class _명예의전당1 {
+
     static int[] arr = {10, 100, 20, 150, 1, 100, 200};
     public static void main(String[] args) {
         int[] result = solution(3, arr);

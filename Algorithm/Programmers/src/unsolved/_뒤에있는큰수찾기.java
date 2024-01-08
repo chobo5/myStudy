@@ -1,3 +1,5 @@
+package unsolved;
+
 public class _뒤에있는큰수찾기 {
     public static void main(String[] args) {
         class Solution {
@@ -8,9 +10,10 @@ public class _뒤에있는큰수찾기 {
                         if (numbers[j] > numbers[i]) {
                             answer[i] = numbers[j];
                             break;
-                        } else {
-                            answer[i] = -1;
                         }
+                    }
+                    if (answer[i] == 0) {
+                        answer[i] = -1;
                     }
                 }
                 return answer;
