@@ -28,3 +28,19 @@ build.grade
     spring-boot-dependencies bom을 가져옵니다.
   - bom: 프로젝트 생성시 다운받은 라이브러리는 다른 라이브러리를 의존하는데,
     의존하는 라이브러리들의 호환성이 높은 버전을 다운받도록 관리해준다
+
+### Spring JDBC 핵심 클래스
+- JdbcTemplate
+- NamedParameterJdbcTemplate
+- SQLExceptionTranslator
+- RowMapper
+
+### DTO(DataTransferObject) & DAO(DataAccessObject)
+Client <-> Controller <-> Service <-> DAO(Repository) <-> DB
+       DTO            DTO         DTO                ENTITY
+
+
+- Entity: DB에서 정보를 Entity에 담아온다.
+- 그 정보를 DTO에 담는다.
+- DAO: DataBase에서 입력, 수정, 삭제, 조회하는 객체
+- 

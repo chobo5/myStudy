@@ -9,7 +9,10 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
+//@Component가 붙어있는 것은 스프링 컨테이너가 관리하는 객체가 된다. 즉, Bean
 @SpringBootApplication //스프링부트 설정파일이면서 컴포넌트이다.
 public class DemoApplication implements CommandLineRunner {
 
@@ -21,27 +24,35 @@ public class DemoApplication implements CommandLineRunner {
 	//Datasource Bean(Spring이 관리하는 객체)
 	@Autowired // 자동으로 주입받는다.
 	DataSource dataSource; //Spring이 객체를 만들어 넣어준다.
+//	List<Object> beans; //Spring이 Object로 참조할 수 있는 모든 Bean을 주입해준다.
 
 	@Override
 	public void run(String... args) throws Exception {
-		//스프링부트가 관리하는 Bean을 사용할 수 있다.
-		Connection connection = dataSource.getConnection();
+//		for(Object obj : beans) {
+//			System.out.println(obj.getClass().getName());
+//		}
+		System.out.println(dataSource.getClass().getName());
 
-		//JDBC 프로그래
-		PreparedStatement ps = connection.prepareStatement("select role_id, name from role");
-		ResultSet rs = ps.executeQuery();
-		while (rs.next()) {
-			int roleId = rs.getInt("role_id");
-			String name = rs.getString("name");
-			System.out.println(roleId + ". " + name);
+
+//		Connection conn = dataSource.getConnection();
+		//DataSource로 부터 얻어온 connection은 close()실행시 종료가 아닌 connection pool에 되돌려주도록 되어있다.
+//		conn.close();
+
+		
+		//connection pool은 한정된 connection을 가지고 있으면 connection이 반환되지 않으면 서버가 죽는다.
+		//반드시 connection을 close해주고 빠른 sql을 실행할 수 있도록해야 한다.
+		List<Connection> conns = new ArrayList<>();
+		int i = 0;
+		while (true) {
+			Connection connection = dataSource.getConnection();
+			conns.add(connection);
+			System.out.println("Connection " + i + " : " + connection);
+			Thread.sleep(100);
+			i++;
 		}
 
-		rs.close();
-		ps.close();
-		connection.close();
-
 	}
-
+	//DemoApplication자체가 하나의 컴포넌트, 빈이 되어 메모리에 올라간다.
 
 
 
