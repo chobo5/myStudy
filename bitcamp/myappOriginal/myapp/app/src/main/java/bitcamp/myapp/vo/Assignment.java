@@ -4,7 +4,7 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.sql.Date;
 
-public class Assignment implements Serializable, CsvString {
+public class Assignment implements Serializable {
 
   @Serial
   private static final long serialVersionUID = 100L;
@@ -36,10 +36,6 @@ public class Assignment implements Serializable, CsvString {
     this.deadline = deadline;
   }
 
-  @Override
-  public String toCsvString() {
-    return String.format("%s,%s,%s", this.title, this.content, this.deadline);
-  }
 
   //펙토리 메서드
   public static Assignment createFromCsv(String csv) {
@@ -49,5 +45,14 @@ public class Assignment implements Serializable, CsvString {
     obj.setContent(values[1]);
     obj.setDeadline(Date.valueOf(values[2]));
     return obj;
+  }
+
+  @Override
+  public String toString() {
+    return "Assignment{" +
+            "title='" + title + '\'' +
+            ", content='" + content + '\'' +
+            ", deadline=" + deadline +
+            '}';
   }
 }

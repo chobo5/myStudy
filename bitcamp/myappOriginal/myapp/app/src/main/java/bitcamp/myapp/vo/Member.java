@@ -4,7 +4,7 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Member implements Serializable, CsvString{
+public class Member implements Serializable{
 
   @Serial
   private static final long serialVersionUID = 100L;
@@ -45,10 +45,6 @@ public class Member implements Serializable, CsvString{
     this.createdDate = createdDate;
   }
 
-  @Override
-  public String toCsvString() {
-    return String.format("%s,%s,%s,%d",this.email , this.name, this.password, this.createdDate.getTime());
-  }
 
   //펙토리 메서드
   public static Member createFromCsv(String csv) {
@@ -59,6 +55,16 @@ public class Member implements Serializable, CsvString{
     obj.setPassword(values[2]);
     obj.setCreatedDate(new Date(Long.valueOf(values[3])));
     return obj;
+  }
+
+  @Override
+  public String toString() {
+    return "Member{" +
+            "email='" + email + '\'' +
+            ", name='" + name + '\'' +
+            ", password='" + password + '\'' +
+            ", createdDate=" + createdDate +
+            '}';
   }
 }
 

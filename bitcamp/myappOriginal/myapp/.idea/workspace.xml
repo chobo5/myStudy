@@ -67,6 +67,7 @@
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "Application.App.executor": "Run",
+    "Application.DaoTest.executor": "Run",
     "Application.Test.executor": "Run",
     "Gradle.myapp [run].executor": "Run",
     "Gradle.myapp:app [:app:App.main()].executor": "Run",
@@ -83,7 +84,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -105,7 +106,7 @@
       <recent name="bitcamp.myapp" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.myapp [run]">
+  <component name="RunManager" selected="Application.DaoTest">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="bitcamp.myapp.App" />
       <module name="myapp.app.main" />
@@ -119,12 +120,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="StudentSelector" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="bitcamp.myapp.StudentSelector" />
+    <configuration name="DaoTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="bitcamp.myapp.dao.DaoTest" />
       <module name="myapp.app.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="bitcamp.myapp.vo.Board" />
+          <option name="PATTERN" value="bitcamp.myapp.dao.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -210,16 +211,17 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Application.DaoTest" />
       <item itemvalue="Application.Test" />
       <item itemvalue="Application.App" />
-      <item itemvalue="Application.StudentSelector" />
       <item itemvalue="Gradle.myapp [build]" />
       <item itemvalue="Gradle.myapp [run]" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.myapp [run]" />
+        <item itemvalue="Application.DaoTest" />
         <item itemvalue="Application.App" />
+        <item itemvalue="Gradle.myapp [run]" />
         <item itemvalue="Application.Test" />
         <item itemvalue="Gradle.myapp [build]" />
       </list>
@@ -254,7 +256,9 @@
       <workItem from="1703811766230" duration="9876000" />
       <workItem from="1704156233012" duration="3018000" />
       <workItem from="1704242469650" duration="37961000" />
-      <workItem from="1704416978203" duration="21233000" />
+      <workItem from="1704416978203" duration="21310000" />
+      <workItem from="1704680098883" duration="7188000" />
+      <workItem from="1704871989733" duration="7111000" />
     </task>
     <servers />
   </component>

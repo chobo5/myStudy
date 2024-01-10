@@ -4,7 +4,7 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Board implements Serializable, CsvString{
+public class Board implements Serializable{
 
   @Serial
   private static final long serialVersionUID = 100L;
@@ -45,10 +45,6 @@ public class Board implements Serializable, CsvString{
     this.createdDate = createdDate;
   }
 
-  @Override
-  public String toCsvString() {
-    return String.format("%s,%s,%s,%d", this.title, this.content, this.writer, this.createdDate.getTime());
-  }
 
   //펙토리 메서드
   public static Board createFromCsv(String csv) {
@@ -59,5 +55,15 @@ public class Board implements Serializable, CsvString{
     obj.setWriter(values[2]);
     obj.setCreatedDate(new Date(Long.valueOf(values[3])));
     return obj;
+  }
+
+  @Override
+  public String toString() {
+    return "Board{" +
+            "title='" + title + '\'' +
+            ", content='" + content + '\'' +
+            ", writer='" + writer + '\'' +
+            ", createdDate=" + createdDate +
+            '}';
   }
 }
