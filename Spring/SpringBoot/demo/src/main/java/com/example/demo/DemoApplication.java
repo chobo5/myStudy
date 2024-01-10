@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import com.example.demo.domain.Role;
+import com.example.demo.repository.RoleDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -22,16 +24,18 @@ public class DemoApplication implements CommandLineRunner {
 	}
 
 	//Datasource Bean(Spring이 관리하는 객체)
-	@Autowired // 자동으로 주입받는다.
-	DataSource dataSource; //Spring이 객체를 만들어 넣어준다.
+//	@Autowired // 자동으로 주입받는다.
+//	DataSource dataSource; //Spring이 객체를 만들어 넣어준다.
 //	List<Object> beans; //Spring이 Object로 참조할 수 있는 모든 Bean을 주입해준다.
 
+	@Autowired
+	RoleDao roleDao;
 	@Override
 	public void run(String... args) throws Exception {
 //		for(Object obj : beans) {
 //			System.out.println(obj.getClass().getName());
 //		}
-		System.out.println(dataSource.getClass().getName());
+//		System.out.println(dataSource.getClass().getName());
 
 
 //		Connection conn = dataSource.getConnection();
@@ -41,14 +45,30 @@ public class DemoApplication implements CommandLineRunner {
 		
 		//connection pool은 한정된 connection을 가지고 있으면 connection이 반환되지 않으면 서버가 죽는다.
 		//반드시 connection을 close해주고 빠른 sql을 실행할 수 있도록해야 한다.
-		List<Connection> conns = new ArrayList<>();
-		int i = 0;
-		while (true) {
-			Connection connection = dataSource.getConnection();
-			conns.add(connection);
-			System.out.println("Connection " + i + " : " + connection);
-			Thread.sleep(100);
-			i++;
+//		List<Connection> conns = new ArrayList<>();
+//		int i = 0;
+//		while (true) {
+//			Connection connection = dataSource.getConnection();
+//			conns.add(connection);
+//			System.out.println("Connection " + i + " : " + connection);
+//			Thread.sleep(100);
+//			i++;
+//		}
+
+//		Role role = new Role();
+//		role.setRoleId(3);
+//		role.setName("ROLE_TEST");
+//
+//		roleDao.addRole(role);
+
+//		boolean flag = roleDao.deleteRole(3);
+//		System.out.println("삭제여부: " + flag);
+
+		Role role = roleDao.getRole(1);
+		if (role != null) {
+			System.out.println(role.getRoleId() + " " + role.getName());
+		} else {
+			System.out.println("error");
 		}
 
 	}
