@@ -64,9 +64,14 @@ public class Lambda {
         //--------------------리턴값이 있는 람다식--------------------
         //return문 하나만 있을 경우 return키워드를 생략할 수 있다.
         person2.action3((x, y) -> x + y);
-        
 
+        //--------------------메소드 참조--------------------
+        Person3 person3 = new Person3();
+        person3.ordering(String::compareToIgnoreCase);
 
+        Member m1 = person3.getMember1(Member::new);
+
+        Member m2 = person3.getMember1(Member::new);
 
 
     }
