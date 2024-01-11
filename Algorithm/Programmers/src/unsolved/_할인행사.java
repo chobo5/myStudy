@@ -8,7 +8,7 @@ public class _할인행사 {
                 for (int i = 0; i < discount.length; i++) {
                     for (int j = 0; j < want.length; j++) {
                         if (discount[i].equals(want[j])) {
-                            
+
                         }
                     }
 
