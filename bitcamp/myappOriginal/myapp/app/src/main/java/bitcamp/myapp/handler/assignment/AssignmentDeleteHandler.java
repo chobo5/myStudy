@@ -1,17 +1,15 @@
 package bitcamp.myapp.handler.assignment;
 
 import bitcamp.menu.AbstractMenuHandler;
-import bitcamp.myapp.vo.Assignment;
+import bitcamp.myapp.dao.BasicDao;
 import bitcamp.util.Prompt;
 
-import java.util.List;
-
 public class AssignmentDeleteHandler extends AbstractMenuHandler {
-    private List<Assignment> objectRepository;
+    private BasicDao assignmentDao;
 
-    public AssignmentDeleteHandler(Prompt prompt, List<Assignment> objectRepository) {
+    public AssignmentDeleteHandler(Prompt prompt, BasicDao assignmentDao) {
         super(prompt);
-        this.objectRepository = objectRepository;
+        this.assignmentDao = assignmentDao;
 
     }
 
@@ -19,7 +17,7 @@ public class AssignmentDeleteHandler extends AbstractMenuHandler {
     public void action() {
         try {
             int index = this.prompt.inputInt("번호? ");
-            objectRepository.remove(index);
+            assignmentDao.delete(index);
             System.out.println("성공적으로 삭제되었습니다.");
         } catch (Exception e) {
             System.out.println("삭제 오류");

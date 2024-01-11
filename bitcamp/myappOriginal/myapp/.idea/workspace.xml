@@ -23,12 +23,7 @@
         </task>
         <projects_view>
           <tree_state>
-            <expand>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="myapp" type="f1a62948:ProjectNode" />
-              </path>
-            </expand>
+            <expand />
             <select />
           </tree_state>
         </projects_view>
@@ -77,14 +72,14 @@
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_directory_selection": "/Users/eomjinyoung/git/bitcamp-study/myapp/app/src/main/java/bitcamp/myapp",
-    "last_opened_file_path": "/Users/wonjun-yeon/Desktop/bitcamp/git/myStudy/bitcamp/myappOriginal/myapp/app/src/main/java/bitcamp/util",
+    "last_opened_file_path": "/Users/wonjun-yeon/Desktop/bitcamp/git/myStudy/bitcamp/myappOriginal/myapp",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -100,13 +95,14 @@
       <recent name="bitcamp.myapp.AssignmentMenu" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="bitcamp.myapp.dao.json" />
+      <recent name="bitcamp.myapp.dao" />
       <recent name="bitcamp.io" />
       <recent name="bitcamp.util" />
       <recent name="bitcamp.myapp.menu" />
-      <recent name="bitcamp.myapp" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.DaoTest">
+  <component name="RunManager" selected="Application.App">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="bitcamp.myapp.App" />
       <module name="myapp.app.main" />
@@ -125,7 +121,7 @@
       <module name="myapp.app.main" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="bitcamp.myapp.dao.*" />
+          <option name="PATTERN" value="bitcamp.myapp.dao.AssignmentDao" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -219,8 +215,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.DaoTest" />
         <item itemvalue="Application.App" />
+        <item itemvalue="Application.DaoTest" />
         <item itemvalue="Gradle.myapp [run]" />
         <item itemvalue="Application.Test" />
         <item itemvalue="Gradle.myapp [build]" />

@@ -1,19 +1,19 @@
 package bitcamp.myapp.handler.member;
 
 import bitcamp.menu.AbstractMenuHandler;
+import bitcamp.myapp.dao.BasicDao;
 import bitcamp.myapp.vo.Member;
 import bitcamp.util.Prompt;
 
 import java.util.Date;
-import java.util.List;
 
 //게시글의 '등록'메뉴를 선택했을 때 작업을 수행하는 클래스
 public class MemberAddHandler extends AbstractMenuHandler {
-    private List<Member> objectRepository;
+    private BasicDao memberDao;
 
-    public MemberAddHandler(Prompt prompt, List<Member> objectRepository) {
+    public MemberAddHandler(Prompt prompt, BasicDao memberDao) {
         super(prompt);
-        this.objectRepository = objectRepository;
+        this.memberDao = memberDao;
     }
 
     @Override
@@ -25,7 +25,7 @@ public class MemberAddHandler extends AbstractMenuHandler {
         member.setPassword(this.prompt.input("암호? "));
         member.setCreatedDate(new Date());
 
-        this.objectRepository.add(member);
+        this.memberDao.add(member);
 
     }
 }

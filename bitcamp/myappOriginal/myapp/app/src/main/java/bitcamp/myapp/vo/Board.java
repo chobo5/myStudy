@@ -4,66 +4,67 @@ import java.io.Serial;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Board implements Serializable{
+public class Board implements Serializable {
 
-  @Serial
-  private static final long serialVersionUID = 100L;
-  private String title;
-  private String content;
-  private String writer;
-  private Date createdDate;
+    @Serial
+    private static final long serialVersionUID = 100L;
 
-  public String getTitle() {
-    return title;
-  }
+    private int no;
+    private String title;
+    private String content;
+    private String writer;
+    private Date createdDate;
 
-  public void setTitle(String title) {
-    this.title = title;
-  }
+    public String getTitle() {
+        return title;
+    }
 
-  public String getContent() {
-    return content;
-  }
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-  public void setContent(String content) {
-    this.content = content;
-  }
+    public String getContent() {
+        return content;
+    }
 
-  public String getWriter() {
-    return writer;
-  }
+    public void setContent(String content) {
+        this.content = content;
+    }
 
-  public void setWriter(String writer) {
-    this.writer = writer;
-  }
+    public String getWriter() {
+        return writer;
+    }
 
-  public Date getCreatedDate() {
-    return createdDate;
-  }
+    public void setWriter(String writer) {
+        this.writer = writer;
+    }
 
-  public void setCreatedDate(Date createdDate) {
-    this.createdDate = createdDate;
-  }
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public int getNo() {
+        return no;
+    }
+
+    public void setNo(int no) {
+        this.no = no;
+    }
+
+    @Override
+    public String toString() {
+        return "Board{" +
+                "no=" + no +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", writer='" + writer + '\'' +
+                ", createdDate=" + createdDate +
+                '}';
+    }
 
 
-  //펙토리 메서드
-  public static Board createFromCsv(String csv) {
-    String[] values = csv.split(",");
-    Board obj = new Board();
-    obj.setTitle(values[0]);
-    obj.setContent(values[1]);
-    obj.setWriter(values[2]);
-    obj.setCreatedDate(new Date(Long.valueOf(values[3])));
-    return obj;
-  }
-
-  @Override
-  public String toString() {
-    return "Board{" +
-            "title='" + title + '\'' +
-            ", content='" + content + '\'' +
-            ", writer='" + writer + '\'' +
-            ", createdDate=" + createdDate +
-            '}';
-  }
 }

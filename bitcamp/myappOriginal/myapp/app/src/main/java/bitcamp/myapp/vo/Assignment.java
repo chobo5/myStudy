@@ -6,6 +6,8 @@ import java.sql.Date;
 
 public class Assignment implements Serializable {
 
+  private int no;
+
   @Serial
   private static final long serialVersionUID = 100L;
   private String title;
@@ -37,20 +39,19 @@ public class Assignment implements Serializable {
   }
 
 
-  //펙토리 메서드
-  public static Assignment createFromCsv(String csv) {
-    String[] values = csv.split(",");
-    Assignment obj = new Assignment();
-    obj.setTitle(values[0]);
-    obj.setContent(values[1]);
-    obj.setDeadline(Date.valueOf(values[2]));
-    return obj;
+  public int getNo() {
+    return no;
+  }
+
+  public void setNo(int no) {
+    this.no = no;
   }
 
   @Override
   public String toString() {
     return "Assignment{" +
-            "title='" + title + '\'' +
+            "no=" + no +
+            ", title='" + title + '\'' +
             ", content='" + content + '\'' +
             ", deadline=" + deadline +
             '}';

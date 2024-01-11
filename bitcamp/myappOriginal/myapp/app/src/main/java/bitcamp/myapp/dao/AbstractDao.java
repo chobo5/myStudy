@@ -14,9 +14,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-public abstract class AbstractDao<T> {
-    ArrayList<T> list;
-    void loadData(String filepath) {
+public abstract class AbstractDao<T> implements BasicDao<T> {
+    protected ArrayList<T> list;
+
+    private String filepath;
+
+    public AbstractDao(String filepath) {
+        this.filepath = filepath;
+        loadData();
+    }
+
+    protected void loadData() {
         System.out.println("test...");
 
 
@@ -43,7 +51,7 @@ public abstract class AbstractDao<T> {
         }
     }
 
-    void saveData(String filepath) {
+    protected void saveData() {
 
         try (BufferedWriter out = new BufferedWriter(new FileWriter(filepath))) {
             out.write(new GsonBuilder().setDateFormat("yyyy-MM-dd").create().toJson(list));

@@ -6,6 +6,8 @@ import java.util.Date;
 
 public class Member implements Serializable{
 
+  private int no;
+
   @Serial
   private static final long serialVersionUID = 100L;
   private String email;
@@ -45,22 +47,20 @@ public class Member implements Serializable{
     this.createdDate = createdDate;
   }
 
-
-  //펙토리 메서드
-  public static Member createFromCsv(String csv) {
-    String[] values = csv.split(",");
-    Member obj = new Member();
-    obj.setEmail(values[0]);
-    obj.setName(values[1]);
-    obj.setPassword(values[2]);
-    obj.setCreatedDate(new Date(Long.valueOf(values[3])));
-    return obj;
+  public int getNo() {
+    return no;
   }
+
+  public void setNo(int no) {
+    this.no = no;
+  }
+
 
   @Override
   public String toString() {
     return "Member{" +
-            "email='" + email + '\'' +
+            "no=" + no +
+            ", email='" + email + '\'' +
             ", name='" + name + '\'' +
             ", password='" + password + '\'' +
             ", createdDate=" + createdDate +
