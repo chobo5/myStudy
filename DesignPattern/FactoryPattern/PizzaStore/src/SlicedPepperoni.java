@@ -1,2 +1,2 @@
-package PACKAGE_NAME;public class SlicedPepperoni {
+public class SlicedPepperoni extends Pepperoni{
 }

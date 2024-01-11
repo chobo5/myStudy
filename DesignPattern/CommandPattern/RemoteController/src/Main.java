@@ -18,7 +18,9 @@ public class Main {
 
         remote.pressOnButton(0);
         remote.pressOffButton(0);
+        remote.pressUndoButton();
         remote.pressOnButton(1);
         remote.pressOffButton(1);
+        remote.pressUndoButton();
     }
 }

@@ -1,2 +1,2 @@
-public class ChicagoStyleCheesePizza extends CheesePizza{
+public class ChicagoStyleCheesePizza extends Pizza{
 }

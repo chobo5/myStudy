@@ -1,2 +1,2 @@
-package PACKAGE_NAME;public class FreshClams {
+public class FreshClams extends Clams{
 }

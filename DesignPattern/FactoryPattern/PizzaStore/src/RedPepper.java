@@ -1,2 +1,2 @@
-package PACKAGE_NAME;public class RedPepper {
+public class RedPepper extends Veggies{
 }

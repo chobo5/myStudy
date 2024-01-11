@@ -1,2 +1,2 @@
-package PACKAGE_NAME;public class Mushroom {
+public class Mushroom extends Veggies{
 }

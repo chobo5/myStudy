@@ -1,2 +1,2 @@
-package PACKAGE_NAME;public class ThinCrustDough {
+public class ThinCrustDough extends Dough{
 }

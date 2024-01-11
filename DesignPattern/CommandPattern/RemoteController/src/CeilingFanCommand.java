@@ -1,2 +1,12 @@
-package PACKAGE_NAME;public class CeilingFanCommand {
+public class CeilingFanCommand implements Command {
+
+    @Override
+    public void execute() {
+        
+    }
+
+    @Override
+    public void undo() {
+
+    }
 }

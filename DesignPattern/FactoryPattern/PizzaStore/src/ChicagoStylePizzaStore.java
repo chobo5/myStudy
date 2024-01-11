@@ -1,2 +1,2 @@
-package PACKAGE_NAME;public class ChicagoStylePizzaStore {
+public class ChicagoStylePizzaStore {
 }

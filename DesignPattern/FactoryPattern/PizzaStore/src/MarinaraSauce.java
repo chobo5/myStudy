@@ -1,2 +1,2 @@
-package PACKAGE_NAME;public class MarinaraSauce {
+public class MarinaraSauce extends Sauce{
 }

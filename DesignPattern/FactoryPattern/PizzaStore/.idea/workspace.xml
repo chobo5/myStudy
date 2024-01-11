@@ -5,23 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="757db2b9-27ed-4f2d-8232-a87566617739" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/CheesePizza.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GreekPizza.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PepperoniPizza.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Pizza.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PizzaStore.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PizzaType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/SimplePizzaFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../bitcamp/myapp/src/bitcamp/myapp/menu/AssignmentMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../bitcamp/myapp/src/bitcamp/myapp/menu/AssignmentMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../bitcamp/myapp/src/bitcamp/myapp/menu/BoardMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../bitcamp/myapp/src/bitcamp/myapp/menu/BoardMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../bitcamp/myapp/src/bitcamp/myapp/menu/CRUDOperations.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../bitcamp/myapp/src/bitcamp/myapp/menu/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../bitcamp/myapp/src/bitcamp/myapp/menu/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../bitcamp/myapp/src/bitcamp/myapp/menu/MemberMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../bitcamp/myapp/src/bitcamp/myapp/menu/MemberMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../bitcamp/myapp/src/bitcamp/myapp/menu/MenuService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../bitcamp/myapp/src/bitcamp/myapp/vo/Assignment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../bitcamp/myapp/src/bitcamp/myapp/vo/Board.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../bitcamp/myapp/src/bitcamp/myapp/vo/Member.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../bitcamp/myappOriginal/myapp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../bitcamp/myappOriginal/myapp/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/FreshClams.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Garlic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MarinaraSauce.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Mushroom.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/NYPizzaIngredientFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Onion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/RedPepper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ReggianoCheese.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/SlicedPepperoni.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ThinCrustDough.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ChicagoStyleCheesePizza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChicagoStyleCheesePizza.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ChicagoStyleClamPizza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChicagoStyleClamPizza.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ChicagoStylePepperoniPizza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChicagoStylePepperoniPizza.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ChicagoStylePizzaStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChicagoStylePizzaStore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ChicagoStyleVeggiePizza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChicagoStyleVeggiePizza.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NYStyleCalmPizza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NYStyleCalmPizza.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NYStyleCheesePizza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NYStyleCheesePizza.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NYStylePepperoniPizza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NYStylePepperoniPizza.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NYStylePizzaStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NYStylePizzaStore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NYStyleVeggiePizza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NYStyleVeggiePizza.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pizza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pizza.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PizzaStore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PizzaStore.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,8 +37,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -42,9 +48,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2ZqgrsNQAxW7YIjfrWoNvY2dECF" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -53,20 +59,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -83,6 +89,7 @@
       <option name="presentableId" value="Default" />
       <updated>1703155225400</updated>
       <workItem from="1703155229530" duration="2876000" />
+      <workItem from="1703846076677" duration="1940000" />
     </task>
     <servers />
   </component>
