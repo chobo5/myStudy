@@ -1,3 +1,5 @@
+package variablesAndType;
+
 public class VairablesAndType {
     // 변수는 하나의 값을 저장할 수 있는 메모리 번지에 붙여진 이름이다.
     // 코드에서 프로그래머가 직접 입력한 값을 리터럴(literal)이라고 한다.
