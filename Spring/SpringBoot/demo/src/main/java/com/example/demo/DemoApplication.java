@@ -71,6 +71,21 @@ public class DemoApplication implements CommandLineRunner {
 			System.out.println("error");
 		}
 
+
+
+//		List<Role> list = new ArrayList<>();
+//		list = roleDao.getRoles();
+//		list.forEach((role -> System.out.println(role.getRoleId() + ". " + role.getName())));
+
+
+//		Role role = new Role();
+//		role.setName("ROLE_TEST");
+//		role.setRoleId(3);
+//		roleDao.addRole(role);
+
+
+
+
 	}
 	//DemoApplication자체가 하나의 컴포넌트, 빈이 되어 메모리에 올라간다.
 
