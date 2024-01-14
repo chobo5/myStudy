@@ -2,6 +2,7 @@ package com.example.board.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller //HTTP요청을 받아서 응답을 하는 컴포넌, 스프링 부트가 자동으로 bean으로 생성
@@ -21,6 +22,22 @@ public class BoardController {
         //id에 해당하는 게시물을 읽어온다.
         //id에 해당하는 게시물의 조회수도 1더해준
         return "board";
+    }
+
+    @GetMapping("/writeFrom")
+    public String writeForm() {
+        //로그인한 사용자만 글을 써야한다. 로그인을 하지 않았다면 리스트보기로 이동시킨다.
+        //세션에서 로그인한 정보를 읽어드린다.
+        //로그인한 사용자라면 글쓰기 화면으로 이동한다.
+        return "writeForm";
+    }
+
+    @PostMapping("/write")
+    public String write(@RequestParam("title") String title, @RequestParam("content") String content) {
+        //로그인한 회원정보, 제목, 내용을 저장한다.
+        System.out.println("title: " + title);
+        System.out.println("content: " + content);
+        return "redirect:/";
     }
 
 
