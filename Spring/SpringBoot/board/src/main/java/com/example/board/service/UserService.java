@@ -24,4 +24,9 @@ public class UserService {
         return user;
         //트렌젝션이 끝다.
     }
+
+    @Transactional
+    public User getUser(String email) {
+        return userDao.getUser(email);
+    }
 }

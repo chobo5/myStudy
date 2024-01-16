@@ -1,6 +1,9 @@
 package com.example.board.controller;
 
+import com.example.board.dto.LoginInfo;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,8 +14,10 @@ public class BoardController {
     //컨트롤러의 메소드가 리턴하는 문자열을 템플릿 이름이다.
     //http://localhost:8080/ ---> "list"라는 이름의 템플릿을 사용(포워딩)하여 화면에 출력
     @GetMapping("/")
-    public String list() {
+    public String list(HttpSession session, Model model) { //두 파라미터는 spring이 자동으로 주입
         //게시물 목록을 읽어온다. 페이징 처리한다.
+        LoginInfo loginInfo = (LoginInfo) session.getAttribute("loginInfo");
+        model.addAttribute("loginInfo", loginInfo); //템플릿에게
         return "list";
     }
 
