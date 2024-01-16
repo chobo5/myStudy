@@ -1,4 +1,4 @@
-package class_2024_01_16;
+package class_2024_01_16.a;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
