@@ -43,7 +43,7 @@ public class Ex2 {
       System.out.println(in.readUTF());
     }
 
-    
+
 
   }
 }
