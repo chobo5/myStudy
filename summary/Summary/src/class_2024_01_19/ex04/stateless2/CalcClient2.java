@@ -6,7 +6,7 @@ import java.io.DataOutputStream;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class CalcClient {
+public class CalcClient2 {
   public static void main(String[] args) throws Exception {
     Scanner keyScan = new Scanner(System.in);
 

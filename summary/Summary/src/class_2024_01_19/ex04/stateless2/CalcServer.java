@@ -8,7 +8,7 @@ import java.net.Socket;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CalcServer2 {
+public class CalcServer {
 
   // 각 클라이언트의 작업 결과를 보관할 맵 객체
   // => Map<clientID, result>

@@ -1,5 +1,5 @@
 // stateful 방식 - 다중 클라이언트의 요청 처리 시 문제점과 해결책
-package com.eomcs.net.ex04.stateful3;
+package class_2024_01_19.ex04.stateful3;
 
 import java.io.DataOutputStream;
 import java.net.Socket;

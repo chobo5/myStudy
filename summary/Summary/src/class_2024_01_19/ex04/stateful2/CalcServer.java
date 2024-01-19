@@ -1,5 +1,5 @@
 // stateful 방식의 이점 활용 - 계산기 서버 만들기
-package com.eomcs.net.ex04.stateful2;
+package class_2024_01_19.ex04.stateful2;
 
 import java.io.DataInputStream;
 import java.io.PrintStream;

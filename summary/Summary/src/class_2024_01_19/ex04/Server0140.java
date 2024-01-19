@@ -1,5 +1,5 @@
 // 통신 방식 - Stateful + 여러 클라이언트 요청 처리 + 서버 종료 + 로컬에서만 가능
-package com.eomcs.net.ex04;
+package class_2024_01_19.ex04;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
