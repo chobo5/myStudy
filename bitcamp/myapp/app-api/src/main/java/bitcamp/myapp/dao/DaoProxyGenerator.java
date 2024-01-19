@@ -22,7 +22,6 @@ public class DaoProxyGenerator {
         this.port = port;
         gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
     }
-
     public <T> T create(Class<T> clazz, String dataName) {
         return (T) Proxy.newProxyInstance(DaoProxyGenerator.class.getClassLoader(),
                 new Class<?>[] {clazz},
@@ -46,7 +45,6 @@ public class DaoProxyGenerator {
                         if (!statusCode.equals("200")) {
                             throw new Exception(entity);
                         }
-
                         Type returnType = method.getGenericReturnType();
 
                         if (returnType == List.class) {

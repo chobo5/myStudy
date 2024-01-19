@@ -16,12 +16,12 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashMap;
 
-public class ServerApp {
+public class ServerApp02 {
 
     HashMap<String, Object> daoMap = new HashMap<>();
     Gson gson;
 
-    public ServerApp() {
+    public ServerApp02() {
         daoMap.put("board", new BoardDaoImpl("board.json"));
         daoMap.put("greeting", new BoardDaoImpl("greeting.json"));
         daoMap.put("assignment", new AssignmentDaoImpl("assignment.json"));
@@ -30,29 +30,9 @@ public class ServerApp {
         gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
     }
 
-    //non-static nested class(inner class)는 바깥 클래스(enclosing class)의 인스턴스 주소를 자동으로 받는다.
-    //바깥 클래스의 인스턴스 맴버를 자기것처럼 사용할 수 있다.
-    class RequestProcessor implements Runnable {
-        Socket socket;
-
-        RequestProcessor(Socket socket) {
-            this.socket = socket;
-        }
-
-        @Override
-        public void run() {
-            try {
-                ServerApp.this.service(socket);
-            } catch (Exception e) {
-                System.out.println("클라이언트 요구 처리중 오류 발생");
-                e.printStackTrace();
-            }
-
-        }
-    }
 
     public static void main(String[] args) {
-        new ServerApp().run();
+        new ServerApp02().run();
     }
 
     void run() {
@@ -63,7 +43,15 @@ public class ServerApp {
             System.out.println("서버 실행!");
 
             while (true) {
-                new Thread(new RequestProcessor(serverSocket.accept())).start();
+                Socket socket = serverSocket.accept();
+                new Thread(() -> {
+                        try {
+                            service(socket);
+                        } catch (Exception e) {
+                            System.out.println("클라이언트 요구 처리중 오류 발생");
+                            e.printStackTrace();
+                        }
+                }).start();
             }
 
         } catch (Exception e) {

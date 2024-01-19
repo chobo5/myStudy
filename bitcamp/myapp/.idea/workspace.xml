@@ -5,20 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a84827e7-6d13-4c5e-bb9d-79b24217473a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../summary/Summary/src/class_2024_01_16/a/A.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../summary/Summary/src/class_2024_01_16/a/B.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../summary/Summary/src/class_2024_01_16/a/C.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../summary/Summary/src/class_2024_01_16/a/Exam0120.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../summary/Summary/src/class_2024_01_16/a/Exam0121.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../summary/Summary/src/class_2024_01_16/note.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../This_is_Java/src/network/InetAddressExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../This_is_Java/src/network/note.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../summary/Summary/src/class_2024_01_19/ex04/Client0110.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../summary/Summary/src/class_2024_01_19/ex04/Client0130.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../summary/Summary/src/class_2024_01_19/ex04/Client0210.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../summary/Summary/src/class_2024_01_19/ex04/Server0110.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../summary/Summary/src/class_2024_01_19/ex04/Server0120.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../summary/Summary/src/class_2024_01_19/ex04/Server0130.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../summary/Summary/src/class_2024_01_19/ex04/Server0140.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../summary/Summary/src/class_2024_01_19/ex04/Server0210.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../summary/Summary/src/class_2024_01_19/ex04/stateful/CalcClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../summary/Summary/src/class_2024_01_19/ex04/stateful/CalcServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../summary/Summary/src/class_2024_01_19/ex04/stateful2/CalcClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../summary/Summary/src/class_2024_01_19/ex04/stateful2/CalcServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../summary/Summary/src/class_2024_01_19/ex04/stateful2/CalcServer2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../summary/Summary/src/class_2024_01_19/ex04/stateful3/CalcClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../summary/Summary/src/class_2024_01_19/ex04/stateful3/CalcServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../summary/Summary/src/class_2024_01_19/ex04/stateless/CalcClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../summary/Summary/src/class_2024_01_19/ex04/stateless/CalcServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../summary/Summary/src/class_2024_01_19/ex04/stateless2/CalcClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../summary/Summary/src/class_2024_01_19/ex04/stateless2/CalcClient2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../summary/Summary/src/class_2024_01_19/ex04/stateless2/CalcServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../summary/Summary/src/class_2024_01_19/ex04/stateless2/CalcServer2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../summary/Summary/src/class_2024_01_19/ex04/stateless2/CalcServer3.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../summary/Summary/src/class_2024_01_19/ex04/stateless3/CalcClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../summary/Summary/src/class_2024_01_19/ex04/stateless3/CalcServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../summary/Summary/src/class_2024_01_19/note.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Algorithm/java_coding_problems/src/chapter1/P01_countString.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Algorithm/java_coding_problems/src/chapter1/P01_countString.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring/SpringBoot/board/src/main/java/com/example/board/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring/SpringBoot/board/src/main/java/com/example/board/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring/SpringBoot/board/src/main/java/com/example/board/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring/SpringBoot/board/src/main/java/com/example/board/dao/UserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring/SpringBoot/board/src/main/java/com/example/board/dto/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring/SpringBoot/board/src/main/java/com/example/board/dto/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring/SpringBoot/board/src/main/java/com/example/board/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring/SpringBoot/board/src/main/java/com/example/board/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring/SpringBoot/board/src/main/resources/templates/board.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring/SpringBoot/board/src/main/resources/templates/board.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Spring/SpringBoot/board/src/main/resources/templates/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring/SpringBoot/board/src/main/resources/templates/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../This_is_Java/src/oop/note.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../This_is_Java/src/oop/note.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../This_is_Java/src/io/Ex2.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../This_is_Java/src/io/Ex2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../summary/Summary/src/class_2024_01_18/ex07/BufferedFileInputStream.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/src/class_2024_01_18/ex07/BufferedFileInputStream.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +85,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$USER_HOME$/.gradle/jdks/eclipse_adoptium-21-aarch64-os_x/jdk-21.0.1+12/Contents/Home/lib/src.zip!/java.base/java/lang/reflect/ParameterizedType.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/app-api/src/main/java/bitcamp/myapp/dao/DaoProxyGenerator.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -103,7 +124,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -119,11 +140,11 @@
       <recent name="bitcamp.myapp.AssignmentMenu" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="bitcamp.myapp" />
       <recent name="bitcamp.myapp.dao.network" />
       <recent name="bitcamp.myapp.dao.json" />
       <recent name="bitcamp.myapp.dao" />
       <recent name="bitcamp.io" />
-      <recent name="bitcamp.util" />
     </key>
   </component>
   <component name="RunManager" selected="Gradle.myapp:app-client [run]">
