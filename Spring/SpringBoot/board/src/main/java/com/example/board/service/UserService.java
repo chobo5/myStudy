@@ -18,6 +18,10 @@ public class UserService {
     //SpringBoot는 트랜잭션을 처리해주는 트렌잭션 관리자를 가지고 있다.
     @Transactional //하나의 트랜잭으로 처리하게 된다.
     public User addUser(String name, String email, String password){
+        User sameUser = userDao.getUser(email); //이메일 중복겁사
+        if (sameUser != null) {
+            throw new RuntimeException("이미 가입된 이메일입니다.");
+        }
         //트렌젝션이 시작한다.
         User user = userDao.addUser(name, email, password);
         userDao.mappingUserRole(user.getUserId()); //권한을 부여한다.

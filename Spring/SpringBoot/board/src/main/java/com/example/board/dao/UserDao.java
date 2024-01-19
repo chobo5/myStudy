@@ -29,18 +29,22 @@ public class UserDao {
     //Spring JDBC를 이용한 코드
     @Transactional //서비스에서 이미 트랜잭션이 시작되었기 때문에 그 트랜잭션에 포함된다.
     public User addUser(String name, String email, String password) {
-        //insert into user(email, name, password, regDate) values(?, ?, ?, now()): #user_id auto gen
-        //SELECT LAST_INSERT_ID();
-        User user = new User();
-        user.setName(name);
-        user.setEmail(email);
-        user.setPassword(password);
-        user.setRegDate(LocalDateTime.now());
-        SqlParameterSource params = new BeanPropertySqlParameterSource(user);
-        Number number = insertUser.executeAndReturnKey(params); //insert를 실행하고 자동으로 생성된 id를 가져온다.
-        int userId = number.intValue();
-        user.setUserId(userId);
-        return user;
+        try {
+            //insert into user(email, name, password, regDate) values(?, ?, ?, now()): #user_id auto gen
+            //SELECT LAST_INSERT_ID();
+            User user = new User();
+            user.setName(name);
+            user.setEmail(email);
+            user.setPassword(password);
+            user.setRegDate(LocalDateTime.now());
+            SqlParameterSource params = new BeanPropertySqlParameterSource(user);
+            Number number = insertUser.executeAndReturnKey(params); //insert를 실행하고 자동으로 생성된 id를 가져온다.
+            int userId = number.intValue();
+            user.setUserId(userId);
+            return user;
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     @Transactional

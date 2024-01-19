@@ -21,12 +21,14 @@ public class BoardController {
     //컨트롤러의 메소드가 리턴하는 문자열을 템플릿 이름이다.
     //http://localhost:8080/ ---> "list"라는 이름의 템플릿을 사용(포워딩)하여 화면에 출력
     @GetMapping("/")
-    public String list(HttpSession session, Model model) { //두 파라미터는 spring이 자동으로 주입
+    public String list(@RequestParam(name="page", defaultValue = "1") int page,
+                       HttpSession session,
+                       Model model) { //두 파라미터는 spring이 자동으로 주입
         //게시물 목록을 읽어온다. 페이징 처리한다.
         LoginInfo loginInfo = (LoginInfo) session.getAttribute("loginInfo");
         model.addAttribute("loginInfo", loginInfo); //템플릿에게
 
-        int page = 1;
+
         int totalCount = boardService.getTotalCount();
         int pageCount = totalCount % 10 == 0 ? totalCount / 10 : totalCount / 10 + 1;
         int currentPage = page;
@@ -42,10 +44,12 @@ public class BoardController {
     }
 
     @GetMapping("/board")
-    public String board(@RequestParam("id") int id) {
-        System.out.println("id: " + id);
+    public String board(@RequestParam("boardId") int boardId, Model model) {
+        System.out.println("id: " + boardId);
         //id에 해당하는 게시물을 읽어온다.
         //id에 해당하는 게시물의 조회수도 1더해준
+        Board board = boardService.getBoard(boardId);
+        model.addAttribute("board", board);
         return "board";
     }
 
@@ -79,6 +83,18 @@ public class BoardController {
 
 
     //삭제한다. 관리자는 모든글 삭제가능
+    @GetMapping("/delete")
+    public String delete(@RequestParam("boardId") int boardId,
+                         HttpSession session) {
+        LoginInfo loginInfo = (LoginInfo) session.getAttribute("loginInfo");
+        if (loginInfo == null) {
+            return "redirect:/loginform";
+        }
+
+        //loginInfo.getUserId()에 해당하는 id를 가진 유저가 삭제한다면 삭제
+        boardService.delete(loginInfo.getUserId(), boardId);
+        return "redirect:/";
+    }
 
     //수정한다.
 }

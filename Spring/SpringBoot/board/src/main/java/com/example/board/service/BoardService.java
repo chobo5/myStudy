@@ -25,4 +25,18 @@ public class BoardService {
     public int getTotalCount() {
         return boardDao.getTotalCount();
     }
+
+    @Transactional
+    public Board getBoard(int boardId) {
+        Board board = boardDao.getBoard(boardId);
+        boardDao.updateViewCount(boardId);
+        return board;
+    }
+    @Transactional
+    public void delete(int userId, int boardId) {
+        Board board = getBoard(boardId);
+        if (board.getUserId() == userId) {
+            boardDao.deleteBoard(boardId);
+        }
+    }
 }
