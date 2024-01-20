@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.sql.DataSource;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Repository
 public class UserDao {
@@ -62,5 +63,10 @@ public class UserDao {
         RowMapper<User> rowMapper = BeanPropertyRowMapper.newInstance(User.class);
         User user = jdbcTemplate.queryForObject(sql, params, rowMapper);
         return user;
+    }
+
+    @Transactional(readOnly = true)
+    public List<String> getRoles(int userId) {
+        
     }
 }

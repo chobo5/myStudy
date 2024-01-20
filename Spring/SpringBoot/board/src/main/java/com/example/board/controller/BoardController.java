@@ -75,7 +75,7 @@ public class BoardController {
         //로그인한 회원정보, 제목, 내용을 저장한다.
         LoginInfo loginInfo = (LoginInfo) session.getAttribute("loginInfo");
         if (loginInfo == null) { //세션에 로그인 정보가 없으면 /loginForm으로 이동
-            return "redirect:/loginForm";
+            return "redirect:/loginform";
         };
         boardService.addBoard(loginInfo.getUserId(), title, content);
         return "redirect:/";
@@ -97,4 +97,34 @@ public class BoardController {
     }
 
     //수정한다.
+    @GetMapping("/updateform")
+    public String updateform(@RequestParam("boardId") int boardId, Model model, HttpSession session) {
+        LoginInfo loginInfo = (LoginInfo) session.getAttribute("loginInfo");
+        if (loginInfo == null) { //세션에 로그인 정보가 없으면 /loginForm으로 이동
+            return "redirect:/loginform";
+        }
+        //boardId에 해당하는 게시글을 읽어와서 updateform 템플릿에게 전달한다.
+        Board board = boardService.getBoard(boardId, false);
+        model.addAttribute("board", board);
+        model.addAttribute("loginInfo", loginInfo);
+        return "updateform";
+    }
+
+    @PostMapping("/update")
+    public String update(@RequestParam("boardId") int boardId,
+                         @RequestParam("title") String title,
+                         @RequestParam("content") String content,
+                         HttpSession session) {
+        LoginInfo loginInfo = (LoginInfo) session.getAttribute("loginInfo");
+        if (loginInfo == null) { //세션에 로그인 정보가 없으면 /loginForm으로 이동
+            return "redirect:/loginform";
+        }
+        Board board = boardService.getBoard(boardId, false);
+        if (board.getUserId() != loginInfo.getUserId()) {
+            return "redirect:/board?boardId=" + boardId; //글보기로 이동
+        }
+        //boardId에 해당하는 글의 제목과 내용을 수정한다.
+        boardService.updateBoard(boardId, title, content);
+        return "redirect:/board?boardId=" + boardId;
+    }
 }
