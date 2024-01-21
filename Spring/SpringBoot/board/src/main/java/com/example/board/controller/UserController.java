@@ -59,6 +59,8 @@ public class UserController {
 
                 //권한 정보를 읽어와서 loginInfo에 추가한다.
                 List<String> roles = userService.getRoles(user.getUserId());
+                loginInfo.setRoles(roles);
+
                 httpSession.setAttribute("loginInfo", loginInfo); //세션에 로그인정보 저장(키:정보)
                 System.out.println("세션에 로그인 정보 저장");
             } else {

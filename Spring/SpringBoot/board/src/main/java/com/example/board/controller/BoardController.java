@@ -91,8 +91,16 @@ public class BoardController {
             return "redirect:/loginform";
         }
 
-        //loginInfo.getUserId()에 해당하는 id를 가진 유저가 삭제한다면 삭제
-        boardService.delete(loginInfo.getUserId(), boardId);
+        List<String> roles = loginInfo.getRoles();
+        if (roles.contains("ROLE_ADM")) {
+
+            boardService.delete(boardId);
+
+        } else {
+            //loginInfo.getUserId()에 해당하는 id를 가진 유저가 삭제한다면 삭제
+            boardService.delete(loginInfo.getUserId(), boardId);
+        }
+
         return "redirect:/";
     }
 

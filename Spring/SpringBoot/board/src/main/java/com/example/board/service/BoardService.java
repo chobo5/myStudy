@@ -12,10 +12,12 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BoardService {
     private final BoardDao boardDao;
+
     @Transactional
     public void addBoard(int userId, String title, String content) {
         boardDao.addBoard(userId, title, content);
     }
+
     @Transactional(readOnly = true) //조회만 할떄는 성능상 readOnly=true가 좋다.
     public List<Board> getBoards(int page) {
         return boardDao.getBoards(page);
@@ -39,12 +41,18 @@ public class BoardService {
         }
         return board;
     }
+
     @Transactional
     public void delete(int userId, int boardId) {
         Board board = getBoard(boardId);
         if (board.getUserId() == userId) {
             boardDao.deleteBoard(boardId);
         }
+    }
+
+    @Transactional
+    public void delete(int boardId) {
+        boardDao.deleteBoard(boardId);
     }
 
     @Transactional
