@@ -45,3 +45,29 @@
 #### wait()와 notify()를 이용한 스레드 제어
 - 두 스레드간에 정확한 교대 작업이 필요할 경우, 자신의 작업이 끝나면 일시정지 상태로 들어가고
   상대방 스레드를 일시 정지 상태에서 풀어줄 수 있다.
+
+#### 스레드 안전 종료
+1. 반복문중 조건을 이용한 종료
+```java
+public class XXXThread extends Thread {
+    private boolean  stop;
+    
+    @Override
+    public void run() {
+        while(!stop) {
+            //task
+        }
+    }
+}
+```
+2. interrupt() 메소드 이용
+    - 스레드가 일시 정지 상태에 있을떄 InterruptException 예외를 발생(예외 처리 블럭으로 이동)
+   
+### Daemon Thread
+- 주 스레드의 작업을 돕는 보조적인 역할을 수행하는 스레드
+- 주 스레드가 종료되면 데몬 스레드도 같이 종료된다.
+- ex) 워드프로세서의 자동 저장, 가비지 컬렉터 등..
+- 주 스레드가 데몬이 될 스레드의 setDaemon(true)를 호출
+
+### Thread Pool
+- 작업 처리에 사용되는 스레드를 제한된 개수만큼 정해 놓고 작업 큐에 들어오는 작업들을 스레드가 하나씩 맡아 처리하는 방식
