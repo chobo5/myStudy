@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
@@ -36,8 +39,8 @@ public class SpringdatajpaApplication implements CommandLineRunner {
 
         //insert
 //		User user = new User();
-//		user.setName("둘리4");
-//		user.setEmail("dool4@test.com");
+//		user.setName("슈퍼맨");
+//		user.setEmail("superman@test.com");
 //		user.setPassword("1234");
 //		user.setRegdate(LocalDateTime.now());
 //		User savedUser = userRepository.save(user);
@@ -126,10 +129,42 @@ public class SpringdatajpaApplication implements CommandLineRunner {
 //            System.out.println(user);
 //        }
 
-        List<User> users = userRepository.findByUserIdNotIn(List.of(2, 3, 5));
-        for (User user : users) {
+//        List<User> users = userRepository.findByUserIdNotIn(List.of(2, 3, 5));
+//        for (User user : users) {
+//            System.out.println(user);
+//        }
+
+//        Long count = userRepository.countBy();
+//        System.out.println(count);
+
+//        Long count = userRepository.countByNameLike("둘리%");
+//        System.out.println(count);
+
+//        System.out.println(userRepository.existsByEmail("dool@test.com"));
+
+//        int count = userRepository.deleteByName("둘리4");
+//        System.out.println(count);
+
+//        List<User> list = userRepository.findDistinctByName("슈퍼맨");
+//        for (User user : list) {
+//            System.out.println(user);
+//        }
+
+//        List<User> list = userRepository.findFirst2By();
+//        for (User user : list) {
+//            System.out.println(user);
+//        }
+
+//        Page<User> users = userRepository.findBy(PageRequest.of(0, 2, Sort.by(Sort.Direction.DESC, "regdate")));
+//        for (User user : users.getContent()) {
+//            System.out.println(user);
+//        }
+
+        Page<User> users = userRepository.findByName("슈퍼맨",PageRequest.of(1, 2, Sort.by(Sort.Direction.DESC, "regdate")));
+        for (User user : users.getContent()) {
             System.out.println(user);
         }
     }
+
 
 }
