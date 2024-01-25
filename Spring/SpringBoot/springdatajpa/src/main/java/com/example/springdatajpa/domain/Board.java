@@ -32,7 +32,7 @@ public class Board {
     @CreationTimestamp
     private LocalDateTime regdate;
 
-    @ManyToOne(fetch = FetchType.EAGER) //게시물 N : 1 사용자 //FetchType.EAGER = 무조건 데이터를 가져와라 사용하지 않아도
+    @ManyToOne(fetch = FetchType.LAZY) //게시물 N : 1 사용자 //FetchType.EAGER = 무조건 데이터를 가져와라 사용하지 않아도
     @JoinColumn(name = "user_id")
     private User user;
 

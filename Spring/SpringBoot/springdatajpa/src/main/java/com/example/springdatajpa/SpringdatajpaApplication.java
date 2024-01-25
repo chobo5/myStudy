@@ -3,6 +3,7 @@ package com.example.springdatajpa;
 import com.example.springdatajpa.domain.Board;
 import com.example.springdatajpa.domain.Role;
 import com.example.springdatajpa.domain.User;
+import com.example.springdatajpa.dto.BoardIf;
 import com.example.springdatajpa.repository.BoardRepository;
 import com.example.springdatajpa.repository.RoleRepository;
 import com.example.springdatajpa.repository.UserRepository;
@@ -77,14 +78,25 @@ public class SpringdatajpaApplication implements CommandLineRunner {
 //        user.setRoles(Set.of(role));
 //        userRepository.save(user);
 
-        User user = userRepository.findById(9).get();
-        Board board = new Board();
-        board.setUser(user);
-        board.setRegdate(LocalDateTime.now());
-        board.setTitle("관리자의 글");
-        board.setContent("내용");
-        boardRepository.save(board);
+//        User user = userRepository.findById(9).get();
+//        Board board = new Board();
+//        board.setUser(user);
+//        board.setRegdate(LocalDateTime.now());
+//        board.setTitle("관리자의 글");
+//        board.setContent("내용");
+//        boardRepository.save(board);
 
+//        List<Board> boardAdmin = boardRepository.getBoards("ROLE_ADM");
+//        for (Board board : boardAdmin) {
+//            System.out.println(board);
+//        }
+
+        List<BoardIf> list = boardRepository.getBoardsWithNativeQuery();
+        for (BoardIf board : list) {
+            System.out.println(board.getClass().getName());
+            System.out.println(board.getName());
+            System.out.println(board.getTitle());
+        }
 
     }
 
