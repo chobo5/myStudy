@@ -1,5 +1,5 @@
 // 스레드 재사용 - 2단계) sleep()/timeout 을 활용한 스레드 재사용
-package com.eomcs.concurrent.ex6;
+package class_2024_01_25.ex6;
 
 import java.util.Scanner;
 
@@ -24,9 +24,12 @@ public class Exam0120 {
             // 10초 정도 스레드를 멈춘다.
             Thread.sleep(10000);
 
-            System.out.println("카운트 시작!");
-            for (int i = count; i > 0; i--) {
-              System.out.println("==> " + i);
+            if (count > 0) {
+              System.out.println("카운트 시작!");
+              for (int i = count; i > 0; i--) {
+                System.out.println("==> " + i);
+              }
+              count = 0;
             }
           }
         } catch (Exception e) {
