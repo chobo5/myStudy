@@ -16,6 +16,7 @@ public class WorkerThread extends Thread {
     public void run() {
         try {
             while (true) {
+                //메소드의 일부영역만 잠금을 건다. synchronized(공유 객체)
                 synchronized (this) {
                     this.wait();
                 }

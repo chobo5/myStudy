@@ -20,7 +20,7 @@ import java.net.Socket;
 import java.util.HashMap;
 
 public class ServerApp {
-    ThreadPool threadPool = new ThreadPool();
+    ThreadPool threadPool = new ThreadPool(5);
     HashMap<String, Object> daoMap = new HashMap<>();
     Gson gson;
 
