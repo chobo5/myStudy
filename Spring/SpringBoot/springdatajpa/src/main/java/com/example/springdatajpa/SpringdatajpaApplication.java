@@ -21,6 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @SpringBootApplication
 public class SpringdatajpaApplication implements CommandLineRunner {
@@ -55,11 +56,38 @@ public class SpringdatajpaApplication implements CommandLineRunner {
 //            System.out.println("-----------------");
 //        }
 
-        List<Board> boards = boardRepository.findAll();
-        for(Board board : boards) {
-            System.out.println(board);
-        }
+//        List<Board> boards = boardRepository.getBoards();
+//        for(Board board : boards) {
+//            System.out.println(board);
+//        }
+
+//        Board board = boardRepository.findById(3).get();
+//        System.out.println(board);
+
+//        System.out.println(boardRepository.getBoardCount());
+
+//        Role role = roleRepository.findById(2).get();
+//        System.out.println(role);
+//
+//        User user = new User();
+//        user.setName("관리자");
+//        user.setEmail("super@test.com");
+//        user.setPassword("1234");
+//        user.setRegdate(LocalDateTime.now());
+//        user.setRoles(Set.of(role));
+//        userRepository.save(user);
+
+        User user = userRepository.findById(9).get();
+        Board board = new Board();
+        board.setUser(user);
+        board.setRegdate(LocalDateTime.now());
+        board.setTitle("관리자의 글");
+        board.setContent("내용");
+        boardRepository.save(board);
+
+
     }
+
 
 
 }
