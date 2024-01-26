@@ -1,6 +1,6 @@
 package com.example.board.controller;
 
-import com.example.board.dto.Board;
+import com.example.board.domain.Board;
 import com.example.board.dto.LoginInfo;
 import com.example.board.service.BoardService;
 import jakarta.servlet.http.HttpSession;
@@ -21,7 +21,7 @@ public class BoardController {
     //컨트롤러의 메소드가 리턴하는 문자열을 템플릿 이름이다.
     //http://localhost:8080/ ---> "list"라는 이름의 템플릿을 사용(포워딩)하여 화면에 출력
     @GetMapping("/")
-    public String list(@RequestParam(name="page", defaultValue = "1") int page,
+    public String list(@RequestParam(name="page", defaultValue = "0") int page,
                        HttpSession session,
                        Model model) { //두 파라미터는 spring이 자동으로 주입
         //게시물 목록을 읽어온다. 페이징 처리한다.
@@ -29,9 +29,9 @@ public class BoardController {
         model.addAttribute("loginInfo", loginInfo); //템플릿에게
 
 
-        int totalCount = boardService.getTotalCount();
-        int pageCount = totalCount % 10 == 0 ? totalCount / 10 : totalCount / 10 + 1;
-        int currentPage = page;
+        long totalCount = boardService.getTotalCount();
+        long pageCount = totalCount % 10 == 0 ? totalCount / 10 : totalCount / 10 + 1;
+        long currentPage = page;
         List<Board> list = boardService.getBoards(page);
 //        System.out.println("totlaCount: " + totalCount);
 //        for (Board board : list) {
@@ -128,7 +128,7 @@ public class BoardController {
             return "redirect:/loginform";
         }
         Board board = boardService.getBoard(boardId, false);
-        if (board.getUserId() != loginInfo.getUserId()) {
+        if (board.getUser().getUserId() != loginInfo.getUserId()) {
             return "redirect:/board?boardId=" + boardId; //글보기로 이동
         }
         //boardId에 해당하는 글의 제목과 내용을 수정한다.

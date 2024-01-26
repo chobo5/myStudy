@@ -1,6 +1,8 @@
 package com.example.board.repository;
 
 import com.example.board.domain.Board;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -11,6 +13,9 @@ public interface BoardRepository extends JpaRepository<Board, Integer> {
 
     @Query(value = "select b from Board b join fetch b.user") //jpql을 사용할 수 있다. jpql은 sql과 모양이 비슷하지만 sql이 아니다. 객체지향 언어이다.
     List<Board> getBoards();
+
+    //페이징 처리로 가져오는 날짜를 desc
+    Page<Board> findByOrderByRegdateDesc(Pageable pageable);
 
     @Query(value = "select count(b) from Board b")
     Long getBoardCount();
