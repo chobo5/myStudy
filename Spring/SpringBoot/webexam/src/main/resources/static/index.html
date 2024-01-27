@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello</title>
+    <script>
+        function hello() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/hello.json', true);
+        xhr.onload = function() {
+                console.log(this);
+
+                var jsonObj = JSON.parse(this.responseText);
+                console.log(jsonObj.count);
+                var str = "";
+                for (var i = 0; i < jsonObj.count; i++) {
+                    str += i + "<br>";
+                }
+                document.getElementById('app').innerHTML = str;
+            };
+            xhr.send();
+        }
+    </script>
+</head>
+<body>
+<h1>Hello</h1>
+<img src="nirvana.png">
+<div id="app"></div>
+<button onclick="hello()">Hello</button>
+</body>
+</html>
