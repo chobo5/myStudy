@@ -13,7 +13,8 @@ public class JsonController {
         Hello hello = new Hello();
         hello.setMessage("Hello World!");
         hello.setCount(10);
-        return hello; //Spring이 자동으로 json으로 변경
+        return hello; //Spring이
+        // 자동으로 json으로 변경
     }
 }
 
