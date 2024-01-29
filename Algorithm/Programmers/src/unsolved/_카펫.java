@@ -5,19 +5,19 @@ public class _카펫 {
         class Solution {
             public int[] solution(int brown, int yellow) {
                 int[] answer = new int[2];
-                int width = brown + yellow;
-                int middle = (int)Math.pow(width, 0.5);
+                int middle = (int)Math.pow(yellow, 0.5);
 
-                for (int i = middle; i <= width; i++) {
-                    if (width % middle == 0) {
-                        if (middle >= width/ middle) {
-                            answer[0] = middle;
-                            answer[1] = width / middle;
+                for (int i = middle; i <= yellow; i++) {
+                    if (yellow % i == 0 && (i+2)*((yellow/i)+2) == yellow + brown) {
+                        int width = i + 2;
+                        int height = (yellow / i) + 2;
+                        if (width > height) {
+                            answer[0] = width;
+                            answer[1] = height;
                         } else {
-                            answer[1] = middle;
-                            answer[0] = width / middle;
+                            answer[0] = height;
+                            answer[1] = width;
                         }
-
                         break;
                     }
                 }
