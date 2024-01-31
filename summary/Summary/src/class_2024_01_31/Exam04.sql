@@ -25,7 +25,7 @@ insert into test1(title,content,filepath1,filepath2,filepath3,filepath4,filepath
 values ('제목1', '내용', 'a.gif', null, null, null, null);
 
 insert into test1(title,content,filepath1,filepath2,filepath3,filepath4,filepath5)
-values ('제목2', '내용', 'b1.gif', 'b2.gif', 'b3.gif', null, null);
+values ('제목1', '내용', 'a.gif', null, null, null, null);
 
 insert into test1(title,content,filepath1,filepath2,filepath3,filepath4,filepath5)
 values ('제목3', '내용', null, null, null, null, null);
@@ -83,12 +83,12 @@ insert into test1(no, title) values(10, 'jjj');
 
 첨부파일 데이터 입력:
 
-insert into test2(filepath, bno) values('c:/download/a1.gif', 1);
-insert into test2(filepath, bno) values('c:/download/a2.gif', 1);
-insert into test2(filepath, bno) values('c:/download/a3.gif', 1);
-insert into test2(filepath, bno) values('c:/download/e1.gif', 5);
-insert into test2(filepath, bno) values('c:/download/e2.gif', 5);
-insert into test2(filepath, bno) values('c:/download/j1.gif', 10);
+insert into test2(fno, filepath, bno) values(101, 'c:/download/a1.gif', 1);
+insert into test2(fno, filepath, bno) values(102, 'c:/download/a2.gif', 1);
+insert into test2(fno, filepath, bno) values(103, 'c:/download/a3.gif', 1);
+insert into test2(fno, filepath, bno) values(104, 'c:/download/e1.gif', 5);
+insert into test2(fno, filepath, bno) values(105, 'c:/download/e2.gif', 5);
+insert into test2(fno, filepath, bno) values(106, 'c:/download/j1.gif', 10);
 
 
 ## FK(Foreign Key) 제약 조건이 없을 때
