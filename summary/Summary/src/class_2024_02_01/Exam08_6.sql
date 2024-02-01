@@ -13,6 +13,10 @@ select la.lano, la.lno, m.name, la.rdt
 from lect_appl la
      inner join memb m on la.mno=m.mno;
 
+     select la.lano, la.lno, m.name, la.rdt,
+     from lect-appl la
+     inner join memb m on la.mno = m.mno;
+
 /* 3단계: 수강 신청한 학생의 재직 여부 출력
  * => inner join 에서 inner는 생략 가능
  */

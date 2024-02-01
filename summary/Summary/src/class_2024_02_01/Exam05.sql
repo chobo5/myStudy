@@ -30,6 +30,8 @@ DROP TABLE IF EXISTS addr RESTRICT;
 -- 강의배정
 DROP TABLE IF EXISTS lect_tcher RESTRICT;
 
+ALTER TABLE room_phot
+    MODIFY COLUMN rpno INTEGER NOT NULL AUTO_INCREMENT COMMENT '강의실사진번호';
 -- 수강생
 CREATE TABLE stnt (
     mno    INTEGER     NOT NULL COMMENT '수강생번호', -- 수강생번호
@@ -192,8 +194,6 @@ ALTER TABLE room_phot
             rpno -- 강의실사진번호
         );
 
-ALTER TABLE room_phot
-    MODIFY COLUMN rpno INTEGER NOT NULL AUTO_INCREMENT COMMENT '강의실사진번호';
 
 -- 멤버
 CREATE TABLE memb (
