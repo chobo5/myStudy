@@ -1,4 +1,4 @@
-package util;
+package org.example.util;
 
 import java.io.InputStream;
 import java.sql.Date;

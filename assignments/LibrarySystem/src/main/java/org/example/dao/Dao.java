@@ -1,4 +1,4 @@
-package app.dao;
+package org.example.dao;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ public interface Dao<T> {
     List<T> find(String input);
 
     List<T> findAll();
-    T update(T t);
-    int delete();
+    int update(T t);
+    int delete(int id);
 
 }
