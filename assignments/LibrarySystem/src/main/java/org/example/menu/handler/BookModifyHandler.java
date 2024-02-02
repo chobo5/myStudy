@@ -19,16 +19,16 @@ public class BookModifyHandler implements Handler{
         if (result.size() == 0) {
             System.out.println("검색된 도서가 없습니다.");
         } else {
-            System.out.printf("%-4s\t%-20s\t%-10s\t%s\n","번호", "제목", "저자", "출판사");
+            System.out.printf("%-4s\t%-20s\t%-20s\t%s\n","번호", "제목", "저자", "출판사");
             for (int i = 0; i < result.size(); i++) {
-                System.out.printf("%-4s\t%-20s\t%-10s\t%s\n",
+                System.out.printf("%-4s\t%-20s\t%-20s\t%s\n",
                         (i + 1) + ".",
                         result.get(i).getTitle(),
                         result.get(i).getWriter(),
                         result.get(i).getPublisher()
                 );
             }
-            int input = prompt.inputInt("삭제할 도서 번호를 입력해주세요.") - 1;
+            int input = prompt.inputInt("수정할 도서 번호를 입력해주세요.") - 1;
             Book old = result.get(input);
             old.setTitle(prompt.input("제목(%s)? ", old.getTitle()));
             old.setWriter(prompt.input("제목(%s)? ", old.getWriter()));

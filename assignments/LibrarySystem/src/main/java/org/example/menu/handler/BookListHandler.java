@@ -17,9 +17,9 @@ public class BookListHandler implements Handler{
         List<Book> result = dao.findAll();
         System.out.println();
         System.out.println("---------------------------------");
-        System.out.printf("%-4s\t%-20s\t%-10s\t%s\n","번호", "제목", "저자", "출판사");
+        System.out.printf("%-4s\t%-20s\t%-20s\t%s\n","번호", "제목", "저자", "출판사");
         for (int i = 0; i < result.size(); i++) {
-            System.out.printf("%-4s\t%-20s\t%-10s\t%s\n",
+            System.out.printf("%-4s\t%-20s\t%-20s\t%s\n",
                     (i + 1) + ".",
                     result.get(i).getTitle(),
                     result.get(i).getWriter(),
