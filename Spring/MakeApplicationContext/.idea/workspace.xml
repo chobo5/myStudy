@@ -5,22 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="068b8540-3036-4b43-8099-b1f2aae2d312" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../Algorithm/BaekJoon/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Algorithm/BaekJoon/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithm/Programmers/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Algorithm/Programmers/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../note.md" beforeDir="false" afterPath="$PROJECT_DIR$/../note.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../eclipse/java-basic/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../eclipse/java-basic/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../eclipse/java-basic/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../eclipse/java-basic/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../eclipse/java-basic/gradlew" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../eclipse/java-basic/gradlew.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../eclipse/java-basic/settings.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../myapp/src/bitcamp/myapp/Assignment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../myapp/src/bitcamp/myapp/Assignment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../myapp/src/bitcamp/myapp/AssignmentMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../myapp/src/bitcamp/myapp/AssignmentMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../myapp/src/bitcamp/myapp/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../myapp/src/bitcamp/myapp/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../myapp/src/bitcamp/myapp/BoardMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../myapp/src/bitcamp/myapp/BoardMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../myapp/src/bitcamp/myapp/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../myapp/src/bitcamp/myapp/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../myapp/src/bitcamp/myapp/Prompt.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../myapp/src/bitcamp/myapp/Prompt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../myapp/src/bitcamp/myapp/UserMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../myapp/src/bitcamp/myapp/UserMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/exam/ApplicationContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/exam/ApplicationContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/exam/ApplicationContextMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/exam/ApplicationContextMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/exam/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/exam/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../all.md" beforeDir="false" afterPath="$PROJECT_DIR$/../all.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../bitcamp/myapp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../bitcamp/myapp/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../summary/Summary/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/.idea/gradle.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +28,18 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -39,9 +47,15 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 5
+}]]></component>
   <component name="ProjectId" id="2Z7P0cis8BlxWU4AXw7ItKl2scX" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -56,6 +70,8 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/wonjun-yeon/Desktop/bitcamp/git/myStudy/Spring/MakeApplicationContext/build.gradle",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
