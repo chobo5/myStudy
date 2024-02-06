@@ -25,5 +25,6 @@ public class ApplicationContextMain {
 
         //또한 객체를 관리해주는 ApplicationContext가 메모리에 하나만 올라오도록 해야한다.
 
+
     }
 }
