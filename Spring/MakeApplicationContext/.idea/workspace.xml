@@ -5,18 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="068b8540-3036-4b43-8099-b1f2aae2d312" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/exam02/SpringApplicationContextExam.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/exam02/SpringApplicationContextExam2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/exam02/component/MyDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/exam02/component/MyService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Algorithm/BaekJoon/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Algorithm/BaekJoon/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Algorithm/Programmers/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Algorithm/Programmers/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/exam/ApplicationContextMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/exam/ApplicationContextMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../all.md" beforeDir="false" afterPath="$PROJECT_DIR$/../all.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../bitcamp/myapp/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../bitcamp/myapp/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../summary/Summary/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/.idea/gradle.xml" afterDir="false" />
