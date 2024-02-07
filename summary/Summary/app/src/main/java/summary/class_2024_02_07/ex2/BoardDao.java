@@ -5,17 +5,14 @@
 //    - "데이터 퍼시스턴스(persistence)"라 부른다.
 package summary.class_2024_02_07.ex2;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BoardDao2 {
-  Connection con;
-
-  public BoardDao2(String jdbcUrl, String username, String password) throws SQLException {
-    con = DriverManager.getConnection(jdbcUrl, username, password);
-  }
-
+public class BoardDao {
   public int delete(int no) throws Exception {
     try (Connection con = DriverManager.getConnection(
             "jdbc:mysql://localhost:3306/studydb", "study", "Bitcamp!@#123");

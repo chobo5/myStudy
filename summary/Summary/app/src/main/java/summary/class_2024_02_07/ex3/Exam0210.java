@@ -1,5 +1,5 @@
 // PreparedStatement를 이용하여 SQL 삽입 공격 차단하기
-package com.eomcs.jdbc.ex3;
+package summary.class_2024_02_07.ex3;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -21,17 +21,9 @@ public class Exam0210 {
     }
 
     try (Connection con = DriverManager.getConnection(
-        "jdbc:mariadb://localhost:3306/studydb?user=study&password=1111");
+            "jdbc:mysql://localhost:3306/studydb", "study", "Bitcamp!@#123");
         PreparedStatement stmt = con.prepareStatement(
             "insert into x_board(title,contents) values(?,?)")) {
-
-      // SQL 삽입 공격
-      // => 입력 문자열에 SQL 명령을 삽입하여 프로그램의 의도와 다르게 데이터를 조작하는 행위.
-      // => 사용자가 입력한 값을 가지고 SQL 문장을 만들 때 이런 문제가 발생한다.
-      // => 예를 들어 이 예제를 실행할 때 다음과 같이 입력해 보라!
-      // 제목? aaaa
-      // 내용? bbbb'), ('haha', 'hoho'), ('hehe', 'puhul
-      //
 
       // 위에서 준비한 SQL 문에 값을 설정한다.
       // => ? : 값이 놓일 자리를 의미한다. 'in-parameter' 라 부른다.

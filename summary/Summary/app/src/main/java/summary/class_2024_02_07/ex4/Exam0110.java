@@ -1,5 +1,5 @@
 // 자식 테이블의 데이터를 함께 입력할 때 문제점
-package com.eomcs.jdbc.ex4;
+package summary.class_2024_02_07.ex4;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -33,14 +33,14 @@ public class Exam0110 {
       }
     }
 
-    try (Connection con = DriverManager.getConnection( //
-        "jdbc:mariadb://localhost:3306/studydb?user=study&password=1111");
+    try (Connection con = DriverManager.getConnection(
+            "jdbc:mysql://localhost:3306/studydb", "study", "Bitcamp!@#123");
 
         // 게시글 입력 처리 객체
         PreparedStatement boardStmt = con.prepareStatement(
             "insert into x_board(title,contents) values(?,?)");
 
-        // 첨부파일 입력 처리 객체
+        // 첨부파일 입력 처리 객체b
         PreparedStatement fileStmt = con.prepareStatement(
             "insert into x_board_file(file_path,board_id) values(?,?)")) {
 

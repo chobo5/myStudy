@@ -1,5 +1,5 @@
 // 트랜잭션 다루기 - commit & rollback
-package com.eomcs.jdbc.ex4;
+package summary.class_2024_02_07.ex4;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -34,8 +34,8 @@ public class Exam0220 {
       }
     }
 
-    try (Connection con = DriverManager.getConnection( //
-        "jdbc:mariadb://localhost:3306/studydb?user=study&password=1111");
+    try (Connection con = DriverManager.getConnection(
+            "jdbc:mysql://localhost:3306/studydb", "study", "Bitcamp!@#123");
 
         // => 게시글을 입력할 때 자동 생성된 PK 값을 받겠다고 설정한다.
         PreparedStatement boardStmt = con.prepareStatement(

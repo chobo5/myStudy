@@ -1,14 +1,24 @@
-// 게시판 관리 - 변경 + PreparedStatement 적용
-package summary.class_2024_02_07.ex3;
+// 게시판 관리 - 변경
+package summary.class_2024_02_07.ex2;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
+import java.sql.Statement;
 import java.util.Scanner;
 
-public class Exam0340 {
+// 다음과 같이 게시물을 변경하는 프로그램을 작성하라!
+// ----------------------------
+// 번호? 1
+// 제목? xxx
+// 내용? xxxxx
+// 변경하였습니다.
+// (또는)
+// 해당 번호의 게시물이 존재하지 않습니다.
+// ----------------------------
+public class Exam0140 {
 
   public static void main(String[] args) throws Exception {
+
     String no = null;
     String title = null;
     String contents = null;
@@ -26,15 +36,13 @@ public class Exam0340 {
 
     try (Connection con = DriverManager.getConnection(
             "jdbc:mysql://localhost:3306/studydb", "study", "Bitcamp!@#123");
-        PreparedStatement stmt = con.prepareStatement(
-            "update x_board set title = ?, contents = ? where board_id = ?")) {
+        Statement stmt = con.createStatement()) {
 
-      stmt.setString(1, title);
-      stmt.setString(2, contents);
-      stmt.setString(3, no);
-      stmt.executeUpdate();
-
-      int count = stmt.executeUpdate();
+      // update 문장은 executeUpdate()를 사용하여 서버에 전달한다.
+      String sql = String.format(
+          "update x_board set title='%s',contents='%s' where board_id=%s",
+          title, contents, no);
+      int count = stmt.executeUpdate(sql);
 
       if (count == 0) {
         System.out.println("해당 번호의 게시물이 존재하지 않습니다.");

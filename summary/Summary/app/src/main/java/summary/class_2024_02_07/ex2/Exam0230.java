@@ -1,9 +1,9 @@
 // 게시판 관리 - JDBC 코드를 별도의 클래스로 캡슐화시킴. DAO 적용.
-package summary.class_2024_02_07.ex3;
+package summary.class_2024_02_07.ex2;
 
 import java.util.Scanner;
 
-public class Exam0430 {
+public class Exam0230 {
 
   public static void main(String[] args) throws Exception {
     String no = null;

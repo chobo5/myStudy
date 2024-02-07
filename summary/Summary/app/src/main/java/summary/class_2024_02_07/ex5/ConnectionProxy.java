@@ -1,5 +1,5 @@
 // 실제 커넥션 객체를 대행하는 역할을 수행한다.
-package com.eomcs.jdbc.ex5;
+package summary.class_2024_02_07.ex5;
 
 import java.sql.Array;
 import java.sql.Blob;

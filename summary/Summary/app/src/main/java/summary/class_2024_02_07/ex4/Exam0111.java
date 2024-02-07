@@ -1,5 +1,5 @@
 // insert 한 후 auto increment PK 값 리턴 받기
-package com.eomcs.jdbc.ex4;
+package summary.class_2024_02_07.ex4;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -24,8 +24,8 @@ public class Exam0111 {
       contents = keyScan.nextLine();
     }
 
-    try (Connection con = DriverManager.getConnection( 
-        "jdbc:mariadb://localhost:3306/studydb?user=study&password=1111");
+    try (Connection con = DriverManager.getConnection(
+            "jdbc:mysql://localhost:3306/studydb", "study", "Bitcamp!@#123");
 
         // 입력 후 PK 값을 리턴 받고 싶다면,
         // PreparedStatement 객체를 얻을 때 다음과 같은 옵션을 지정하라!

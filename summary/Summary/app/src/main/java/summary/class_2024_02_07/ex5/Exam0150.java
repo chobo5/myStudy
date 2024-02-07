@@ -1,5 +1,5 @@
 // 게시판 관리 - JDBC 코드를 별도의 클래스로 캡슐화시킴. DAO 적용.
-package com.eomcs.jdbc.ex5;
+package summary.class_2024_02_07.ex5;
 
 import java.util.Scanner;
 

@@ -1,12 +1,21 @@
-// 게시판 관리 - 등록 + PreparedStatement 사용
-package summary.class_2024_02_07.ex3;
+// 게시판 관리 - 등록
+package summary.class_2024_02_07.ex2;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
+import java.sql.Statement;
 import java.util.Scanner;
 
-public class Exam0310 {
+// 다음과 같이 게시물을 등록하는 프로그램을 작성하라!
+// ----------------------------
+// 제목? aaa
+// 내용? bbb
+// 등록하시겠습니까?(Y/n) y
+// 등록하였습니다.
+// 등록하시겠습니까?(Y/n) n
+// 등록을 취소 하였습니다.
+// ----------------------------
+public class Exam0110 {
 
   public static void main(String[] args) throws Exception {
     String title = null;
@@ -32,19 +41,12 @@ public class Exam0310 {
 
     try (Connection con = DriverManager.getConnection(
             "jdbc:mysql://localhost:3306/studydb", "study", "Bitcamp!@#123");
+        Statement stmt = con.createStatement();) {
 
-        // 값이 들어갈 자리에 in-parameter(?)를 지정한다.
-        // => 데이터 타입에 상관없이 ?를 넣는다.
-        PreparedStatement stmt =
-            con.prepareStatement("insert into x_board(title,contents) values(?,?)");) {
-
-      // in-parameter에 값을 설정한다.
-      // => 설정하는 순서는 상관없다. 하지만 유지보수를 위해 순서대로 나열하라!
-      stmt.setString(1, title);
-      stmt.setString(2, contents);
-
-      // 실행할 때는 SQL문을 파라미터로 넘길 필요가 없다.
-      int count = stmt.executeUpdate();
+      String sql = String.format(
+          "insert into x_board(title,contents) values('%s','%s')",
+          title, contents);
+      int count = stmt.executeUpdate(sql);
       System.out.printf("%d 개 입력 성공!", count);
     }
   }
