@@ -4,103 +4,104 @@ import bitcamp.myapp.dao.AssignmentDao;
 import bitcamp.myapp.dao.DaoException;
 import bitcamp.myapp.vo.Assignment;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 public class AssignmentDaoImpl implements AssignmentDao {
 
-  Connection con;
+    Connection con;
 
-  public AssignmentDaoImpl(Connection con) {
-    this.con = con;
-  }
-
-  @Override
-  public void add(Assignment assignment) {
-    try {
-      Statement stmt = con.createStatement();
-      stmt.executeUpdate(String.format(
-          "insert into assignments(title,content,deadline) values('%s','%s','%s')",
-          assignment.getTitle(), assignment.getContent(), assignment.getDeadline()));
-
-    } catch (Exception e) {
-      throw new DaoException("데이터 입력 오류", e);
+    public AssignmentDaoImpl(Connection con) {
+        this.con = con;
     }
-  }
 
-  @Override
-  public int delete(int no) {
-    try {
-      Statement stmt = con.createStatement();
-      return stmt.executeUpdate(
-          String.format("delete from assignments where assignment_no=%d", no));
+    @Override
+    public void add(Assignment assignment) {
+        try (PreparedStatement pstmt = con.prepareStatement(
+                "insert into assignments(title,content,deadline) values(?, ? , ?)")) {
 
-    } catch (Exception e) {
-      throw new DaoException("데이터 삭제 오류", e);
+            pstmt.setString(1, assignment.getTitle());
+            pstmt.setString(2, assignment.getContent());
+            pstmt.setDate(3, assignment.getDeadline());
+
+            pstmt.executeUpdate();
+
+        } catch (Exception e) {
+            throw new DaoException("데이터 입력 오류", e);
+        }
     }
-  }
 
-  @Override
-  public List<Assignment> findAll() {
-    try {
-      Statement stmt = con.createStatement();
-      ResultSet rs = stmt.executeQuery("select * from assignments");
+    @Override
+    public int delete(int no) {
+        try (PreparedStatement pstmt = con.prepareStatement(
+                "delete from assignments where assignment_no=?")) {
+            pstmt.setInt(1, no);
+            return pstmt.executeUpdate();
 
-      ArrayList<Assignment> list = new ArrayList<>();
-
-      while (rs.next()) {
-        Assignment assignment = new Assignment();
-        assignment.setNo(rs.getInt("assignment_no"));
-        assignment.setTitle(rs.getString("title"));
-        assignment.setContent(rs.getString("content"));
-        assignment.setDeadline(rs.getDate("deadline"));
-
-        list.add(assignment);
-      }
-      return list;
-
-    } catch (Exception e) {
-      throw new DaoException("데이터 가져오기 오류", e);
+        } catch (Exception e) {
+            throw new DaoException("데이터 삭제 오류", e);
+        }
     }
-  }
 
-  @Override
-  public Assignment findBy(int no) {
-    try {
-      Statement stmt = con.createStatement();
-      ResultSet rs = stmt.executeQuery("select * from assignments where assignment_no=" + no);
+    @Override
+    public List<Assignment> findAll() {
+        try (PreparedStatement pstmt = con.prepareStatement("select assignment_no, title, deadline from assignments order by assignment_no desc");
+             ResultSet rs = pstmt.executeQuery();) {
 
-      ArrayList<Assignment> list = new ArrayList<>();
+            ArrayList<Assignment> list = new ArrayList<>();
 
-      if (rs.next()) {
-        Assignment assignment = new Assignment();
-        assignment.setNo(rs.getInt("assignment_no"));
-        assignment.setTitle(rs.getString("title"));
-        assignment.setContent(rs.getString("content"));
-        assignment.setDeadline(rs.getDate("deadline"));
+            while (rs.next()) {
+                Assignment assignment = new Assignment();
+                assignment.setNo(rs.getInt("assignment_no"));
+                assignment.setTitle(rs.getString("title"));
+                assignment.setDeadline(rs.getDate("deadline"));
 
-        return assignment;
-      }
-      return null;
+                list.add(assignment);
+            }
+            return list;
 
-    } catch (Exception e) {
-      throw new DaoException("데이터 가져오기 오류", e);
+        } catch (Exception e) {
+            throw new DaoException("데이터 가져오기 오류", e);
+        }
     }
-  }
 
-  @Override
-  public int update(Assignment assignment) {
-    try {
-      Statement stmt = con.createStatement();
-      return stmt.executeUpdate(String.format(
-          "update assignments set title='%s', content='%s', deadline='%s' where assignment_no=%d",
-          assignment.getTitle(), assignment.getContent(), assignment.getDeadline(),
-          assignment.getNo()));
+    @Override
+    public Assignment findBy(int no) {
+        try (PreparedStatement pstmt = con.prepareStatement("select * from assignments where assignment_no=?")) {
+            pstmt.setInt(1, no);
 
-    } catch (Exception e) {
-      throw new DaoException("데이터 변경 오류", e);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    Assignment assignment = new Assignment();
+                    assignment.setNo(rs.getInt("assignment_no"));
+                    assignment.setTitle(rs.getString("title"));
+                    assignment.setContent(rs.getString("content"));
+                    assignment.setDeadline(rs.getDate("deadline"));
+
+                    return assignment;
+                }
+            }
+            return null;
+
+        } catch (Exception e) {
+            throw new DaoException("데이터 가져오기 오류", e);
+        }
     }
-  }
+
+    @Override
+    public int update(Assignment assignment) {
+        try(PreparedStatement pstmt = con.prepareStatement("update assignments set title=?, content=?, deadline=? where assignment_no=?")) {
+            pstmt.setString(1, assignment.getTitle());
+            pstmt.setString(2, assignment.getContent());
+            pstmt.setDate(3, assignment.getDeadline());
+            pstmt.setInt(4, assignment.getNo());
+
+            return pstmt.executeUpdate();
+
+        } catch (Exception e) {
+            throw new DaoException("데이터 변경 오류", e);
+        }
+    }
 }
