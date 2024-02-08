@@ -7,6 +7,7 @@ import bitcamp.myapp.dao.MemberDao;
 import bitcamp.myapp.dao.mysql.AssignmentDaoImpl;
 import bitcamp.myapp.dao.mysql.BoardDaoImpl;
 import bitcamp.myapp.dao.mysql.MemberDaoImpl;
+import bitcamp.myapp.handler.AboutHandler;
 import bitcamp.myapp.handler.HelpHandler;
 import bitcamp.myapp.handler.assignment.AssignmentAddHandler;
 import bitcamp.myapp.handler.assignment.AssignmentDeleteHandler;
@@ -31,10 +32,11 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class ServerApp {
-
-    Prompt prompt = new Prompt(System.in);
+    ExecutorService executorService = Executors.newCachedThreadPool();
 
     BoardDao boardDao;
     BoardDao greetingDao;
@@ -50,18 +52,14 @@ public class ServerApp {
 
     public static void main(String[] args) {
         System.out.println("[과제관리 시스템 서버 실행]");
+
         new ServerApp().run();
     }
 
     void prepareDatabase() {
         try {
-            // JVM이 JDBC 드라이버 파일(.jar)에 설정된대로 자동으로 처리한다.
-//      Driver driver = new com.mysql.cj.jdbc.Driver();
-//      DriverManager.registerDriver(driver);
-
             Connection con = DriverManager.getConnection(
-                    //"jdbc:mysql://localhost/studydb", "study", "Bitcamp!@#123");
-                    "jdbc:mysql://db-ld27b-kr.vpc-pub-cdb.ntruss.com/studydb", "study", "Bitcamp!@#123");
+                    "jdbc:mysql://db-ld296-kr.vpc-pub-cdb.ntruss.com/studydb", "study", "Bitcamp!@#123");
 
             boardDao = new BoardDaoImpl(con, 1);
             greetingDao = new BoardDaoImpl(con, 2);
@@ -78,41 +76,43 @@ public class ServerApp {
         mainMenu = MenuGroup.getInstance("메인");
 
         MenuGroup assignmentMenu = mainMenu.addGroup("과제");
-        assignmentMenu.addItem("등록", new AssignmentAddHandler(assignmentDao, prompt));
-        assignmentMenu.addItem("조회", new AssignmentViewHandler(assignmentDao, prompt));
-        assignmentMenu.addItem("변경", new AssignmentModifyHandler(assignmentDao, prompt));
-        assignmentMenu.addItem("삭제", new AssignmentDeleteHandler(assignmentDao, prompt));
-        assignmentMenu.addItem("목록", new AssignmentListHandler(assignmentDao, prompt));
+        assignmentMenu.addItem("등록", new AssignmentAddHandler(assignmentDao));
+        assignmentMenu.addItem("조회", new AssignmentViewHandler(assignmentDao));
+        assignmentMenu.addItem("변경", new AssignmentModifyHandler(assignmentDao));
+        assignmentMenu.addItem("삭제", new AssignmentDeleteHandler(assignmentDao));
+        assignmentMenu.addItem("목록", new AssignmentListHandler(assignmentDao));
 
         MenuGroup boardMenu = mainMenu.addGroup("게시글");
-        boardMenu.addItem("등록", new BoardAddHandler(boardDao, prompt));
-        boardMenu.addItem("조회", new BoardViewHandler(boardDao, prompt));
-        boardMenu.addItem("변경", new BoardModifyHandler(boardDao, prompt));
-        boardMenu.addItem("삭제", new BoardDeleteHandler(boardDao, prompt));
-        boardMenu.addItem("목록", new BoardListHandler(boardDao, prompt));
+        boardMenu.addItem("등록", new BoardAddHandler(boardDao));
+        boardMenu.addItem("조회", new BoardViewHandler(boardDao));
+        boardMenu.addItem("변경", new BoardModifyHandler(boardDao));
+        boardMenu.addItem("삭제", new BoardDeleteHandler(boardDao));
+        boardMenu.addItem("목록", new BoardListHandler(boardDao));
 
         MenuGroup memberMenu = mainMenu.addGroup("회원");
-        memberMenu.addItem("등록", new MemberAddHandler(memberDao, prompt));
-        memberMenu.addItem("조회", new MemberViewHandler(memberDao, prompt));
-        memberMenu.addItem("변경", new MemberModifyHandler(memberDao, prompt));
-        memberMenu.addItem("삭제", new MemberDeleteHandler(memberDao, prompt));
-        memberMenu.addItem("목록", new MemberListHandler(memberDao, prompt));
+        memberMenu.addItem("등록", new MemberAddHandler(memberDao));
+        memberMenu.addItem("조회", new MemberViewHandler(memberDao));
+        memberMenu.addItem("변경", new MemberModifyHandler(memberDao));
+        memberMenu.addItem("삭제", new MemberDeleteHandler(memberDao));
+        memberMenu.addItem("목록", new MemberListHandler(memberDao));
 
         MenuGroup greetingMenu = mainMenu.addGroup("가입인사");
-        greetingMenu.addItem("등록", new BoardAddHandler(greetingDao, prompt));
-        greetingMenu.addItem("조회", new BoardViewHandler(greetingDao, prompt));
-        greetingMenu.addItem("변경", new BoardModifyHandler(greetingDao, prompt));
-        greetingMenu.addItem("삭제", new BoardDeleteHandler(greetingDao, prompt));
-        greetingMenu.addItem("목록", new BoardListHandler(greetingDao, prompt));
+        greetingMenu.addItem("등록", new BoardAddHandler(greetingDao));
+        greetingMenu.addItem("조회", new BoardViewHandler(greetingDao));
+        greetingMenu.addItem("변경", new BoardModifyHandler(greetingDao));
+        greetingMenu.addItem("삭제", new BoardDeleteHandler(greetingDao));
+        greetingMenu.addItem("목록", new BoardListHandler(greetingDao));
 
-        mainMenu.addItem("도움말", new HelpHandler(prompt));
+        mainMenu.addItem("도움말", new HelpHandler());
+
+        mainMenu.addItem("about", new AboutHandler());
     }
 
     void run() {
         try (ServerSocket serverSocket = new ServerSocket(8888)) {
             while (true) {
                 Socket socket = serverSocket.accept();
-                processRequest(socket);
+                executorService.execute(() -> processRequest(socket));
             }
         } catch (Exception e) {
             System.out.println("서버 소켓 생성 오류");
@@ -121,20 +121,25 @@ public class ServerApp {
     }
 
     void processRequest(Socket socket) {
-        try(Socket s = socket;
-            DataOutputStream out = new DataOutputStream(s.getOutputStream());
-            DataInputStream in = new DataInputStream(s.getInputStream())) {
-            out.writeUTF("[과제 관리 시스템]");
-            String request = in.readUTF();
-            if (request.equals("quit")) {
-                out.writeUTF("[[quit]]");
-            }
-            System.out.println(request);
+        try (Socket s = socket;
+             DataOutputStream out = new DataOutputStream(s.getOutputStream());
+             DataInputStream in = new DataInputStream(s.getInputStream());
+             Prompt prompt = new Prompt(in, out)) {
 
+            while (true) {
+                try {
+                    mainMenu.execute(prompt);
+                    prompt.print("[[quit]]");
+                    prompt.end();
+                } catch (Exception e) {
+                    System.out.println("예외 발생");
+                    e.printStackTrace();
+
+                }
+            }
         } catch (Exception e) {
             System.out.println("클라이언트 통신 오류");
             e.printStackTrace();
         }
     }
-
 }

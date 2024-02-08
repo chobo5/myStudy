@@ -5,49 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a84827e7-6d13-4c5e-bb9d-79b24217473a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../Algorithm/Programmers/src/_모의고사.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_06/jdbc-programming-ddl.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Algorithm/Programmers/src/_소수찾기.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Algorithm/BaekJoon/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Algorithm/BaekJoon/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Algorithm/Programmers/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Algorithm/Programmers/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Spring/MakeApplicationContext/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring/MakeApplicationContext/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Spring/ServletExam/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring/ServletExam/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Spring/all.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring/all.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../assignments/LibrarySystem/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../assignments/LibrarySystem/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../summary/Summary/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_06/note.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_06/note.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex2/BoardDao2.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex2/BoardDao2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex3/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex3/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex3/BoardDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex3/BoardDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex3/Exam0110.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex3/Exam0110.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex3/Exam0120.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex3/Exam0120.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex3/Exam0210.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex3/Exam0210.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex3/Exam0220.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex3/Exam0220.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex3/Exam0310.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex3/Exam0310.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex3/Exam0320.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex3/Exam0320.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex3/Exam0330.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex3/Exam0330.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex3/Exam0340.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex3/Exam0340.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex3/Exam0350.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex3/Exam0350.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex3/Exam0410.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex3/Exam0410.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex3/Exam0420.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex3/Exam0420.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex3/Exam0430.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex3/Exam0430.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex3/Exam0440.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex3/Exam0440.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex3/Exam0450.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex3/Exam0450.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex4/Exam0110.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex4/Exam0110.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex4/Exam0111.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex4/Exam0111.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex4/Exam0120.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex4/Exam0120.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex4/Exam0210.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex4/Exam0210.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex4/Exam0220.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex4/Exam0220.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex5/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex5/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex5/BoardDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex5/BoardDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex5/ConnectionProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex5/ConnectionProxy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex5/DataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex5/DataSource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex5/DefaultDataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex5/DefaultDataSource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex5/Exam0110.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex5/Exam0110.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex5/Exam0120.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex5/Exam0120.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex5/Exam0130.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex5/Exam0130.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex5/Exam0140.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex5/Exam0140.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex5/Exam0150.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex5/Exam0150.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex5/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/ex5/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/note.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_07/note.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_08/note.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_08/note.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,6 +69,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
 }</component>
@@ -115,30 +83,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Gradle.myapp [classes].executor": "Run",
-    "Gradle.myapp [run].executor": "Run",
-    "Gradle.myapp:app [:app:App.main()].executor": "Run",
-    "Gradle.myapp:app [:app:DaoTest.main()].executor": "Run",
-    "Gradle.myapp:app [:app:QueueTest.main()].executor": "Run",
-    "Gradle.myapp:app [:app:StackTest.main()].executor": "Run",
-    "Gradle.myapp:app [:app:Test.main()].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "deletionFromPopupRequiresConfirmation": "false",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_directory_selection": "/Users/eomjinyoung/git/bitcamp-study/myapp/app/src/main/java/bitcamp/myapp",
-    "last_opened_file_path": "/Users/wonjun-yeon/Desktop/bitcamp/git/myStudy/bitcamp/myapp/app-client/doc",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Gradle.myapp [classes].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp [run].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app [:app:App.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app [:app:DaoTest.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app [:app:QueueTest.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app [:app:StackTest.main()].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.myapp:app [:app:Test.main()].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;/Users/eomjinyoung/git/bitcamp-study/myapp/app/src/main/java/bitcamp/myapp&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/wonjun-yeon/Desktop/bitcamp/git/myStudy/bitcamp/myapp/app-client/doc&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app-client/doc" />
@@ -153,17 +121,30 @@
       <recent name="bitcamp.myapp.AssignmentMenu" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="bitcamp.myapp.handler" />
+      <recent name="bitcamp.util" />
       <recent name="bitcamp.myapp" />
       <recent name="bitcamp.myapp.dao.network" />
       <recent name="bitcamp.myapp.dao.json" />
-      <recent name="bitcamp.myapp.dao" />
-      <recent name="bitcamp.io" />
     </key>
   </component>
   <component name="RunManager" selected="Application.ClientApp">
     <configuration name="ClientApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="bitcamp.myapp.ClientApp" />
       <module name="myapp.app-client.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="bitcamp.myapp.ServerApp" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ServerApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="bitcamp.myapp.ServerApp" />
+      <module name="myapp.app-server.main" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="bitcamp.myapp.*" />
@@ -239,12 +220,14 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Application.ServerApp" />
       <item itemvalue="Application.ClientApp" />
       <item itemvalue="Gradle.myapp:app-client [run]" />
       <item itemvalue="Gradle.myapp:app-server [run]" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.ServerApp" />
         <item itemvalue="Application.ClientApp" />
         <item itemvalue="Gradle.myapp:app-client [run]" />
         <item itemvalue="Gradle.myapp:app-server [run]" />
