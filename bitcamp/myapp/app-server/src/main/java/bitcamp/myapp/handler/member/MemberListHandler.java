@@ -3,29 +3,40 @@ package bitcamp.myapp.handler.member;
 import bitcamp.menu.AbstractMenuHandler;
 import bitcamp.myapp.dao.MemberDao;
 import bitcamp.myapp.vo.Member;
+import bitcamp.util.DBConnectionPool;
 import bitcamp.util.Prompt;
+
+import java.sql.Connection;
 import java.util.List;
 
 public class MemberListHandler extends AbstractMenuHandler {
+    private DBConnectionPool connectionPool;
+    private MemberDao memberDao;
 
-  private MemberDao memberDao;
-
-  public MemberListHandler(MemberDao memberDao) {
-    this.memberDao = memberDao;
-  }
-
-  @Override
-  protected void action(Prompt prompt) {
-    prompt.printf("%-4s\t%-10s\t%30s\t%s\n", "번호", "이름", "이메일", "가입일");
-
-    List<Member> list = memberDao.findAll();
-
-    for (Member member : list) {
-      prompt.printf("%-4d\t%-10s\t%30s\t%4$tY-%4$tm-%4$td\n",
-          member.getNo(),
-          member.getName(),
-          member.getEmail(),
-          member.getCreatedDate());
+    public MemberListHandler(DBConnectionPool connectionPool, MemberDao memberDao) {
+        this.connectionPool = connectionPool;
+        this.memberDao = memberDao;
     }
-  }
+
+    @Override
+    protected void action(Prompt prompt) {
+        Connection con = null;
+        try {
+            prompt.printf("%-4s\t%-10s\t%30s\t%s\n", "번호", "이름", "이메일", "가입일");
+
+            List<Member> list = memberDao.findAll();
+
+            for (Member member : list) {
+                prompt.printf("%-4d\t%-10s\t%30s\t%4$tY-%4$tm-%4$td\n",
+                        member.getNo(),
+                        member.getName(),
+                        member.getEmail(),
+                        member.getCreatedDate());
+            }
+        } catch (Exception e) {
+
+        } finally {
+            connectionPool.returnConnection(con);
+        }
+    }
 }

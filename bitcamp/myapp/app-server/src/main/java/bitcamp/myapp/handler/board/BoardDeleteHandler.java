@@ -2,23 +2,36 @@ package bitcamp.myapp.handler.board;
 
 import bitcamp.menu.AbstractMenuHandler;
 import bitcamp.myapp.dao.BoardDao;
+import bitcamp.util.DBConnectionPool;
 import bitcamp.util.Prompt;
 
+import java.sql.Connection;
+
 public class BoardDeleteHandler extends AbstractMenuHandler {
+    private DBConnectionPool connectionPool;
+    private BoardDao boardDao;
 
-  private BoardDao boardDao;
-
-  public BoardDeleteHandler(BoardDao boardDao) {
-    this.boardDao = boardDao;
-  }
-
-  @Override
-  protected void action(Prompt prompt) {
-    int no = this.prompt.inputInt("번호? ");
-    if (boardDao.delete(no) == 0) {
-      prompt.println("게시글 번호가 유효하지 않습니다.");
-    } else {
-      prompt.println("삭제했습니다!");
+    public BoardDeleteHandler(DBConnectionPool connectionPool, BoardDao boardDao) {
+        this.connectionPool = connectionPool;
+        this.boardDao = boardDao;
     }
-  }
+
+    @Override
+    protected void action(Prompt prompt) {
+        Connection con = null;
+        try {
+            con = connectionPool.getConnection();
+            int no = this.prompt.inputInt("번호? ");
+            if (boardDao.delete(no) == 0) {
+                prompt.println("게시글 번호가 유효하지 않습니다.");
+            } else {
+                prompt.println("삭제했습니다!");
+            }
+        } catch (Exception e) {
+
+        } finally {
+            connectionPool.returnConnection(con);
+        }
+    }
+
 }

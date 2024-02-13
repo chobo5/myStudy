@@ -5,14 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a84827e7-6d13-4c5e-bb9d-79b24217473a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../Algorithm/Programmers/src/_소수찾기.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_13/note.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Algorithm/BaekJoon/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Algorithm/BaekJoon/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Algorithm/Programmers/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Algorithm/Programmers/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithm/Programmers/src/_숫자짝궁.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Algorithm/Programmers/src/_숫자짝궁.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Spring/MakeApplicationContext/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring/MakeApplicationContext/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Spring/ServletExam/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring/ServletExam/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Spring/all.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring/all.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../assignments/LibrarySystem/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../assignments/LibrarySystem/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_08/note.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_08/note.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../assignments/lolwiki/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../assignments/lolwiki/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
