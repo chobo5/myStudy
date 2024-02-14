@@ -10,17 +10,14 @@ import java.sql.Connection;
 import java.util.List;
 
 public class MemberListHandler extends AbstractMenuHandler {
-    private DBConnectionPool connectionPool;
     private MemberDao memberDao;
 
-    public MemberListHandler(DBConnectionPool connectionPool, MemberDao memberDao) {
-        this.connectionPool = connectionPool;
+    public MemberListHandler(MemberDao memberDao) {
         this.memberDao = memberDao;
     }
 
     @Override
     protected void action(Prompt prompt) {
-        Connection con = null;
         try {
             prompt.printf("%-4s\t%-10s\t%30s\t%s\n", "번호", "이름", "이메일", "가입일");
 
@@ -35,8 +32,6 @@ public class MemberListHandler extends AbstractMenuHandler {
             }
         } catch (Exception e) {
 
-        } finally {
-            connectionPool.returnConnection(con);
         }
     }
 }

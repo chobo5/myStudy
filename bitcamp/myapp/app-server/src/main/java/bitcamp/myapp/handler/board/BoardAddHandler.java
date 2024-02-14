@@ -1,53 +1,69 @@
 package bitcamp.myapp.handler.board;
 
 import bitcamp.menu.AbstractMenuHandler;
+import bitcamp.myapp.dao.AttachedFileDao;
 import bitcamp.myapp.dao.BoardDao;
+import bitcamp.myapp.vo.AttachedFile;
 import bitcamp.myapp.vo.Board;
 import bitcamp.util.Prompt;
 import bitcamp.util.DBConnectionPool;
+import bitcamp.util.TransactionManager;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class BoardAddHandler extends AbstractMenuHandler {
 
-  DBConnectionPool connectionPool;
-  private BoardDao boardDao;
+    TransactionManager txManager;
+    private BoardDao boardDao;
+    private AttachedFileDao attachedFileDao;
 
-  public BoardAddHandler(DBConnectionPool connectionPool, BoardDao boardDao) {
-    this.connectionPool = connectionPool;
-    this.boardDao = boardDao;
-  }
-
-  @Override
-  protected void action(Prompt prompt) {
-
-    Board board = new Board();
-    board.setTitle(prompt.input("제목? "));
-    board.setContent(prompt.input("내용? "));
-    board.setWriter(prompt.input("작성자? "));
-
-    Connection con = null;
-    try {
-      con = connectionPool.getConnection();
-      con.setAutoCommit(false);
-
-      boardDao.add(board);
-      boardDao.add(board);
-
-      Thread.sleep(10000);
-
-      boardDao.add(board);
-
-      con.commit();
-    } catch (Exception e) {
-      try {
-        con.rollback();
-      } catch (SQLException ex) {
-      }
-    } finally {
-      connectionPool.returnConnection(con);
+    public BoardAddHandler(TransactionManager txManager, BoardDao boardDao, AttachedFileDao attachedFileDao) {
+        this.txManager = txManager;
+        this.boardDao = boardDao;
+        this.attachedFileDao = attachedFileDao;
     }
 
-  }
+    @Override
+    protected void action(Prompt prompt) {
+
+        Board board = new Board();
+        board.setTitle(prompt.input("제목? "));
+        board.setContent(prompt.input("내용? "));
+        board.setWriter(prompt.input("작성자? "));
+
+        ArrayList<AttachedFile> files = new ArrayList<>();
+        while (true) {
+            String filePath = prompt.input("파일?(종료: 엔터) ");
+            if (filePath.length() == 0) {
+                break;
+            }
+            files.add(new AttachedFile().filePath(filePath));
+        }
+
+
+        try {
+            txManager.startTransaction();
+
+            boardDao.add(board);
+
+            if (files.size() > 0) {
+                //첨부 파일 객체에 게시글 번호 저장
+                for (AttachedFile file : files) {
+                    file.setBoardNo(board.getNo());
+                }
+                attachedFileDao.addAll(files);
+            }
+
+            txManager.commit();
+        } catch (Exception e) {
+            try {
+                txManager.rollback();
+                System.out.println("게시글 등록 오류");
+            } catch (Exception ex) {
+            }
+        }
+
+    }
 }

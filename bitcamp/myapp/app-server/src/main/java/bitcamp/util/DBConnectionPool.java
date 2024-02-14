@@ -4,13 +4,15 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.ArrayList;
 
-public class DBConnectionPool {
+public class DBConnectionPool implements ConnectionPool {
     ArrayList<Connection> connections = new ArrayList<>();
     private String jdbcUrl;
     private String username;
     private String password;
 
     //개별 스레드용 DB 커넥션 저장소
+    //ThreadLocal은 한 Thread에서 실행되는 코드가 동일한 객체를 사용할 수 있도록 지원해주기 때문에,
+    //Thread와 관련된 코드에서 파라미터를 사용하지 않고 객체를 전파하도록 할 수 있습니다.
     private static final ThreadLocal<Connection> connectionThreadLocal = new ThreadLocal<>();
 
     public DBConnectionPool(String jdbcUrl, String username, String password) {
@@ -19,6 +21,7 @@ public class DBConnectionPool {
         this.password = password;
     }
 
+    @Override
     public Connection getConnection() throws Exception {
         //현재 스레드에 보관중인 Connection 객체를 꺼낸다
         Connection con = connectionThreadLocal.get();
@@ -30,7 +33,7 @@ public class DBConnectionPool {
                 System.out.printf("%s: DB 커넥션 풀에서 꺼냄\n", Thread.currentThread().getName());
             } else {
                 // 스레드풀에도 놀고 있는 Connection이 없다면, 새로 Connection을 만든다.
-                con = DriverManager.getConnection(jdbcUrl, username, password);
+                con = new ConnectionProxy(DriverManager.getConnection(jdbcUrl, username, password), this);
                 System.out.printf("%s: DB 커넥션 생성\n", Thread.currentThread().getName());
             }
             // 현재 스레드에 Connection을 보관한다.
@@ -41,6 +44,7 @@ public class DBConnectionPool {
         return con;
     }
 
+    @Override
     public void returnConnection(Connection con) {
         //현재 스레드에 보관중인 Connection 객체를 제거한다.
         connectionThreadLocal.remove();
@@ -49,5 +53,11 @@ public class DBConnectionPool {
 
         System.out.printf("%s: DB 커넥션을 커넥션풀에 반환\n", Thread.currentThread().getName());
 
+    }
+
+    public void closeAll() {
+        for (Connection con : connections) {
+            ((ConnectionProxy)con).realClose();
+        }
     }
 }

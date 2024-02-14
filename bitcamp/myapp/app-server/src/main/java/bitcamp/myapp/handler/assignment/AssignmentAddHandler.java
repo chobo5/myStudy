@@ -5,18 +5,19 @@ import bitcamp.myapp.dao.AssignmentDao;
 import bitcamp.myapp.vo.Assignment;
 import bitcamp.util.Prompt;
 import bitcamp.util.DBConnectionPool;
+import bitcamp.util.TransactionManager;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
 public class AssignmentAddHandler extends AbstractMenuHandler {
 
-  DBConnectionPool connectionPool;
+  TransactionManager txManager;
   private AssignmentDao assignmentDao;
 
 
-  public AssignmentAddHandler(DBConnectionPool connectionPool, AssignmentDao assignmentDao) {
-    this.connectionPool = connectionPool;
+  public AssignmentAddHandler(TransactionManager txManager, AssignmentDao assignmentDao) {
+    this.txManager = txManager;
     this.assignmentDao = assignmentDao;
   }
 
@@ -29,19 +30,16 @@ public class AssignmentAddHandler extends AbstractMenuHandler {
       assignment.setContent(prompt.input("내용? "));
       assignment.setDeadline(prompt.inputDate("제출 마감일?(예: 2023-12-25) "));
 
-      con = connectionPool.getConnection();
+      txManager.startTransaction();
+
       assignmentDao.add(assignment);
       assignmentDao.add(assignment);
-      con.commit();
+
+      txManager.rollback();
     } catch (Exception e) {
       prompt.println("과제 입력 중 오류 발생!");
       prompt.println("다시 시도하시기 바랍니다.");
-      try {
-        con.rollback();
-      } catch (SQLException ex) {
-      }
-    } finally {
-      connectionPool.returnConnection(con);
+
     }
   }
 }

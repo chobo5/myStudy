@@ -9,17 +9,14 @@ import bitcamp.util.Prompt;
 import java.sql.Connection;
 
 public class MemberViewHandler extends AbstractMenuHandler {
-    private DBConnectionPool connectionPool;
     private MemberDao memberDao;
 
-    public MemberViewHandler(DBConnectionPool connectionPool, MemberDao memberDao) {
-        this.connectionPool = connectionPool;
+    public MemberViewHandler(MemberDao memberDao) {
         this.memberDao = memberDao;
     }
 
     @Override
     protected void action(Prompt prompt) {
-        Connection con = null;
         try {
             int no = prompt.inputInt("번호? ");
 
@@ -35,8 +32,6 @@ public class MemberViewHandler extends AbstractMenuHandler {
             prompt.printf("가입일: %1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS\n", member.getCreatedDate());
         } catch (Exception e) {
 
-        } finally {
-            connectionPool.returnConnection(con);
         }
     }
 }

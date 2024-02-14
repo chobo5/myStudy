@@ -8,17 +8,14 @@ import bitcamp.util.Prompt;
 import java.sql.Connection;
 
 public class MemberDeleteHandler extends AbstractMenuHandler {
-    private DBConnectionPool connectionPool;
     private MemberDao memberDao;
 
-    public MemberDeleteHandler(DBConnectionPool connectionPool, MemberDao memberDao) {
-        this.connectionPool = connectionPool;
+    public MemberDeleteHandler(MemberDao memberDao) {
         this.memberDao = memberDao;
     }
 
     @Override
     protected void action(Prompt prompt) {
-        Connection con = null;
         try {
             int no = prompt.inputInt("번호? ");
             if (memberDao.delete(no) == -1) {
@@ -28,8 +25,6 @@ public class MemberDeleteHandler extends AbstractMenuHandler {
             }
         } catch (Exception e) {
 
-        } finally {
-            connectionPool.returnConnection(con);
         }
     }
 }
