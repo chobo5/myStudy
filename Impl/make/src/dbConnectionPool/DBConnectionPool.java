@@ -18,7 +18,7 @@ import java.util.List;
 
 // 3. 스레드별로 DB Connection을 따로 유지하며 connection 재활용하기
 // - 따라서 다음과 같은 과정을 거쳐 connectio을 재활용하는 간단한 connection pool을 구현해 보았다.
-public class DBConnectionPool {
+public class DBConnectionPool implements ConnectionPool{
    private static final ThreadLocal<Connection> connectionThreadLocal = new ThreadLocal<>();
    private String jdbcUrl;
    private String username;
@@ -37,7 +37,7 @@ public class DBConnectionPool {
             if (connections.size() > 0) {
                 con = connections.remove(0);
             } else {
-                con = DriverManager.getConnection(jdbcUrl, username, password);
+                con = new ConnectionProxy(DriverManager.getConnection(jdbcUrl, username, password), this);
                 connections.add(con);
             }
             connectionThreadLocal.set(con);
@@ -49,5 +49,11 @@ public class DBConnectionPool {
         //현재 스레드에 connection을 비운다.
         connectionThreadLocal.remove();
         connections.add(con);
+    }
+
+    public void closeAll() {
+        for (Connection connection : connections) {
+            ((ConnectionProxy)connection).realClose();
+        }
     }
 }
