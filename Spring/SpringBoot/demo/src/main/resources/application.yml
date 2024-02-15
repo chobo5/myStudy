@@ -1,7 +1,7 @@
 spring:
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/studydb
-    username: study
-    password: Bitcamp!@#123
+    url: jdbc:mysql://127.0.0.1:3306/examplesdb?useUnicode=true&serverTimezone=Asia/Seoul
+    username: chobo5
+    password: 12241509
 
 

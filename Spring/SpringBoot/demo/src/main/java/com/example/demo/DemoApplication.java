@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import com.example.demo.domain.Role;
+import com.example.demo.repository.RoleDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -21,26 +23,21 @@ public class DemoApplication implements CommandLineRunner {
 	@Autowired
 	DataSource dataSource;
 
+	@Autowired
+	RoleDao roleDao;
+
 	@Override
 	public void run(String... args) throws Exception {
-		System.out.println("Spring이 관리하는 빈을 사용할 수 있다.");
-		Connection con = dataSource.getConnection();
+//		Role role = new Role();
+//		role.setRoleId(3);
+//		role.setName("ROLE_TEST");
+//		roleDao.addRole(role);
 
-		//JDBC 프로그래밍
-		PreparedStatement ps = con.prepareStatement("select * from x_board");
-		ResultSet rs = ps.executeQuery();
-		while (rs.next()) {
-			int boardId = rs.getInt("board_id");
-			String title = rs.getString("title");
-			String contents = rs.getString("contents");
-			Date createdDate = rs.getDate("created_date");
-			int viewCount = rs.getInt("view_count");
-			System.out.println(title + " " + contents);
-		}
+//		boolean flag = roleDao.deleteRole(3);
+//		System.out.println(flag);
 
-		rs.close();
-		ps.close();
-		con.close();
+		System.out.println(roleDao.getRole(2));
+
 	}
 
 
