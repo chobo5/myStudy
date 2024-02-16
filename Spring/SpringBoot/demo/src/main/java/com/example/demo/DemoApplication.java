@@ -12,6 +12,8 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 @SpringBootApplication
 public class DemoApplication implements CommandLineRunner {
@@ -36,7 +38,12 @@ public class DemoApplication implements CommandLineRunner {
 //		boolean flag = roleDao.deleteRole(3);
 //		System.out.println(flag);
 
-		System.out.println(roleDao.getRole(2));
+//		System.out.println(roleDao.getRole(2));
+
+		List<Role> list = roleDao.getRoles();
+		for(Role role : list) {
+			System.out.println(role.getRoleId() + " " + role.getName());
+		}
 
 	}
 
