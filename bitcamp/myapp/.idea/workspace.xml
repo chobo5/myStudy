@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a84827e7-6d13-4c5e-bb9d-79b24217473a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../Algorithm/Programmers/src/_키패드누르기.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_15/note.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Algorithm/Programmers/src/_신규아이디추천.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_16/note.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Algorithm/BaekJoon/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Algorithm/BaekJoon/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Algorithm/Programmers/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Algorithm/Programmers/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Spring/MakeApplicationContext/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring/MakeApplicationContext/.idea/workspace.xml" afterDir="false" />
@@ -14,7 +14,6 @@
       <change beforePath="$PROJECT_DIR$/../../Spring/all.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring/all.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../assignments/LibrarySystem/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../assignments/LibrarySystem/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../assignments/lolwiki/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../assignments/lolwiki/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../summary/Summary/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/app/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +105,7 @@
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_directory_selection": "/Users/eomjinyoung/git/bitcamp-study/myapp/app/src/main/java/bitcamp/myapp",
-    "last_opened_file_path": "/Users/wonjun-yeon/Desktop/bitcamp/git/myStudy/bitcamp/myapp/app/src/main/webapp",
+    "last_opened_file_path": "/Users/wonjun-yeon/Desktop/bitcamp/git/myStudy/bitcamp/myapp/app/src/main/webapp/auth",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -115,11 +114,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/webapp/auth" />
       <recent name="$PROJECT_DIR$/app/src/main/webapp" />
       <recent name="$PROJECT_DIR$/app-client/doc" />
       <recent name="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp" />
       <recent name="$PROJECT_DIR$/app-client" />
-      <recent name="$PROJECT_DIR$/app-client/src/main/java" />
     </key>
     <key name="MoveMembersDialog.RECENTS_KEY">
       <recent name="bitcamp.myapp.Prompt" />
@@ -131,10 +130,10 @@
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="bitcamp.myapp.servlet.board" />
+      <recent name="bitcamp.myapp.servlet.auth" />
       <recent name="bitcamp.myapp.handler.auth" />
       <recent name="bitcamp.myapp.dao" />
       <recent name="bitcamp.myapp.dao.mysql" />
-      <recent name="bitcamp.myapp.handler" />
     </key>
   </component>
   <component name="RunManager" selected="Gradle.myapp:app [run]">
@@ -194,13 +193,12 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Application.ServerApp" />
+      <item itemvalue="Application.App" />
       <item itemvalue="Gradle.myapp:app [run]" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.myapp:app [run]" />
-        <item itemvalue="Application.ServerApp" />
       </list>
     </recent_temporary>
   </component>
@@ -225,6 +223,17 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/board/BoardFileDeleteServlet.java</url>
+          <line>61</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -37,8 +37,11 @@ public class BoardListServlet extends GenericServlet {
         out.println("<title>Hello World</title>");
         out.println("</head>");
         out.println("<body>");
+        out.println("<h1>게시글</h1>");
+
+        out.println("<a href='/board/form.html'>새 글</a>");
         try {
-            out.println("<table>");
+            out.println("<table border='1'>");
             out.println("<thead>");
             out.println("<tr>");
             out.println("<th>번호</th> <th>제목</th> <th>작성자</th> <th>등록일</th> <th>첨부 파일</th>");
@@ -48,7 +51,7 @@ public class BoardListServlet extends GenericServlet {
             List<Board> list = boardDao.findAll();
 
             for (Board board : list) {
-                out.printf("<tr> <td>%d</td> <td>%s</td> <td>%s</td> <td>%s</td> <td>%d</td> </tr>\n",
+                out.printf("<tr> <td>%d</td> <td><a href='/board/view?no=%1$d'>%s</a></td> <td>%s</td> <td>%s</td> <td>%d</td> </tr>\n",
                         board.getNo(),
                         board.getTitle(),
                         board.getWriter().getName(),
