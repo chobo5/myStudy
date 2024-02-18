@@ -1,14 +1,9 @@
 package bitcamp.myapp.servlet.assignment;
 
-
 import bitcamp.myapp.dao.AssignmentDao;
 import bitcamp.myapp.dao.mysql.AssignmentDaoImpl;
 import bitcamp.myapp.vo.Assignment;
-import bitcamp.myapp.vo.AttachedFile;
-import bitcamp.myapp.vo.Board;
-import bitcamp.myapp.vo.Member;
 import bitcamp.util.DBConnectionPool;
-import bitcamp.util.TransactionManager;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,16 +13,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
-import java.util.ArrayList;
 
-@WebServlet("/assignment/add")
-public class AssignmentAddServlet extends HttpServlet {
-    AssignmentDao assignmentDao ;
-
-    public AssignmentAddServlet() {
+@WebServlet("/assignment/delete")
+public class AssignmentDeleteServlet extends HttpServlet {
+    AssignmentDao assignmentDao;
+    public AssignmentDeleteServlet() {
         DBConnectionPool connectionPool = new DBConnectionPool(
                 "jdbc:mysql://db-ld296-kr.vpc-pub-cdb.ntruss.com/studydb", "study", "Bitcamp!@#123");
-        this.assignmentDao = new AssignmentDaoImpl(connectionPool);
+        assignmentDao = new AssignmentDaoImpl(connectionPool);
     }
 
     @Override
@@ -43,19 +36,12 @@ public class AssignmentAddServlet extends HttpServlet {
         out.println("<body>");
         out.println("<h1>과제</h1>");
 
-
-        Assignment assignment = new Assignment();
-        assignment.setTitle(req.getParameter("title"));
-        assignment.setContent(req.getParameter("content"));
-        System.out.println("-----------");
-//        System.out.println(req.getParameter("deadline").getClass().getName());
-        assignment.setDeadline(Date.valueOf(req.getParameter("deadline")));
-
         try {
-            assignmentDao.add(assignment);
-            out.println("<p>과제 등록이 완료되었습니다.</p>");
+            int no = Integer.parseInt(req.getParameter("no"));
+            assignmentDao.delete(no);
+            out.println("<p>과제 삭제가 완료되었습니다.</p>");
         } catch (Exception e) {
-            System.out.println("<p>게시글 등록 오류</p>");
+            System.out.println("<p>게시글 삭제 오류</p>");
             out.println("<pre>");
             e.printStackTrace(out);
             out.println("</pre>");
