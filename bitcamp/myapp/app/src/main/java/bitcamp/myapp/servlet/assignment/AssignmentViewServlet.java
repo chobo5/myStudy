@@ -18,10 +18,9 @@ import java.io.PrintWriter;
 public class AssignmentViewServlet extends HttpServlet {
     AssignmentDao assignmentDao;
 
-    public AssignmentViewServlet() {
-        DBConnectionPool connectionPool = new DBConnectionPool(
-                "jdbc:mysql://db-ld296-kr.vpc-pub-cdb.ntruss.com/studydb", "study", "Bitcamp!@#123");
-        assignmentDao = new AssignmentDaoImpl(connectionPool);
+    @Override
+    public void init() {
+        assignmentDao = (AssignmentDao) this.getServletContext().getAttribute("assignmentDao");
     }
 
     @Override

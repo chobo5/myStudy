@@ -10,6 +10,7 @@ import bitcamp.myapp.vo.Member;
 import bitcamp.util.DBConnectionPool;
 import bitcamp.util.TransactionManager;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,16 +25,15 @@ import java.util.ArrayList;
 public class AssignmentAddServlet extends HttpServlet {
     AssignmentDao assignmentDao ;
 
-    public AssignmentAddServlet() {
-        DBConnectionPool connectionPool = new DBConnectionPool(
-                "jdbc:mysql://db-ld296-kr.vpc-pub-cdb.ntruss.com/studydb", "study", "Bitcamp!@#123");
-        this.assignmentDao = new AssignmentDaoImpl(connectionPool);
+    @Override
+    public void init() {
+        assignmentDao = (AssignmentDao) this.getServletContext().getAttribute("assignmentDao");
     }
 
     @Override
-    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = resp.getWriter();
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
         out.println("<!DOCTYPE html>");
         out.println("<html lang='en'>");
         out.println("<head>");
@@ -45,11 +45,11 @@ public class AssignmentAddServlet extends HttpServlet {
 
 
         Assignment assignment = new Assignment();
-        assignment.setTitle(req.getParameter("title"));
-        assignment.setContent(req.getParameter("content"));
+        assignment.setTitle(request.getParameter("title"));
+        assignment.setContent(request.getParameter("content"));
         System.out.println("-----------");
 //        System.out.println(req.getParameter("deadline").getClass().getName());
-        assignment.setDeadline(Date.valueOf(req.getParameter("deadline")));
+        assignment.setDeadline(Date.valueOf(request.getParameter("deadline")));
 
         try {
             assignmentDao.add(assignment);

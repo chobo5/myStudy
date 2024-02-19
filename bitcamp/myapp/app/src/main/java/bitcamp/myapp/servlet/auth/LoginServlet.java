@@ -10,29 +10,23 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
 @WebServlet("/auth/login")
-public class LoginServlet extends GenericServlet {
+public class LoginServlet extends HttpServlet {
 
     MemberDao memberDao;
-    public LoginServlet() {
-        DBConnectionPool connectionPool = new DBConnectionPool(
-                "jdbc:mysql://db-ld296-kr.vpc-pub-cdb.ntruss.com/studydb", "study", "Bitcamp!@#123");
-        this.memberDao = new MemberDaoImpl(connectionPool);
+    @Override
+    public void init() {
+        this.memberDao = (MemberDao) this.getServletContext().getAttribute("memberDao");
     }
 
     @Override
-    public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
-
-
-        //서블릿 컨테이너가 service()를 호출할때 실제 넘겨주는 값은 HttpServletRequest와 HttpServletResponse 이다.
-        //getSession() 메소드는 HttpServletRequest에 있기 때문에 원래의 타입으로 형변환 해야 한다.
-        HttpServletRequest request = (HttpServletRequest) req;
-        HttpServletResponse response = (HttpServletResponse) res;
+    public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String email = request.getParameter("email");
         String password = request.getParameter("password");

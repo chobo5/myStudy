@@ -2,8 +2,6 @@ package bitcamp.myapp.servlet.member;
 
 import bitcamp.myapp.dao.MemberDao;
 import bitcamp.myapp.dao.mysql.MemberDaoImpl;
-import bitcamp.myapp.vo.AttachedFile;
-import bitcamp.myapp.vo.Board;
 import bitcamp.myapp.vo.Member;
 import bitcamp.util.DBConnectionPool;
 
@@ -14,10 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 
-@WebServlet("/member/add")
-public class MemberAddServlet extends HttpServlet {
+@WebServlet("/member/delete")
+public class MemberDeleteServlet extends HttpServlet {
     private MemberDao memberDao;
 
     @Override
@@ -26,9 +25,9 @@ public class MemberAddServlet extends HttpServlet {
     }
 
     @Override
-    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = resp.getWriter();
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
 
         out.println("<!DOCTYPE html>");
         out.println("<html lang='en'>");
@@ -37,30 +36,34 @@ public class MemberAddServlet extends HttpServlet {
         out.println("  <title>비트캠프 데브옵스 5기</title>");
         out.println("</head>");
         out.println("<body>");
-        out.println("<h1>회원 가입</h1>");
+        out.println("<h1>회원 탈퇴</h1>");
+
+        Member loginUser = (Member) request.getSession().getAttribute("loginUser");
+        if (loginUser == null) {
+            out.println("<p>로그인이 필요합니다</p>");
+            out.println("</body>");
+            out.println("</html>");
+            return;
+        }
 
         try {
-            String email = req.getParameter("email");
-            String name = req.getParameter("name");
-            String password = req.getParameter("password");
-            String password2 = req.getParameter("password2");
-            if (!password.equals(password2)) {
-                out.println("<p>비밀번호가 일치하지 않습니다.</p>");
-                out.println("<pre>");
-                out.println("</pre>");
+            int no = Integer.parseInt(request.getParameter("no"));
+            Member member = memberDao.findBy(no);
+            if (loginUser.getNo() == member.getNo()) {
+                memberDao.delete(no);
+            } else {
+                out.println("<p>삭제하려는 회원과 로그인한 회원이 일치하지 않습니다.</p>");
+                out.println("</body>");
+                out.println("</html>");
                 return;
             }
-            Member member = new Member();
-            member.setEmail(email);
-            member.setName(name);
-            member.setPassword(password);
-            memberDao.add(member);
-            out.println("<p>회원가입 완료!</p>");
+
+            out.println("<p>회원탈퇴 완료</p>");
             out.println("<pre>");
             out.println("</pre>");
 
         } catch (Exception e) {
-            out.println("<p>조회 오류!</p>");
+            out.println("<p>삭제 오류!</p>");
             out.println("<pre>");
             e.printStackTrace(out);
             out.println("</pre>");

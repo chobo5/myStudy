@@ -5,12 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a84827e7-6d13-4c5e-bb9d-79b24217473a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../Algorithm/Programmers/src/_바탕화면정리.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_19/note.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Algorithm/BaekJoon/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Algorithm/BaekJoon/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Spring/MakeApplicationContext/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring/MakeApplicationContext/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Spring/ServletExam/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring/ServletExam/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Spring/all.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring/all.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../assignments/LibrarySystem/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../assignments/LibrarySystem/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../assignments/lolwiki/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../assignments/lolwiki/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_15/note.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_15/note.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_16/note.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_16/note.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,8 +60,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -126,11 +130,11 @@
       <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="bitcamp.myapp.servlet.assignment" />
       <recent name="bitcamp.myapp.servlet.board" />
+      <recent name="bitcamp.myapp.servlet.member" />
+      <recent name="bitcamp.myapp.servlet.assignment" />
       <recent name="bitcamp.myapp.servlet.auth" />
       <recent name="bitcamp.myapp.handler.auth" />
-      <recent name="bitcamp.myapp.dao" />
     </key>
   </component>
   <component name="RunManager" selected="Gradle.myapp:app [run]">
@@ -226,7 +230,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/board/BoardFileDeleteServlet.java</url>
-          <line>61</line>
+          <line>40</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">

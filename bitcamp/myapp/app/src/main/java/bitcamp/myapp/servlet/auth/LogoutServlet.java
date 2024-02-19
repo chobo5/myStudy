@@ -12,12 +12,6 @@ import java.io.PrintWriter;
 @WebServlet("/auth/logout")
 public class LogoutServlet extends HttpServlet {
 
-
-    public LogoutServlet() {
-        DBConnectionPool connectionPool = new DBConnectionPool(
-                "jdbc:mysql://db-ld296-kr.vpc-pub-cdb.ntruss.com/studydb", "study", "Bitcamp!@#123");
-    }
-
     @Override
     public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

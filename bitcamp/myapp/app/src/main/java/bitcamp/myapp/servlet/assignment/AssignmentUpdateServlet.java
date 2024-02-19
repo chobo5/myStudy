@@ -16,12 +16,11 @@ import java.sql.Date;
 
 @WebServlet("/assignment/update")
 public class AssignmentUpdateServlet extends HttpServlet {
-    AssignmentDao assignmentDao;
+    AssignmentDao assignmentDao ;
 
-    public AssignmentUpdateServlet() {
-        DBConnectionPool connectionPool = new DBConnectionPool(
-                "jdbc:mysql://db-ld296-kr.vpc-pub-cdb.ntruss.com/studydb", "study", "Bitcamp!@#123");
-        assignmentDao = new AssignmentDaoImpl(connectionPool);
+    @Override
+    public void init() {
+        assignmentDao = (AssignmentDao) this.getServletContext().getAttribute("assignmentDao");
     }
 
     @Override
