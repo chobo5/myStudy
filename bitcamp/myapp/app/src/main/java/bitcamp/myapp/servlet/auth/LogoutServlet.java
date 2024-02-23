@@ -13,24 +13,10 @@ import java.io.PrintWriter;
 public class LogoutServlet extends HttpServlet {
 
     @Override
-    public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         request.getSession().invalidate();
 
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-
-        out.println("<!DOCTYPE html>");
-        out.println("<html lang='en'>");
-        out.println("<head>");
-        out.println("<meta charset='UTF-8'>");
-        out.println("<title>Hello World</title>");
-        out.println("</head>");
-        out.println("<body>");
-        out.println("<h1>과제 관리 시스템</h1>");
-        out.println("<h2>로그아웃</h2>");
-        out.println("<h2>로그아웃 했습니다.</h2>");
-        out.println("</body>");
-        out.println("</html>");
+        response.sendRedirect("/index.html");
     }
 }

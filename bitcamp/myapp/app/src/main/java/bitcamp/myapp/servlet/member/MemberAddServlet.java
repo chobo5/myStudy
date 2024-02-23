@@ -20,7 +20,8 @@ public class MemberAddServlet extends HttpServlet {
     }
 
     @Override
-    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
         resp.setContentType("text/html;charset=UTF-8");
         PrintWriter out = resp.getWriter();
 
@@ -39,9 +40,7 @@ public class MemberAddServlet extends HttpServlet {
             String password = req.getParameter("password");
             String password2 = req.getParameter("password2");
             if (!password.equals(password2)) {
-                out.println("<p>비밀번호가 일치하지 않습니다.</p>");
-                out.println("<pre>");
-                out.println("</pre>");
+                resp.sendRedirect("/member/add");
                 return;
             }
             Member member = new Member();
@@ -49,10 +48,8 @@ public class MemberAddServlet extends HttpServlet {
             member.setName(name);
             member.setPassword(password);
             memberDao.add(member);
-            out.println("<p>회원가입 완료!</p>");
-            out.println("<pre>");
-            out.println("</pre>");
-
+            resp.sendRedirect("/member/list");
+            return;
         } catch (Exception e) {
             out.println("<p>조회 오류!</p>");
             out.println("<pre>");

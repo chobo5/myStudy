@@ -23,7 +23,7 @@ public class MemberUpdateServlet extends HttpServlet {
     }
 
     @Override
-    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
@@ -68,9 +68,8 @@ public class MemberUpdateServlet extends HttpServlet {
                 out.println("</html>");
                 return;
             }
-            out.println("<p>회원정보 변경 완료!</p>");
-            out.println("<pre>");
-            out.println("</pre>");
+            response.sendRedirect("/member/list");
+            return;
 
         } catch (Exception e) {
             out.println("<p>변경 오류!</p>");

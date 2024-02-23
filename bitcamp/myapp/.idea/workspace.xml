@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a84827e7-6d13-4c5e-bb9d-79b24217473a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_20/note.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_23/note.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Algorithm/BaekJoon/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Algorithm/BaekJoon/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Algorithm/Programmers/src/_바탕화면정리.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Algorithm/Programmers/src/_바탕화면정리.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Impl/make/src/dbConnectionPool/ConnectionProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Impl/make/src/dbConnectionPool/ConnectionProxy.java" afterDir="false" />
@@ -129,11 +129,11 @@
       <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="bitcamp.myapp.servlet" />
       <recent name="bitcamp.myapp.servlet.board" />
       <recent name="bitcamp.myapp.servlet.member" />
       <recent name="bitcamp.myapp.servlet.assignment" />
       <recent name="bitcamp.myapp.servlet.auth" />
-      <recent name="bitcamp.myapp.handler.auth" />
     </key>
   </component>
   <component name="RunManager" selected="Gradle.myapp:app [run]">

@@ -25,7 +25,7 @@ public class MemberDeleteServlet extends HttpServlet {
     }
 
     @Override
-    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
 
@@ -43,6 +43,7 @@ public class MemberDeleteServlet extends HttpServlet {
             out.println("<p>로그인이 필요합니다</p>");
             out.println("</body>");
             out.println("</html>");
+            response.setHeader("Refresh", "1;url=/auth/login");
             return;
         }
 
@@ -52,21 +53,22 @@ public class MemberDeleteServlet extends HttpServlet {
             if (loginUser.getNo() == member.getNo()) {
                 memberDao.delete(no);
             } else {
-                out.println("<p>삭제하려는 회원과 로그인한 회원이 일치하지 않습니다.</p>");
+                out.println("<p>삭제 권한이 없습니다.</p>");
                 out.println("</body>");
                 out.println("</html>");
+                response.setHeader("Refresh", "1;url=/member/list");
                 return;
             }
 
-            out.println("<p>회원탈퇴 완료</p>");
-            out.println("<pre>");
-            out.println("</pre>");
+            response.sendRedirect("/member/list");
+            return;
 
         } catch (Exception e) {
             out.println("<p>삭제 오류!</p>");
             out.println("<pre>");
             e.printStackTrace(out);
             out.println("</pre>");
+            response.setHeader("Refresh", "1;url=/member/list");
         }
 
         out.println("</body>");
