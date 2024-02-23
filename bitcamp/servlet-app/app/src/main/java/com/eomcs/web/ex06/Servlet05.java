@@ -2,21 +2,22 @@
 package com.eomcs.web.ex06;
 
 import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 
 // 서블릿이 사용할 값을 DD 설정으로 지정할 수 있다.
-@WebServlet(value = "/ex06/s4", loadOnStartup = 1)
+@WebServlet(value = "/ex06/s5" /*, loadOnStartup = 1*/)
 @SuppressWarnings("serial")
-public class Servlet04 extends HttpServlet {
+public class Servlet05 extends HttpServlet {
 
 
     @Override
     public void init() throws ServletException {
         System.out.println("/ex06/s4 ==> init()");
 
-        ServletConfig config = this.getServletConfig();
+        ServletContext config = this.getServletContext();
 
         String jdbcDriver = config.getInitParameter("jdbc.driver");
         String jdbcUrl = config.getInitParameter("jdbc.url");
@@ -27,7 +28,6 @@ public class Servlet04 extends HttpServlet {
         System.out.println(jdbcUrl);
         System.out.println(username);
         System.out.println(password);
-
     }
 }
 
