@@ -1,36 +1,42 @@
 package bitcamp.myapp.vo;
 
 public class AttachedFile {
-    private int no;
-    private String filePath;
-    private int boardNo;
 
-    public int getNo() {
-        return no;
-    }
+  private int no;
+  private String filePath;
+  private int boardNo;
 
-    public void setNo(int no) {
-        this.no = no;
-    }
+  public int getNo() {
+    return no;
+  }
 
-    public String getFilePath() {
-        return filePath;
-    }
+  public void setNo(int no) {
+    this.no = no;
+  }
 
-    public void setFilePath(String filePath) {
-        this.filePath = filePath;
-    }
+  public String getFilePath() {
+    return filePath;
+  }
 
-    public int getBoardNo() {
-        return boardNo;
-    }
+  public void setFilePath(String filePath) {
+    this.filePath = filePath;
+  }
 
-    public void setBoardNo(int boardNo) {
-        this.boardNo = boardNo;
-    }
+  public int getBoardNo() {
+    return boardNo;
+  }
 
-    public AttachedFile filePath(String filePath) {
-        this.filePath = filePath;
-        return this;
-    }
+  public void setBoardNo(int boardNo) {
+    this.boardNo = boardNo;
+  }
+
+  public AttachedFile filePath(String filePath) {
+    this.filePath = filePath;
+    return this;
+  }
+
+  public AttachedFile boardNo(int boardNo) {
+    this.boardNo = boardNo;
+    return this;
+  }
 }

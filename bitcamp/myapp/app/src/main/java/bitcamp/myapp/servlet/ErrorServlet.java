@@ -8,11 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/index.html")
-public class HomeServlet extends HttpServlet {
+@WebServlet("/error")
+public class ErrorServlet extends HttpServlet {
 
   @Override
-  protected void doGet(HttpServletRequest request, HttpServletResponse response)
+  protected void service(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
 
     response.setContentType("text/html;charset=UTF-8");
@@ -28,8 +28,19 @@ public class HomeServlet extends HttpServlet {
 
     request.getRequestDispatcher("/header").include(request, response);
 
-    out.println("<h1>과제 관리 시스템</h1>");
-    out.println("<p>환영합니다! 교육 센터 과제 관리 시스템입니다.</p>");
+    out.println("<h1>오류!</h1>");
+    
+    String message = (String) request.getAttribute("message");
+    if (message != null) {
+      out.printf("<p>%s</p>\n", message);
+    }
+
+    Throwable exception = (Throwable) request.getAttribute("exception");
+    if (exception != null) {
+      out.println("<pre>");
+      exception.printStackTrace(out);
+      out.println("</pre>");
+    }
 
     request.getRequestDispatcher("/footer").include(request, response);
 

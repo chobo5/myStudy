@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a84827e7-6d13-4c5e-bb9d-79b24217473a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_23/note.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Algorithm/BaekJoon/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Algorithm/BaekJoon/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Algorithm/Programmers/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Algorithm/Programmers/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Algorithm/Programmers/src/_바탕화면정리.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Algorithm/Programmers/src/_바탕화면정리.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Impl/make/src/dbConnectionPool/ConnectionProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Impl/make/src/dbConnectionPool/ConnectionProxy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Spring/MakeApplicationContext/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring/MakeApplicationContext/.idea/workspace.xml" afterDir="false" />
@@ -14,6 +14,7 @@
       <change beforePath="$PROJECT_DIR$/../../Spring/all.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring/all.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../assignments/LibrarySystem/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../assignments/LibrarySystem/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../assignments/lolwiki/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../assignments/lolwiki/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_26/note.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_02_26/note.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +106,7 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_directory_selection&quot;: &quot;/Users/eomjinyoung/git/bitcamp-study/myapp/app/src/main/java/bitcamp/myapp&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/wonjun-yeon/Desktop/bitcamp/git/myStudy/bitcamp/myapp/app/src/main/webapp/auth&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/wonjun-yeon/Desktop/bitcamp/git/myStudy/bitcamp/myapp/app/src/main/java/bitcamp/myapp&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
@@ -114,16 +115,19 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp" />
+      <recent name="$PROJECT_DIR$/app/src/main" />
+      <recent name="$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/vo" />
+      <recent name="$PROJECT_DIR$/app/src/main/java" />
       <recent name="$PROJECT_DIR$/app/src/main/webapp/auth" />
-      <recent name="$PROJECT_DIR$/app/src/main/webapp" />
-      <recent name="$PROJECT_DIR$/app-client/doc" />
-      <recent name="$PROJECT_DIR$/app-client/src/main/java/bitcamp/myapp" />
-      <recent name="$PROJECT_DIR$/app-client" />
     </key>
     <key name="MoveMembersDialog.RECENTS_KEY">
       <recent name="bitcamp.myapp.Prompt" />
       <recent name="bitcamp.myapp.BoardMenu" />
       <recent name="bitcamp.myapp.AssignmentMenu" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/java" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
@@ -136,7 +140,7 @@
       <recent name="bitcamp.myapp.servlet.auth" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.myapp:app [run]">
+  <component name="RunManager" selected="Gradle.myapp [run]">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="bitcamp.myapp.App" />
       <module name="myapp.app.main" />
@@ -170,10 +174,10 @@
       <RunAsTest>false</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="myapp:app [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="myapp [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/app" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
         <option name="scriptParameters" value="" />
         <option name="taskDescriptions">
@@ -194,11 +198,11 @@
     </configuration>
     <list>
       <item itemvalue="Application.App" />
-      <item itemvalue="Gradle.myapp:app [run]" />
+      <item itemvalue="Gradle.myapp [run]" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.myapp:app [run]" />
+        <item itemvalue="Gradle.myapp [run]" />
       </list>
     </recent_temporary>
   </component>
