@@ -94,7 +94,7 @@ public class MemberAddServlet extends HttpServlet {
       }
       memberDao.add(member);
       response.sendRedirect("list");
-  
+
     } catch (Exception e) {
       request.setAttribute("message", "등록 오류!");
       request.setAttribute("exception", e);
