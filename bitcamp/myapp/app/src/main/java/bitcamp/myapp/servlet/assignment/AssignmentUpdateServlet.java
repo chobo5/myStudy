@@ -25,7 +25,6 @@ public class AssignmentUpdateServlet extends HttpServlet {
       throws ServletException, IOException {
 
     try {
-      request.setCharacterEncoding("UTF-8");
       int no = Integer.parseInt(request.getParameter("no"));
 
       Assignment old = assignmentDao.findBy(no);
@@ -45,7 +44,7 @@ public class AssignmentUpdateServlet extends HttpServlet {
     } catch (Exception e) {
       request.setAttribute("message", "변경 오류!");
       request.setAttribute("exception", e);
-      request.getRequestDispatcher("/error").forward(request, response);
+      request.getRequestDispatcher("/error.jsp").forward(request, response);
     }
   }
 }
