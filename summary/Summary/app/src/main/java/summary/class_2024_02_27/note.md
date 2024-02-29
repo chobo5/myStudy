@@ -32,4 +32,3 @@
 - servlet container에서 getSession() 호출시 HttpSession 객체를 생성한다.
 - 세션ID를 쿠키에 담아 응답한다.
 - 요청에 세션ID가 포함되어있다면 HttpSession을 생성하지 않으며, 응답에 쿠키를 담지 않는다.
-- 
