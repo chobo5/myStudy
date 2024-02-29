@@ -1,42 +1,38 @@
-package bitcamp.myapp.servlet.board;
+package bitcamp.myapp.controller.board;
 
+import bitcamp.myapp.controller.PageController;
 import bitcamp.myapp.dao.AttachedFileDao;
 import bitcamp.myapp.dao.BoardDao;
 import bitcamp.myapp.vo.AttachedFile;
 import bitcamp.myapp.vo.Member;
 
-import java.io.File;
-import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.IOException;
 
-@WebServlet("/board/file/delete")
-public class BoardFileDeleteServlet extends HttpServlet {
+public class BoardFileDeleteController implements PageController {
 
   private BoardDao boardDao;
   private AttachedFileDao attachedFileDao;
   private String uploadDir;
 
-  @Override
-  public void init() {
-    this.boardDao = (BoardDao) this.getServletContext().getAttribute("boardDao");
-    this.attachedFileDao = (AttachedFileDao) this.getServletContext()
-        .getAttribute("attachedFileDao");
-    uploadDir = this.getServletContext().getRealPath("/upload/board");
+  public BoardFileDeleteController(BoardDao boardDao, AttachedFileDao attachedFileDao, String uploadDir) {
+    this.boardDao = boardDao;
+    this.attachedFileDao = attachedFileDao;
+    this.uploadDir = uploadDir;
   }
 
   @Override
-  protected void doGet(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
+  public String execute(HttpServletRequest request, HttpServletResponse response)
+      throws Exception {
+    int category = Integer.valueOf(request.getParameter("category"));
+    String title = category == 1 ? "게시글" : "가입인사";
 
-    String title = "";
 
-    try {
-      int category = Integer.valueOf(request.getParameter("category"));
-      title = category == 1 ? "게시글" : "가입인사";
 
       Member loginUser = (Member) request.getSession().getAttribute("loginUser");
       if (loginUser == null) {
@@ -56,12 +52,6 @@ public class BoardFileDeleteServlet extends HttpServlet {
 
       attachedFileDao.delete(fileNo);
       new File(this.uploadDir + "/" + file.getFilePath()).delete();
-      response.sendRedirect(request.getHeader("Referer"));
-
-    } catch (Exception e) {
-      request.setAttribute("message", String.format("%s 첨부파일 삭제 오류!", title));
-      request.setAttribute("exception", e);
-      request.getRequestDispatcher("/error").forward(request, response);
-    }
+      return "redirect:" + request.getHeader("Referer");
   }
 }

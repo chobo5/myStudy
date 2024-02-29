@@ -1,5 +1,6 @@
-package bitcamp.myapp.servlet.board;
+package bitcamp.myapp.controller.board;
 
+import bitcamp.myapp.controller.PageController;
 import bitcamp.myapp.dao.AttachedFileDao;
 import bitcamp.myapp.dao.BoardDao;
 import bitcamp.myapp.vo.AttachedFile;
@@ -7,41 +8,37 @@ import bitcamp.myapp.vo.Board;
 import bitcamp.myapp.vo.Member;
 import bitcamp.util.TransactionManager;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
 
-@WebServlet("/board/delete")
-public class BoardDeleteServlet extends HttpServlet {
+public class BoardDeleteController implements PageController {
 
   private BoardDao boardDao;
   private AttachedFileDao attachedFileDao;
   private String uploadDir;
   private TransactionManager txManager;
 
-  @Override
-  public void init() {
-    this.boardDao = (BoardDao) this.getServletContext().getAttribute("boardDao");
-    this.attachedFileDao = (AttachedFileDao) this.getServletContext()
-        .getAttribute("attachedFileDao");
-    uploadDir = this.getServletContext().getRealPath("/upload/board");
-    txManager = (TransactionManager) this.getServletContext().getAttribute("txManager");
+  public BoardDeleteController(TransactionManager txManager, BoardDao boardDao, AttachedFileDao attachedFileDao, String uploadDir) {
+    this.txManager = txManager;
+    this.boardDao = boardDao;
+    this.attachedFileDao = attachedFileDao;
+    this.uploadDir = uploadDir;
+
   }
 
   @Override
-  protected void doGet(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
+  public String execute(HttpServletRequest request, HttpServletResponse response)
+          throws Exception {
+    int category = Integer.valueOf(request.getParameter("category"));
+    String title = category == 1 ? "게시글" : "가입인사";
 
-    String title = "";
     try {
-      int category = Integer.valueOf(request.getParameter("category"));
-      title = category == 1 ? "게시글" : "가입인사";
-
       Member loginUser = (Member) request.getSession().getAttribute("loginUser");
       if (loginUser == null) {
         throw new Exception("로그인하시기 바랍니다!");
@@ -66,16 +63,14 @@ public class BoardDeleteServlet extends HttpServlet {
         new File(this.uploadDir + "/" + file.getFilePath()).delete();
       }
 
-      response.sendRedirect("/board/list?category=" + category);
+      return "redirect:list?category=" + category;
 
     } catch (Exception e) {
       try {
         txManager.rollback();
       } catch (Exception e2) {
       }
-      request.setAttribute("message", String.format("%s 삭제 오류!", title));
-      request.setAttribute("exception", e);
-      request.getRequestDispatcher("/error.jsp").forward(request, response);
+      throw e;
     }
   }
 }

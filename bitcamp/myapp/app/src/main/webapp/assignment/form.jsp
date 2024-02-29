@@ -11,8 +11,8 @@
 
            <h1>과제 관리 시스템</h1>
            <h2>과제</h2>
-       
-           <form action='/assignment/add' method='post'>
+
+           <form action='/app/assignment/add' method='post'>
              <div>
                    과제: <input name='title' type='text'>
              </div>
@@ -26,8 +26,8 @@
                <button>등록</button>
              </div>
            </form>
-    
+
         <jsp:include page="/footer.jsp"></jsp:include>
-    
+
         </body>
         </html>

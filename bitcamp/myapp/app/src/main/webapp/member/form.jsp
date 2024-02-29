@@ -13,7 +13,7 @@
     
         <h2>회원</h2>
     
-        <form action='/member/add' method='post' enctype='multipart/form-data'>
+        <form action='/app/member/add' method='post' enctype='multipart/form-data'>
           <div>
                 사진: <input name='photo' type='file'>
           </div>
@@ -31,7 +31,7 @@
           </div>
         </form>
     
-        <jsp:include page="/footer,jsp"></jsp:include>
+        <jsp:include page="/footer.jsp"></jsp:include>
     
         </body>
         </html>

@@ -1,11 +1,9 @@
-package bitcamp.myapp.servlet.member;
+package bitcamp.myapp.controller.member;
 
+import bitcamp.myapp.controller.PageController;
 import bitcamp.myapp.dao.MemberDao;
 import bitcamp.myapp.vo.Member;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.UUID;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -13,24 +11,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+import java.io.File;
+import java.io.IOException;
+import java.util.UUID;
 
-@MultipartConfig(maxFileSize = 1024 * 1024 * 10)
-@WebServlet("/member/update")
-public class MemberUpdateServlet extends HttpServlet {
+public class MemberUpdateController implements PageController {
 
   private MemberDao memberDao;
   private String uploadDir;
 
-  @Override
-  public void init() {
-    this.memberDao = (MemberDao) this.getServletContext().getAttribute("memberDao");
-    uploadDir = this.getServletContext().getRealPath("/upload");
+  public MemberUpdateController(MemberDao memberDao, String uploadDir) {
+    this.memberDao = memberDao;
+    this.uploadDir = uploadDir;
   }
 
+
   @Override
-  protected void doPost(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
-    try {
+  public String execute(HttpServletRequest request, HttpServletResponse response)
+      throws Exception{
 
       int no = Integer.parseInt(request.getParameter("no"));
       Member old = memberDao.findBy(no);
@@ -57,12 +55,8 @@ public class MemberUpdateServlet extends HttpServlet {
       }
 
       memberDao.update(member);
-      response.sendRedirect("list");
+      return "redirect:list";
 
-    } catch (Exception e) {
-      request.setAttribute("message", "변경 오류!");
-      request.setAttribute("exception", e);
-      request.getRequestDispatcher("/error").forward(request, response);
-    }
+
   }
 }
