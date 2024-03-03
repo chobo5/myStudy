@@ -9,6 +9,8 @@ public class ConnectionProxy implements Connection {
     private Connection original;
     private ConnectionPool connectionPool;
 
+    DriverManager dm;
+
     public ConnectionProxy(Connection original, ConnectionPool connectionPool) {
         this.original = original;
         this.connectionPool = connectionPool;
