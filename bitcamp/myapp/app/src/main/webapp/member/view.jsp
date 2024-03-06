@@ -20,7 +20,7 @@
       <c:if test="${empty member.photo}">
          <a href='/upload/default-photo.jpg'><img src='/upload/default-photo.jpg' height='80px'></a><br>
       </c:if>
-         <input name='photo' type='file'>
+         <input name='file' type='file'>
       </div>
       <div>
         번호: <input readonly name='no' type='text' value='${member.no}'>

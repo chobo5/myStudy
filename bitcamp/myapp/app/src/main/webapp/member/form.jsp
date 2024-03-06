@@ -15,7 +15,7 @@
     
         <form action='/app/member/add' method='post' enctype='multipart/form-data'>
           <div>
-                사진: <input name='photo' type='file'>
+                사진: <input name='file' type='file'>
           </div>
           <div>
                 이메일: <input name='email' type='text'>

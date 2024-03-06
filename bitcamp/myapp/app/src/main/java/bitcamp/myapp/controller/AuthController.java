@@ -9,7 +9,9 @@ import javax.servlet.http.Cookie;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Map;
 
 public class AuthController {
 
@@ -19,28 +21,18 @@ public class AuthController {
         this.memberDao = memberDao;
     }
 
+    @RequestMapping("/auth/form")
+    public String form(@CookieValue("email") String email, Map<String, Object> map) {
+        map.put("email", email);
+        return "/auth/form.jsp";
+    }
     @RequestMapping("/auth/login")
-    public String login(HttpServletRequest request, HttpServletResponse response)
-            throws Exception {
-        if (request.getMethod().equals("GET")) {
+    public String login(@RequestParam("email") String email,
+                        @RequestParam("password") String password,
+                        @RequestParam("saveEmail") String saveEmail,
+                        HttpServletResponse response,
+                        HttpSession session) throws Exception {
 
-            String email = "";
-            Cookie[] cookies = request.getCookies();
-            if (cookies != null) {
-                for (Cookie cookie : cookies) {
-                    if (cookie.getName().equals("email")) {
-                        request.setAttribute("email", cookie.getValue());
-                        break;
-                    }
-                }
-            }
-
-            return "/auth/form.jsp";
-        }
-
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        String saveEmail = request.getParameter("saveEmail");
         if (saveEmail != null) {
             Cookie cookie = new Cookie("email", email);
             cookie.setMaxAge(60 * 60 * 24 * 7);
@@ -53,7 +45,7 @@ public class AuthController {
         Member member = memberDao.findByEmailAndPassword(email, password);
 
         if (member != null) {
-            request.getSession().setAttribute("loginUser", member);
+            session.setAttribute("loginUser", member);
 
         }
         return "/auth/login.jsp";
@@ -61,11 +53,9 @@ public class AuthController {
     }
 
     @RequestMapping("/auth/logout")
-    public String execute(HttpServletRequest request, HttpServletResponse response)
+    public String logout(HttpSession session)
             throws ServletException, IOException {
-
-        request.getSession().invalidate();
-
+        session.invalidate();
         return "redirect:/index.html";
     }
 
