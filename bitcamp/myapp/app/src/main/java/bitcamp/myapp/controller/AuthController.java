@@ -3,6 +3,7 @@ package bitcamp.myapp.controller;
 import bitcamp.myapp.controller.RequestMapping;
 import bitcamp.myapp.dao.MemberDao;
 import bitcamp.myapp.vo.Member;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
@@ -13,11 +14,13 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Map;
 
+@Component
 public class AuthController {
 
     MemberDao memberDao;
 
     public AuthController(MemberDao memberDao) {
+        System.out.println("AuthController() 생성됨");
         this.memberDao = memberDao;
     }
 

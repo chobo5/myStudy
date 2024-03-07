@@ -11,7 +11,7 @@
 
         <jsp:include page="/header.jsp"></jsp:include>
 
-         <h1>${title}</h1>
+         <h1>${boardName}</h1>
                <a href='/app/board/add?category=${category}'>새 글</a>
                <table border='1'>
                    <thead>

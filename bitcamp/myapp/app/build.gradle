@@ -16,6 +16,9 @@ dependencies {
     // MySQL JDBC Driver
     implementation 'com.mysql:mysql-connector-j:8.3.0'
 
+    //Spring IoC 컨테이너
+    implementation 'org.springframework:spring-context:5.3.32'
+
     // JSON 라이브러리
     //implementation 'com.google.code.gson:gson:2.10.1'
 

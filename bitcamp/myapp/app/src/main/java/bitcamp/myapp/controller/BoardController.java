@@ -7,6 +7,7 @@ import bitcamp.myapp.vo.AttachedFile;
 import bitcamp.myapp.vo.Board;
 import bitcamp.myapp.vo.Member;
 import bitcamp.util.TransactionManager;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +18,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
+@Component
 public class BoardController {
 
     private TransactionManager txManager;
@@ -25,6 +27,7 @@ public class BoardController {
     private String uploadDir = System.getProperty("board.upload.dir");
 
     public BoardController(TransactionManager txManager, BoardDao boardDao, AttachedFileDao attachedFileDao) {
+        System.out.println("BoardController() 호출됨");
         this.txManager = txManager;
         this.boardDao = boardDao;
         this.attachedFileDao = attachedFileDao;
@@ -34,7 +37,7 @@ public class BoardController {
     public String form(@RequestParam("category") int category,
                        Map<String, Object> map) throws Exception {
         map.put("category", category);
-        map.put("title", category == 1 ? "게시글" : "가입인사");
+        map.put("boardName", category == 1 ? "게시글" : "가입인사");
         return "/board/form.jsp";
     }
 
@@ -47,7 +50,7 @@ public class BoardController {
             throws Exception {
 
         int category = board.getCategory();
-        map.put("title", category == 1 ? "게시글" : "가입인사");
+        map.put("boardName", category == 1 ? "게시글" : "가입인사");
         map.put("category", category);
 
         try {
@@ -96,7 +99,7 @@ public class BoardController {
             throws ServletException, IOException {
 
         map.put("category", category);
-        map.put("title", category == 1 ? "게시글" : "가입인사");
+        map.put("boardName", category == 1 ? "게시글" : "가입인사");
         map.put("list", boardDao.findAll(category));
 
         return "/board/list.jsp";
@@ -117,7 +120,7 @@ public class BoardController {
         List<AttachedFile> files = attachedFileDao.findAllByBoardNo(no);
 
         map.put("category", category);
-        map.put("title", category == 1 ? "게시글" : "가입인사");
+        map.put("boardName", category == 1 ? "게시글" : "가입인사");
         map.put("board", board);
         map.put("files", files);
 
@@ -131,7 +134,6 @@ public class BoardController {
                          HttpSession session)
             throws Exception {
 
-        String title = category == 1 ? "게시글" : "가입인사";
 
         try {
             Member loginUser = (Member) session.getAttribute("loginUser");

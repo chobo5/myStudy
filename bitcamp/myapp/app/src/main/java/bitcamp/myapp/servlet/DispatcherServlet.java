@@ -1,14 +1,13 @@
 package bitcamp.myapp.servlet;
 
 import bitcamp.myapp.controller.*;
-import bitcamp.myapp.controller.AuthController;
-import bitcamp.myapp.controller.BoardController;
 import bitcamp.myapp.dao.AssignmentDao;
 import bitcamp.myapp.dao.AttachedFileDao;
 import bitcamp.myapp.dao.BoardDao;
 import bitcamp.myapp.dao.MemberDao;
-import bitcamp.util.Component;
 import bitcamp.util.TransactionManager;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
@@ -29,7 +28,8 @@ import java.util.*;
 public class DispatcherServlet extends HttpServlet {
 
     private Map<String, RequestHandler> requestHandlerMap = new HashMap<>();
-    private List<Object> controllers = new ArrayList<>();
+    private ApplicationContext applicationContext;
+
 
     @Override
     public void init() throws ServletException {
@@ -42,45 +42,20 @@ public class DispatcherServlet extends HttpServlet {
 
             System.setProperty("board.upload.dir", this.getServletContext().getRealPath("/upload/board"));
             System.setProperty("member.upload.dir", this.getServletContext().getRealPath("/upload"));
-//            controllers.add(new HomeController());
-//            controllers.add(new AssignmentController(assignmentDao));
-//            controllers.add(new AuthController(memberDao));
-//            controllers.add(new BoardController(txManager, boardDao, attachedFileDao));
-//            controllers.add(new MemberController(memberDao));
 
-            preparePageControllers();
-            prepareRequestHandlers(controllers);
+            ApplicationContext parent = (ApplicationContext) this.getServletContext().getAttribute("applicationContext");
+            applicationContext = new ClassPathXmlApplicationContext(new String[]{"config/app-servlet.xml"}, parent);
+
+            String[] beanNames = applicationContext.getBeanDefinitionNames();
+            ArrayList<Object> beans = new ArrayList<>();
+            for (String beanName : beanNames) {
+                beans.add(applicationContext.getBean(beanName));
+            }
+            prepareRequestHandlers(beans);
         } catch (Exception e) {
             throw new ServletException();
         }
 
-    }
-
-    private void preparePageControllers() throws Exception {
-        File classpath = new File("./build/classes/java/main");
-        System.out.println(classpath.getCanonicalFile());
-        findComponents(classpath, "");
-    }
-
-    private void findComponents(File dir, String packageName) throws Exception {
-        File[] files = dir.listFiles(file -> file.isDirectory() ||
-                (file.isFile() && !file.getName().contains("$") && file.getName().endsWith(".class")));
-        if (packageName.length() > 0) {
-            packageName += ".";
-        }
-        for (File file : files) {
-            if (file.isFile()) {
-                Class<?> clazz = Class.forName(packageName + file.getName().replace(".class", ""));
-                Component componentAnno = clazz.getAnnotation(Component.class);
-                if (componentAnno != null) {
-                    Constructor constructor = clazz.getConstructor();
-                    controllers.add(constructor.newInstance());
-                    System.out.println(clazz.getName() + "객체 생성");
-                }
-            } else {
-                findComponents(file, packageName + file.getName());
-            }
-        }
     }
 
     @Override
@@ -127,7 +102,7 @@ public class DispatcherServlet extends HttpServlet {
     }
 
 
-    private void prepareRequestHandlers(List<Object> controllers) {
+    private void prepareRequestHandlers(Collection<Object> controllers) {
         for (Object controller : controllers) {
             Method[] methods = controller.getClass().getDeclaredMethods();
 

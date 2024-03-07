@@ -3,6 +3,7 @@ package bitcamp.myapp.controller;
 import bitcamp.myapp.controller.RequestMapping;
 import bitcamp.myapp.dao.MemberDao;
 import bitcamp.myapp.vo.Member;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -13,13 +14,14 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.UUID;
 
-
+@Component
 public class MemberController {
 
     private MemberDao memberDao;
     private String uploadDir = System.getProperty("member.upload.dir");
 
     public MemberController(MemberDao memberDao) {
+        System.out.println("MemberController() 호출됨");
         this.memberDao = memberDao;
     }
 
