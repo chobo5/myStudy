@@ -1,33 +1,35 @@
 package bitcamp.myapp.controller;
 
-import bitcamp.myapp.controller.RequestMapping;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 import bitcamp.myapp.dao.MemberDao;
 import bitcamp.myapp.vo.Member;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 import java.util.UUID;
 
-@Component
+@Controller
 public class MemberController {
 
     private MemberDao memberDao;
-    private String uploadDir = System.getProperty("member.upload.dir");
+    private String uploadDir;
 
-    public MemberController(MemberDao memberDao) {
+    public MemberController(MemberDao memberDao, ServletContext sc) {
         System.out.println("MemberController() 호출됨");
         this.memberDao = memberDao;
+        this.uploadDir = sc.getRealPath("/upload");
     }
 
     @RequestMapping("/member/form")
     public String form() {
-        return "/member.form.jsp";
+        return "/member/form.jsp";
     }
 
     @RequestMapping("/member/add")

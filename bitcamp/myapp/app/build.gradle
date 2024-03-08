@@ -19,6 +19,9 @@ dependencies {
     //Spring IoC 컨테이너
     implementation 'org.springframework:spring-context:5.3.32'
 
+    //Spring Web-MVC 라이브러리
+    implementation 'org.springframework:spring-webmvc:5.3.32'
+
     // JSON 라이브러리
     //implementation 'com.google.code.gson:gson:2.10.1'
 

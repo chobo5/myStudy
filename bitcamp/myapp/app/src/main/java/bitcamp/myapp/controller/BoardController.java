@@ -1,6 +1,7 @@
 package bitcamp.myapp.controller;
 
-import bitcamp.myapp.controller.RequestMapping;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 import bitcamp.myapp.dao.AttachedFileDao;
 import bitcamp.myapp.dao.BoardDao;
 import bitcamp.myapp.vo.AttachedFile;
@@ -8,7 +9,9 @@ import bitcamp.myapp.vo.Board;
 import bitcamp.myapp.vo.Member;
 import bitcamp.util.TransactionManager;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,19 +21,21 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
-@Component
+@Controller
 public class BoardController {
 
     private TransactionManager txManager;
     private BoardDao boardDao;
     private AttachedFileDao attachedFileDao;
-    private String uploadDir = System.getProperty("board.upload.dir");
+    private String uploadDir;
 
-    public BoardController(TransactionManager txManager, BoardDao boardDao, AttachedFileDao attachedFileDao) {
+    public BoardController(TransactionManager txManager, BoardDao boardDao,
+                           AttachedFileDao attachedFileDao, ServletContext sc) {
         System.out.println("BoardController() 호출됨");
         this.txManager = txManager;
         this.boardDao = boardDao;
         this.attachedFileDao = attachedFileDao;
+        this.uploadDir = sc.getRealPath("/upload/board");
     }
 
     @RequestMapping("/board/form")
@@ -46,7 +51,7 @@ public class BoardController {
             Board board,
             HttpSession session,
             Map<String, Object> map,
-            @RequestParam("files") Part[] files)
+            @RequestParam("attachedFiles") Part[] files)
             throws Exception {
 
         int category = board.getCategory();
@@ -87,7 +92,10 @@ public class BoardController {
             txManager.commit();
             return "redirect:list?category=" + category;
         } catch (Exception e) {
-            txManager.rollback();
+            try {
+                txManager.rollback();
+            } catch (Exception e2) {
+            }
             throw e;
         }
     }
@@ -122,7 +130,7 @@ public class BoardController {
         map.put("category", category);
         map.put("boardName", category == 1 ? "게시글" : "가입인사");
         map.put("board", board);
-        map.put("files", files);
+        map.put("attachedFiles", files);
 
         return "/board/view.jsp";
 
@@ -207,7 +215,7 @@ public class BoardController {
     public String update(Board board,
                          HttpSession session,
                          Map<String, Object> map,
-                         @RequestParam("files") Part[] files)
+                         @RequestParam("attachedFiles") Part[] files)
             throws Exception {
 
 

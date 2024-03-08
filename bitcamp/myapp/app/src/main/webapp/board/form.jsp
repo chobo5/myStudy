@@ -12,7 +12,7 @@
 
 <h1>${boardName}</h1>
 
-<form action='/app/board/form?category=${category}' method='post' enctype='multipart/form-data'>
+<form action='/app/board/add?category=${category}' method='post' enctype='multipart/form-data'>
   <input name='category' type='hidden' value='${category}'>
   <div>
         제목: <input name='title' type='text'>
@@ -22,7 +22,7 @@
   </div>
 <c:if test="${category == 1}">
   <div>
-        첨부파일: <input multiple name='files' type='file'>
+        첨부파일: <input multiple name='attachedFiles' type='file'>
   </div>
 </c:if>
 

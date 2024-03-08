@@ -1,9 +1,11 @@
 package bitcamp.myapp.controller;
 
-import bitcamp.myapp.controller.RequestMapping;
 import bitcamp.myapp.dao.MemberDao;
 import bitcamp.myapp.vo.Member;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
@@ -14,7 +16,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Map;
 
-@Component
+@Controller
 public class AuthController {
 
     MemberDao memberDao;
@@ -25,14 +27,14 @@ public class AuthController {
     }
 
     @RequestMapping("/auth/form")
-    public String form(@CookieValue("email") String email, Map<String, Object> map) {
+    public String form(@CookieValue(value = "email", required = false) String email, Map<String, Object> map) {
         map.put("email", email);
         return "/auth/form.jsp";
     }
     @RequestMapping("/auth/login")
     public String login(@RequestParam("email") String email,
                         @RequestParam("password") String password,
-                        @RequestParam("saveEmail") String saveEmail,
+                        @RequestParam(value="saveEmail", required = false) String saveEmail,
                         HttpServletResponse response,
                         HttpSession session) throws Exception {
 
@@ -42,7 +44,7 @@ public class AuthController {
             response.addCookie(cookie);
         } else {
             Cookie cookie = new Cookie("email", "");
-            cookie.setMaxAge(60 * 60 * 24 * 7);
+            cookie.setMaxAge(0);
             response.addCookie(cookie);
         }
         Member member = memberDao.findByEmailAndPassword(email, password);
