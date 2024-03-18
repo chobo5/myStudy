@@ -11,7 +11,6 @@ import org.springframework.web.multipart.support.StandardServletMultipartResolve
 public class App1Config {
     @Bean
     MultipartResolver multipartResolver() {
-        StandardServletMultipartResolver mr = new StandardServletMultipartResolver();
-        return mr;
+        return new StandardServletMultipartResolver();
     }
 }

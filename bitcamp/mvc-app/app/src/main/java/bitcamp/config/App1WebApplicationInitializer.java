@@ -4,6 +4,10 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+import javax.servlet.MultipartConfigElement;
+import javax.servlet.ServletRegistration;
+import java.io.File;
+
 public class App1WebApplicationInitializer extends
     AbstractAnnotationConfigDispatcherServletInitializer {
 
@@ -29,5 +33,13 @@ public class App1WebApplicationInitializer extends
     return "app1";
   }
 
-
+  @Override
+  protected void customizeRegistration(ServletRegistration.Dynamic registration) {
+    registration.setMultipartConfig(new MultipartConfigElement(
+            new File("./temp").getAbsolutePath(),
+            //new File(System.getProperty("java.io.tmpdir")).getAbsolutePath(),
+            1024 * 1024 * 10,
+            1024 * 1024 * 100,
+            1024 * 1024 * 1));
+  }
 }
