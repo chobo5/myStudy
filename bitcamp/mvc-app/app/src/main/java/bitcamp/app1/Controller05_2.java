@@ -37,4 +37,45 @@ public class Controller05_2 {
         // /WEB-INF 폴더에 있는 파일은 클라이언트에서 직접 실행을 요청할 수 없다.
         return "/WEB-INF/jsp/c05_2.jsp";
     }
+
+    // 테스트:
+    // http://localhost:9999/eomcs-spring-webmvc/app1/c05_2/h3
+    @GetMapping("h3")
+    public View handler3() {
+        return new JstlView("/WEB-INF/jsp/c05_2.jsp");
+    }
+
+    // 테스트:
+    // http://localhost:9999/eomcs-spring-webmvc/app1/c05_2/h4
+    @GetMapping("h4")
+    public ModelAndView handler4() {
+        System.out.println("===> /app1/c05_2/h4");
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("/WEB-INF/jsp/c05_2.jsp");
+        return mv;
+    }
+
+    // 테스트:
+    // http://localhost:9999/eomcs-spring-webmvc/app1/c05_2/h5
+    @GetMapping("h5")
+    public String handler5() {
+        // 리다이렉트를 지정할 때는 URL 앞에 "redirect:" 접두어를 붙인다.
+        // 즉 HTTP 응답이 다음과 같다.
+        // HTTP/1.1 302
+        // Location: h4
+        // Content-Language: ko-KR
+        // Content-Length: 0
+        // Date: Fri, 19 Apr 2019 07:57:00 GMT
+
+        return "redirect:h4";
+    }
+
+    // 테스트:
+    // http://localhost:9999/eomcs-spring-webmvc/app1/c05_2/h6
+    @GetMapping("h6")
+    public String handler6() {
+        // 포워드를 지정할 때는 URL 앞에 "forward:" 접두어를 붙인다.
+        // 인클루드를 지정할 때는 URL 앞에 "include:" 접두어를 붙인다.
+        return "forward:h4";
+    }
 }
