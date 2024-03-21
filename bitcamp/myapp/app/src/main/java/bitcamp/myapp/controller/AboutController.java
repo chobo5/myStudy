@@ -2,20 +2,24 @@ package bitcamp.myapp.controller;
 
 
 
+import bitcamp.myapp.dao.mysql.AssignmentDaoImpl;
+import org.apache.juli.logging.Log;
+import org.apache.juli.logging.LogFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class AboutController {
-    @RequestMapping("/about")
-    public String about()
-            throws Exception {
-        return "/about.jsp";
+    private final Log log = LogFactory.getLog(AboutController.class);
+    public AboutController() {
+        log.debug("생성자 호출");
+    }
+    @GetMapping("/about")
+    public void about() {
     }
 
-    public AboutController() {
-        System.out.println("AboutController() 호출됨");
-    }
+
 }
 
 

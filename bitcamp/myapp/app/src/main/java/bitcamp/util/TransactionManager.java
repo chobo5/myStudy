@@ -1,20 +1,26 @@
 package bitcamp.util;
 
 import java.sql.Connection;
+
+import org.apache.juli.logging.Log;
+import org.apache.juli.logging.LogFactory;
 import org.springframework.stereotype.Component;
 @Component
 public class TransactionManager {
 
   ConnectionPool connectionPool;
 
+  private final Log log = LogFactory.getLog(TransactionManager.class);
+
+
   public TransactionManager(ConnectionPool connectionPool) {
-    System.out.println("TransactionManager() 호출됨");
+    log.debug("생성자 호출");
     this.connectionPool = connectionPool;
   }
 
   public void startTransaction() throws Exception {
     connectionPool.getConnection().setAutoCommit(false);
-    System.out.printf("[%s] 트랜잭션 시작\n", Thread.currentThread().getName());
+    log.debug(String.format("[%s] 트랜잭션 시작\n", Thread.currentThread().getName()));
   }
 
   public void commit() throws Exception {
@@ -31,6 +37,6 @@ public class TransactionManager {
     Connection con = connectionPool.getConnection();
     con.setAutoCommit(true);
     con.close();
-    System.out.printf("[%s] 트랜잭션 종료\n", Thread.currentThread().getName());
+    log.debug(String.format("[%s] 트랜잭션 종료\n", Thread.currentThread().getName()));
   }
 }

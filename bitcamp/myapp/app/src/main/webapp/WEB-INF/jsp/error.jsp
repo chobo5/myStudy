@@ -14,7 +14,6 @@
               <p>${message}</p>\n
             </c:if>
 
-
              <c:if test="${not empty detail}">
               <pre>${detail}</pre>
              </c:if>

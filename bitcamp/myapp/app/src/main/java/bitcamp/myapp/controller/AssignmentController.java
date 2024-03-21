@@ -1,8 +1,14 @@
 package bitcamp.myapp.controller;
 
 import bitcamp.myapp.dao.AssignmentDao;
+import bitcamp.myapp.dao.mysql.AssignmentDaoImpl;
 import bitcamp.myapp.vo.Assignment;
+import org.apache.juli.logging.Log;
+import org.apache.juli.logging.LogFactory;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.ServletException;
@@ -10,21 +16,21 @@ import java.io.IOException;
 import java.util.Map;
 
 @Controller
+@RequestMapping("/assignment")
 public class AssignmentController {
-
+    private final Log log = LogFactory.getLog(AssignmentController.class);
     private AssignmentDao assignmentDao;
 
     public AssignmentController(AssignmentDao assignmentDao) {
-        System.out.println("AssignmentController() 생성됨");
+        log.debug("생성자 호출");
         this.assignmentDao = assignmentDao;
     }
 
-    @RequestMapping("/assignment/form")
-    public String form() throws  Exception   {
-        return "/assignment/form.jsp";
+    @GetMapping("form")
+    public void form() throws  Exception   {
     }
 
-    @RequestMapping("/assignment/add")
+    @PostMapping("add")
     public String add(Assignment assignment)
             throws Exception {
         assignmentDao.add(assignment);
@@ -32,25 +38,23 @@ public class AssignmentController {
         return "redirect:list";
     }
 
-    @RequestMapping("/assignment/list")
-    public String list(Map<String, Object> map)
+    @GetMapping("list")
+    public void list(Model model)
             throws ServletException, IOException {
-        map.put("list", assignmentDao.findAll());
-        return "/assignment/list.jsp";
+        model.addAttribute("list", assignmentDao.findAll());
     }
 
-    @RequestMapping("/assignment/view")
-    public String view(@RequestParam("no") int no, Map<String, Object> map)
+    @GetMapping("view")
+    public void view(int no, Model model)
             throws Exception {
         Assignment assignment = assignmentDao.findBy(no);
         if (assignment == null) {
             throw new Exception("과제 번호가 유효하지 않습니다.");
         }
-        map.put("assignment", assignment);
-        return "/assignment/view.jsp";
+        model.addAttribute("assignment", assignment);
     }
 
-    @RequestMapping("/assignment/update")
+    @PostMapping("update")
     public String update(Assignment assignment)
             throws Exception {
 
@@ -65,8 +69,8 @@ public class AssignmentController {
 
     }
 
-    @RequestMapping("/assignment/delete")
-    public String delete(@RequestParam("no") int no)
+    @GetMapping("delete")
+    public String delete(int no)
             throws Exception {
 
         if (assignmentDao.delete(no) == 0) {

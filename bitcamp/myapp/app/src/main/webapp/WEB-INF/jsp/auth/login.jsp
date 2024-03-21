@@ -7,7 +7,7 @@
               <title>비트캠프 데브옵스 5기</title>
             </head>
             <body>
-        <jsp:include page="/header.jsp"></jsp:include>
+        <jsp:include page="../header.jsp"></jsp:include>
 
          <h1>로그인</h1>
                    <c:choose>
@@ -21,7 +21,7 @@
                     </c:otherwise>
                     </c:choose>
 
-        <jsp:include page="/footer.jsp"></jsp:include>
+        <jsp:include page="../footer.jsp"></jsp:include>
 
         </body>
         </html>

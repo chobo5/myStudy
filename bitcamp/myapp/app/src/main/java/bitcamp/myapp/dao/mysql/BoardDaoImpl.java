@@ -4,19 +4,24 @@ import bitcamp.myapp.dao.BoardDao;
 import bitcamp.myapp.dao.DaoException;
 import bitcamp.myapp.vo.Board;
 import bitcamp.myapp.vo.Member;
+import org.apache.juli.logging.Log;
+import org.apache.juli.logging.LogFactory;
 import org.springframework.stereotype.Component;
 import bitcamp.util.DBConnectionPool;
+import org.springframework.stereotype.Repository;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-@Component
+@Repository
 public class BoardDaoImpl implements BoardDao {
-
+  private final Log log = LogFactory.getLog(BoardDaoImpl.class);
   DBConnectionPool connectionPool;
 
   public BoardDaoImpl(DBConnectionPool connectionPool) {
+    log.debug("생성자 호");
     this.connectionPool = connectionPool;
   }
 

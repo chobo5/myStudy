@@ -1,11 +1,13 @@
 package bitcamp.myapp.controller;
 
 import bitcamp.myapp.dao.MemberDao;
+import bitcamp.myapp.dao.mysql.AssignmentDaoImpl;
 import bitcamp.myapp.vo.Member;
+import org.apache.juli.logging.Log;
+import org.apache.juli.logging.LogFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
@@ -17,24 +19,24 @@ import java.io.IOException;
 import java.util.Map;
 
 @Controller
+@RequestMapping("/auth")
 public class AuthController {
-
+    private final Log log = LogFactory.getLog(AuthController.class);
     MemberDao memberDao;
 
     public AuthController(MemberDao memberDao) {
-        System.out.println("AuthController() 생성됨");
+        log.debug("생성자 호출");
         this.memberDao = memberDao;
     }
 
-    @RequestMapping("/auth/form")
-    public String form(@CookieValue(value = "email", required = false) String email, Map<String, Object> map) {
-        map.put("email", email);
-        return "/auth/form.jsp";
+    @GetMapping("form")
+    public void form(@CookieValue(value = "email", required = false) String email, Model model) {
+        model.addAttribute("email", email);
     }
-    @RequestMapping("/auth/login")
-    public String login(@RequestParam("email") String email,
-                        @RequestParam("password") String password,
-                        @RequestParam(value="saveEmail", required = false) String saveEmail,
+    @PostMapping("login")
+    public String login(String email,
+                        String password,
+                        String saveEmail,
                         HttpServletResponse response,
                         HttpSession session) throws Exception {
 
@@ -51,13 +53,11 @@ public class AuthController {
 
         if (member != null) {
             session.setAttribute("loginUser", member);
-
         }
-        return "/auth/login.jsp";
-
+        return "auth/login";
     }
 
-    @RequestMapping("/auth/logout")
+    @GetMapping("logout")
     public String logout(HttpSession session)
             throws ServletException, IOException {
         session.invalidate();

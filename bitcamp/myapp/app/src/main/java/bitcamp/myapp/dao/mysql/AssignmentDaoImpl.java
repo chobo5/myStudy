@@ -5,7 +5,9 @@ import bitcamp.myapp.dao.DaoException;
 import bitcamp.myapp.vo.Assignment;
 
 import bitcamp.util.DBConnectionPool;
-import org.springframework.stereotype.Component;
+import org.apache.juli.logging.Log;
+import org.apache.juli.logging.LogFactory;
+import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,12 +15,13 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
+@Repository
 public class AssignmentDaoImpl implements AssignmentDao {
-
+  private final Log log = LogFactory.getLog(AssignmentDaoImpl.class);
   DBConnectionPool connectionPool;
 
   public AssignmentDaoImpl(DBConnectionPool connectionPool) {
+    log.debug("생성자 호출");
     this.connectionPool = connectionPool;
   }
 

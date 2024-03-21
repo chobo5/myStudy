@@ -3,20 +3,25 @@ package bitcamp.myapp.dao.mysql;
 import bitcamp.myapp.dao.AttachedFileDao;
 import bitcamp.myapp.dao.DaoException;
 import bitcamp.myapp.vo.AttachedFile;
+import org.apache.juli.logging.Log;
+import org.apache.juli.logging.LogFactory;
 import org.springframework.stereotype.Component;
 import bitcamp.util.DBConnectionPool;
+import org.springframework.stereotype.Repository;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-@Component
+@Repository
 public class AttachedFileDaoImpl implements AttachedFileDao {
-
+  private final Log log = LogFactory.getLog(AttachedFileDaoImpl.class);
   DBConnectionPool connectionPool;
 
   public AttachedFileDaoImpl(DBConnectionPool connectionPool) {
+    log.debug("생성자 호출");
     this.connectionPool = connectionPool;
   }
 
