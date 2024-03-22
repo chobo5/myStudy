@@ -12,4 +12,4 @@
         - 요청으로 보낸 JSON 데이터를 객체로 자동 변환하여 request handler의 파라미터로 받을 수 있는가?
         - request handler가 리턴한 객체를 JSON 데이터로 자동 변환하여 응답할 수 있는가?
         - 서블릿 또는 request handler에서 예외가 발생했을 오류를 출력할 페이지를 설정할 수 있는가?
-        - 
+      
