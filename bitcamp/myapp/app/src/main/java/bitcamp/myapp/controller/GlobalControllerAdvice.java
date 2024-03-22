@@ -32,7 +32,7 @@ public class GlobalControllerAdvice {
         PrintWriter out = new PrintWriter(stringWriter);
         e.printStackTrace(out);
         mv.addObject("detail", stringWriter.toString());
-        mv.setViewName("/error.jsp");
+        mv.setViewName("error");
         return mv;
     }
 }

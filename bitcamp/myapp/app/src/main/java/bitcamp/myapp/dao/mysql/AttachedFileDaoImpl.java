@@ -3,6 +3,8 @@ package bitcamp.myapp.dao.mysql;
 import bitcamp.myapp.dao.AttachedFileDao;
 import bitcamp.myapp.dao.DaoException;
 import bitcamp.myapp.vo.AttachedFile;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 import org.springframework.stereotype.Component;
@@ -17,123 +19,54 @@ import java.util.List;
 
 @Repository
 public class AttachedFileDaoImpl implements AttachedFileDao {
-  private final Log log = LogFactory.getLog(AttachedFileDaoImpl.class);
-  DBConnectionPool connectionPool;
+    private final Log log = LogFactory.getLog(AttachedFileDaoImpl.class);
+    SqlSessionFactory sqlSessionFactory;
 
-  public AttachedFileDaoImpl(DBConnectionPool connectionPool) {
-    log.debug("생성자 호출");
-    this.connectionPool = connectionPool;
-  }
-
-  @Override
-  public void add(AttachedFile file) {
-    try (Connection con = connectionPool.getConnection();
-        PreparedStatement pstmt = con.prepareStatement(
-            "insert into board_files(file_path,board_no) values(?,?)")) {
-
-      pstmt.setString(1, file.getFilePath());
-      pstmt.setInt(2, file.getBoardNo());
-
-      pstmt.executeUpdate();
-
-    } catch (Exception e) {
-      throw new DaoException("데이터 입력 오류", e);
+    public AttachedFileDaoImpl(SqlSessionFactory sqlSessionFactory) {
+        log.debug("생성자 호출");
+        this.sqlSessionFactory = sqlSessionFactory;
     }
-  }
 
-  @Override
-  public int addAll(List<AttachedFile> files) {
-    try (Connection con = connectionPool.getConnection();
-        PreparedStatement pstmt = con.prepareStatement(
-            "insert into board_files(file_path,board_no) values(?,?)")) {
+    @Override
+    public void add(AttachedFile file) {
+        try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+            sqlSession.insert("AttachedFileDao.add", file);
 
-      for (AttachedFile file : files) {
-        pstmt.setString(1, file.getFilePath());
-        pstmt.setInt(2, file.getBoardNo());
-        pstmt.executeUpdate();
-      }
-
-      return files.size();
-
-    } catch (Exception e) {
-      throw new DaoException("데이터 입력 오류", e);
-    }
-  }
-
-  @Override
-  public int delete(int no) {
-    try (Connection con = connectionPool.getConnection();
-        PreparedStatement pstmt = con.prepareStatement(
-            "delete from board_files where file_no=?")) {
-      pstmt.setInt(1, no);
-      return pstmt.executeUpdate();
-
-    } catch (Exception e) {
-      throw new DaoException("데이터 삭제 오류", e);
-    }
-  }
-
-  @Override
-  public int deleteAll(int boardNo) {
-    try (Connection con = connectionPool.getConnection();
-        PreparedStatement pstmt = con.prepareStatement(
-            "delete from board_files where board_no=?")) {
-      pstmt.setInt(1, boardNo);
-      return pstmt.executeUpdate();
-
-    } catch (Exception e) {
-      throw new DaoException("데이터 삭제 오류", e);
-    }
-  }
-
-  @Override
-  public List<AttachedFile> findAllByBoardNo(int boardNo) {
-    try (Connection con = connectionPool.getConnection();
-        PreparedStatement pstmt = con.prepareStatement(
-            "select file_no, file_path, board_no"
-                + " from board_files where board_no=? order by file_no asc")) {
-
-      pstmt.setInt(1, boardNo);
-
-      try (ResultSet rs = pstmt.executeQuery()) {
-
-        ArrayList<AttachedFile> list = new ArrayList<>();
-
-        while (rs.next()) {
-          AttachedFile file = new AttachedFile();
-          file.setNo(rs.getInt("file_no"));
-          file.setFilePath(rs.getString("file_path"));
-          file.setBoardNo(rs.getInt("board_no"));
-
-          list.add(file);
         }
-        return list;
-      }
-
-    } catch (Exception e) {
-      throw new DaoException("데이터 가져오기 오류", e);
     }
-  }
 
-  @Override
-  public AttachedFile findByNo(int no) {
-    try (Connection con = connectionPool.getConnection();
-        PreparedStatement pstmt = con.prepareStatement(
-            "select file_no, file_path, board_no"
-                + " from board_files where file_no=?")) {
-      pstmt.setInt(1, no);
-      try (ResultSet rs = pstmt.executeQuery()) {
-        if (rs.next()) {
-          AttachedFile file = new AttachedFile();
-          file.setNo(rs.getInt("file_no"));
-          file.setFilePath(rs.getString("file_path"));
-          file.setBoardNo(rs.getInt("board_no"));
-          return file;
+    @Override
+    public int addAll(List<AttachedFile> files) {
+        try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+          return sqlSession.insert("AttachedFileDao.addAll", files);
         }
-        return null;
-      }
-    } catch (Exception e) {
-      throw new DaoException("데이터 가져오기 오류", e);
     }
-  }
+
+    @Override
+    public int delete(int no) {
+        try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+            return sqlSession.delete("AttachedFileDao.delete", no);
+        }
+    }
+
+    @Override
+    public int deleteAll(int boardNo) {
+        try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+            return sqlSession.delete("AttachedFileDao.deleteAll", boardNo);
+        }
+    }
+
+    @Override
+    public List<AttachedFile> findAllByBoardNo(int boardNo) {
+        try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+            return sqlSession.selectList("AttachedFileDao.findAllByBoardNo", boardNo);
+        }
+    }
+
+    @Override
+    public AttachedFile findByNo(int no) {
+        try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+            return sqlSession.selectOne("AttachedFileDao.findByNo", no);
+        }
+    }
 }

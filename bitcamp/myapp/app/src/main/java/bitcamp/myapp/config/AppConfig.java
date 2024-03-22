@@ -5,11 +5,13 @@ import org.apache.juli.logging.LogFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.multipart.MultipartResolver;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
+@EnableTransactionManagement
 @ComponentScan(value={"bitcamp.myapp.controller"})
 public class AppConfig {
     private final Log log = LogFactory.getLog(AppConfig.class);

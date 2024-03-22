@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a84827e7-6d13-4c5e-bb9d-79b24217473a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_03_22/note.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Algorithm/Programmers/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Algorithm/Programmers/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Algorithm/Programmers/src/_바탕화면정리.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Algorithm/Programmers/src/_바탕화면정리.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../Spring/MakeApplicationContext/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring/MakeApplicationContext/.idea/workspace.xml" afterDir="false" />
@@ -108,7 +109,7 @@
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_directory_selection": "/Users/eomjinyoung/git/bitcamp-study/myapp/app/src/main/java/bitcamp/myapp",
-    "last_opened_file_path": "/Users/wonjun-yeon/Desktop/bitcamp/git/myStudy/bitcamp/myapp/app/src/main/resources",
+    "last_opened_file_path": "/Users/wonjun-yeon/Desktop/bitcamp/git/myStudy/bitcamp/myapp/app/src/main/resources/mapper",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -117,11 +118,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/resources/mapper" />
       <recent name="$PROJECT_DIR$/app/src/main/resources" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/app/src/main/resources/config" />
       <recent name="$PROJECT_DIR$/app/src/main/webapp/board" />
-      <recent name="$PROJECT_DIR$/app/src/main/webapp/assignment" />
     </key>
     <key name="MoveMembersDialog.RECENTS_KEY">
       <recent name="bitcamp.myapp.Prompt" />
@@ -303,15 +304,6 @@
           <url>file://$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/servlet/board/BoardFileDeleteServlet.java</url>
           <line>40</line>
           <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/app/src/main/java/bitcamp/myapp/controller/BoardController.java</url>
-          <line>57</line>
-          <properties class="bitcamp.myapp.controller.BoardController" method="add">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

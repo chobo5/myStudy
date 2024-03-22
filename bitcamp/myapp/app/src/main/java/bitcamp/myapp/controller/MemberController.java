@@ -94,7 +94,6 @@ public class MemberController {
         memberDao.update(member);
         return "redirect:list";
 
-
     }
 
     @GetMapping("delete")
