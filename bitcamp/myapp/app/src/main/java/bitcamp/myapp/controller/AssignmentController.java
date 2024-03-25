@@ -1,8 +1,9 @@
 package bitcamp.myapp.controller;
 
 import bitcamp.myapp.dao.AssignmentDao;
-import bitcamp.myapp.dao.mysql.AssignmentDaoImpl;
+import bitcamp.myapp.service.AssignmentService;
 import bitcamp.myapp.vo.Assignment;
+import lombok.RequiredArgsConstructor;
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 import org.springframework.stereotype.Controller;
@@ -10,44 +11,41 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
 import javax.servlet.ServletException;
 import java.io.IOException;
-import java.util.Map;
+import java.sql.Date;
 
+@RequiredArgsConstructor
 @Controller
 @RequestMapping("/assignment")
 public class AssignmentController {
-    private final Log log = LogFactory.getLog(AssignmentController.class);
-    private AssignmentDao assignmentDao;
+    private static final Log log = LogFactory.getLog(AssignmentController.class);
+    private final AssignmentService assignmentService;
 
-    public AssignmentController(AssignmentDao assignmentDao) {
-        log.debug("생성자 호출");
-        this.assignmentDao = assignmentDao;
-    }
 
     @GetMapping("form")
-    public void form() throws  Exception   {
+    public void form() throws  Exception {
+        Assignment a = new Assignment();
     }
 
     @PostMapping("add")
     public String add(Assignment assignment)
             throws Exception {
-        assignmentDao.add(assignment);
-        System.out.println(assignment);
+        assignmentService.add(assignment);
         return "redirect:list";
     }
 
     @GetMapping("list")
     public void list(Model model)
             throws ServletException, IOException {
-        model.addAttribute("list", assignmentDao.findAll());
+        model.addAttribute("list", assignmentService.list());
     }
 
     @GetMapping("view")
     public void view(int no, Model model)
             throws Exception {
-        Assignment assignment = assignmentDao.findBy(no);
+        Assignment assignment = assignmentService.get(no);
         if (assignment == null) {
             throw new Exception("과제 번호가 유효하지 않습니다.");
         }
@@ -59,12 +57,12 @@ public class AssignmentController {
             throws Exception {
 
 
-        Assignment old = assignmentDao.findBy(assignment.getNo());
+        Assignment old = assignmentService.get(assignment.getNo());
         if (old == null) {
             throw new Exception("과제 번호가 유효하지 않습니다.");
         }
 
-        assignmentDao.update(assignment);
+        assignmentService.update(assignment);
         return "redirect:list";
 
     }
@@ -73,7 +71,7 @@ public class AssignmentController {
     public String delete(int no)
             throws Exception {
 
-        if (assignmentDao.delete(no) == 0) {
+        if (assignmentService.delete(no) == 0) {
             throw new Exception("과제 번호가 유효하지 않습니다.");
         }
         return "redirect:list";

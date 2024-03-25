@@ -11,8 +11,7 @@ import org.springframework.web.multipart.support.StandardServletMultipartResolve
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-@EnableTransactionManagement
-@ComponentScan(value={"bitcamp.myapp.controller"})
+@ComponentScan({"bitcamp.myapp.controller"})
 public class AppConfig {
     private final Log log = LogFactory.getLog(AppConfig.class);
     public AppConfig() {

@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="BoardDao">
+<mapper namespace="bitcamp.myapp.dao.BoardDao">
 
     <resultMap id="BoardMap" type="Board">
         <id column="board_no" property="no"/>
@@ -25,8 +25,9 @@
         </collection>
 
     </resultMap>
+
     <insert id="add" parameterType="Board"
-            useGeneratedKeys="true" keyProperty="no" keyColumn="board_no">
+            useGeneratedKeys="true" keyColumn="board_no" keyProperty="no">
         insert into boards(title,content,writer,category)
         values(#{title},#{content},#{writer.no},#{category})
     </insert>
@@ -36,7 +37,7 @@
         where board_no=#{value}
     </delete>
 
-    <select id="findAll" parameterType="int" resultMap="BoardMap">
+    <select id="findAll" resultMap="BoardMap" parameterType="int">
         select
         b.board_no,
         b.title,
@@ -55,7 +56,7 @@
         board_no desc
     </select>
 
-    <select id="findBy" parameterType="int" resultMap="BoardMap">
+    <select id="findBy" resultMap="BoardMap" parameterType="int">
         select
         b.board_no,
         b.title,
@@ -68,12 +69,12 @@
         from
         boards b inner join members m on b.writer=m.member_no
         left outer join board_files bf on b.board_no=bf.board_no
-        where b.board_no=#{value}
+        where
+        b.board_no=#{value}
     </select>
 
     <update id="update" parameterType="Board">
-        update
-        boards set
+        update boards set
         title=#{title},
         content=#{content}
         where

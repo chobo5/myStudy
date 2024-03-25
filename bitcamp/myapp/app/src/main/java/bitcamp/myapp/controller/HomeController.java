@@ -11,10 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class HomeController {
-    private Log log = LogFactory.getLog(HomeController.class);
-    public HomeController() {
-        log.debug("생성자 호출됨");
-    }
+    private static final Log log = LogFactory.getLog(HomeController.class);
     @GetMapping("/home")
     public void home() {
 

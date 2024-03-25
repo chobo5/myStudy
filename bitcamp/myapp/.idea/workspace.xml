@@ -5,15 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a84827e7-6d13-4c5e-bb9d-79b24217473a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_03_22/note.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Algorithm/Programmers/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Algorithm/Programmers/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Algorithm/Programmers/src/_바탕화면정리.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Algorithm/Programmers/src/_바탕화면정리.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring/MakeApplicationContext/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring/MakeApplicationContext/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring/ServletExam/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring/ServletExam/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Spring/all.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../Spring/all.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../assignments/LibrarySystem/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../assignments/LibrarySystem/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../assignments/lolwiki/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../assignments/lolwiki/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_03_21/note.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_03_21/note.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_03_25/note.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../summary/Summary/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/.idea/misc.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +44,29 @@
         </task>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="myapp" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="myapp" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="myapp" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="application" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="myapp" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
@@ -61,9 +76,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="HTML File" />
         <option value="AnnotationType" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -109,11 +124,11 @@
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_directory_selection": "/Users/eomjinyoung/git/bitcamp-study/myapp/app/src/main/java/bitcamp/myapp",
-    "last_opened_file_path": "/Users/wonjun-yeon/Desktop/bitcamp/git/myStudy/bitcamp/myapp/app/src/main/resources/mapper",
-    "project.structure.last.edited": "Project",
+    "last_opened_file_path": "/Users/wonjun-yeon/Desktop/bitcamp/git/myStudy/bitcamp/myapp",
+    "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "settings.sync"
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -160,19 +175,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="bitcamp.myapp.App" />
-      <module name="myapp.app.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="bitcamp.myapp.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -184,6 +186,28 @@
         </option>
         <option name="taskNames">
           <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="myapp [classes]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="classes" />
+          </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
@@ -261,7 +285,7 @@
     </configuration>
     <list>
       <item itemvalue="Application.App (1)" />
-      <item itemvalue="Application.App" />
+      <item itemvalue="Gradle.myapp [classes]" />
       <item itemvalue="Gradle.myapp:app [run]" />
       <item itemvalue="Gradle.myapp:app-73-web [run]" />
       <item itemvalue="Gradle.myapp [run]" />
@@ -269,6 +293,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.myapp [run]" />
+        <item itemvalue="Gradle.myapp [classes]" />
         <item itemvalue="Gradle.myapp:app-73-web [run]" />
         <item itemvalue="Gradle.myapp:app [run]" />
         <item itemvalue="Application.App (1)" />
@@ -278,8 +303,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-17.0.9-corretto-17.0.9-8336523bb0d9-301ddabe" />
-        <option value="jdk-21.0.1-openjdk-21.0.1-8336523bb0d9-55c9c8bc" />
+        <option value="jdk-21.0.2-corretto-21.0.2-f644763e9732-d6553c93" />
       </set>
     </attachedChunks>
   </component>
