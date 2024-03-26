@@ -1,12 +1,6 @@
 package bitcamp.myapp;
 
-import bitcamp.myapp.dao.AssignmentDao;
-import bitcamp.myapp.dao.AttachedFileDao;
-import bitcamp.myapp.dao.BoardDao;
-import bitcamp.myapp.dao.MemberDao;
-
-import bitcamp.util.DBConnectionPool;
-import bitcamp.util.TransactionManager;
+import java.io.File;
 import org.apache.catalina.WebResourceRoot;
 import org.apache.catalina.connector.Connector;
 import org.apache.catalina.core.StandardContext;
@@ -14,22 +8,7 @@ import org.apache.catalina.startup.Tomcat;
 import org.apache.catalina.webresources.DirResourceSet;
 import org.apache.catalina.webresources.StandardRoot;
 
-import java.io.File;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
 public class App {
-  ExecutorService executorService = Executors.newCachedThreadPool();
-
-  BoardDao boardDao;
-  AttachedFileDao attachedFileDao;
-  BoardDao greetingDao;
-  AssignmentDao assignmentDao;
-  MemberDao memberDao;
-
-  DBConnectionPool connectionPool;
-  TransactionManager txManager;
-
 
   public static void main(String[] args) throws Exception {
     System.out.println("과제관리 시스템 서버 실행!");
@@ -49,8 +28,8 @@ public class App {
 
     // 톰캣 서버에 배포할 웹 애플리케이션의 환경 정보 준비
     StandardContext ctx = (StandardContext) tomcat.addWebapp(
-            "/", // 컨텍스트 경로(웹 애플리케이션 경로)
-            new File("src/main/webapp").getAbsolutePath() // 웹 애플리케이션 파일이 있는 실제 경로
+        "/", // 컨텍스트 경로(웹 애플리케이션 경로)
+        new File("src/main/webapp").getAbsolutePath() // 웹 애플리케이션 파일이 있는 실제 경로
     );
     ctx.setReloadable(true);
 
@@ -59,10 +38,10 @@ public class App {
 
     // 웹 애플리케이션의 서블릿 클래스 등록
     resources.addPreResources(new DirResourceSet(
-            resources, // 루트 웹 애플리케이션 정보
-            "/WEB-INF/classes", // 서블릿 클래스 파일의 위치 정보
-            new File("build/classes/java/main").getAbsolutePath(), // 서블릿 클래스 파일이 있는 실제 경로
-            "/" // 웹 애플리케이션 내부 경로
+        resources, // 루트 웹 애플리케이션 정보
+        "/WEB-INF/classes", // 서블릿 클래스 파일의 위치 정보
+        new File("build/classes/java/main").getAbsolutePath(), // 서블릿 클래스 파일이 있는 실제 경로
+        "/" // 웹 애플리케이션 내부 경로
     ));
 
     // 웹 애플리케이션 설정 정보를 웹 애플리케이션 환경 정보에 등록
@@ -76,11 +55,4 @@ public class App {
 
     System.out.println("서버 종료!");
   }
-
-
-
-
-
-
-
 }

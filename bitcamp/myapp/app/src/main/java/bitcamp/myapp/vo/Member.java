@@ -1,12 +1,11 @@
 package bitcamp.myapp.vo;
 
+import java.io.Serializable;
+import java.util.Date;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
-import java.util.Date;
 @Data
-@NoArgsConstructor
 public class Member implements Serializable {
 
   private static final long serialVersionUID = 100L;

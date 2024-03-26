@@ -4,7 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-@Builder //이 객체는 빌더를 통해서 만들어라
+
+@NoArgsConstructor // Mybatis가 사용할 기본 생성자를 만들어야 한다.
+@AllArgsConstructor
+@Builder
 @Data
 public class AttachedFile {
 

@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a84827e7-6d13-4c5e-bb9d-79b24217473a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_03_25/note.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../summary/Summary/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/.idea/misc.xml" afterDir="false" />
-    </list>
+    <list default="true" id="a84827e7-6d13-4c5e-bb9d-79b24217473a" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -124,7 +121,7 @@
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_directory_selection": "/Users/eomjinyoung/git/bitcamp-study/myapp/app/src/main/java/bitcamp/myapp",
-    "last_opened_file_path": "/Users/wonjun-yeon/Desktop/bitcamp/git/myStudy/bitcamp/myapp",
+    "last_opened_file_path": "/Users/wonjun-yeon/Desktop/bitcamp/git/myStudy/bitcamp/myapp/app/src/main/webapp/WEB-INF/templates",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -133,11 +130,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/templates" />
+      <recent name="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/templates/auth" />
       <recent name="$PROJECT_DIR$/app/src/main/resources/mapper" />
       <recent name="$PROJECT_DIR$/app/src/main/resources" />
       <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/app/src/main/resources/config" />
-      <recent name="$PROJECT_DIR$/app/src/main/webapp/board" />
     </key>
     <key name="MoveMembersDialog.RECENTS_KEY">
       <recent name="bitcamp.myapp.Prompt" />
@@ -145,6 +142,7 @@
       <recent name="bitcamp.myapp.AssignmentMenu" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/jsp" />
       <recent name="$PROJECT_DIR$/app/src/main/resources/config" />
       <recent name="$PROJECT_DIR$/app/src/main/resources" />
