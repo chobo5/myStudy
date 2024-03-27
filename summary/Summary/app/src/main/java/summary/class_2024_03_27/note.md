@@ -1,0 +1,14 @@
+### 복습
+- 강의 내용
+    - 복습(1)
+        - Spring WebMVC를 Java Config로 설정하기
+        - Spring WebMVC의 기본 ViewResolver를 InternalResourceViewResolver로 교체하기
+        - Mybatis SQL-mapper 프레임워크 사용하기
+    - 실습 프로젝트
+    - 최종 팀 프로젝트
+        - DB 모델링
+    - 학습 점검 목록
+        - Lombok의 주요 애노테이션에 대해 설명할 수 있는가? []
+        - Spring 웹 프로젝트에 Thymeleaf 를 적용할 수 있는가? []
+        - Thymeleaf의 구동원리를 설명할 수 있는가? []
+        - InternalResourceViewResolver와 ThymeleafViewResolver를 동시에 적용할 수 있는가? []
