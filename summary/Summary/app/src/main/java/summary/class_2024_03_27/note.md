@@ -8,7 +8,18 @@
     - 최종 팀 프로젝트
         - DB 모델링
     - 학습 점검 목록
-        - Lombok의 주요 애노테이션에 대해 설명할 수 있는가? []
-        - Spring 웹 프로젝트에 Thymeleaf 를 적용할 수 있는가? []
-        - Thymeleaf의 구동원리를 설명할 수 있는가? []
-        - InternalResourceViewResolver와 ThymeleafViewResolver를 동시에 적용할 수 있는가? []
+        - Thymeleaf의 문법을 다룰 수 있는가? []
+        - 네이버 클라우드의 Object Storage Service를 사용하여 첨부파일을 저장할 수 있는가? []
+        - 네이버 클라우드의 Image Optimizer를 사용하여 썸네일을 다룰 수 있는가? []
+
+### SpringBoot 도입
+1. 배포 - 기존 방식
+- webProject/
+  - src/
+    - main/
+      - java
+      - resources
+      - webapp
+        - WEB-INF
+          - web.xml
+  - build.gradle
