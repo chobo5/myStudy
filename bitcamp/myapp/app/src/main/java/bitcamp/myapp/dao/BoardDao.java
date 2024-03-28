@@ -1,8 +1,10 @@
 package bitcamp.myapp.dao;
 
 import bitcamp.myapp.vo.Board;
-import java.util.List;
+import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+@Mapper
 public interface BoardDao {
 
   void add(Board board);

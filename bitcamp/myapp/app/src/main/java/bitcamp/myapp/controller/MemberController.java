@@ -75,10 +75,9 @@ public class MemberController implements InitializingBean {
     member.setCreatedDate(old.getCreatedDate());
 
     if (file.getSize() > 0) {
-      String filename = UUID.randomUUID().toString();
+      String filename = storageServie.upload(this.bucketName, this.uploadDir, file);
       member.setPhoto(filename);
-      file.transferTo(new File(this.uploadDir + "/" + filename));
-      new File(this.uploadDir + "/" + old.getPhoto()).delete();
+      storageServie.delete(bucketName, uploadDir, old.getPhoto());
     } else {
       member.setPhoto(old.getPhoto());
     }
@@ -98,7 +97,7 @@ public class MemberController implements InitializingBean {
 
     String filename = member.getPhoto();
     if (filename != null) {
-      new File(this.uploadDir + "/" + filename).delete();
+      storageServie.delete(bucketName, uploadDir, filename);
     }
     return "redirect:list";
   }

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang='en'>
-  <head>
+<head>
   <meta charset='UTF-8'>
   <title>비트캠프 데브옵스 5기</title>
 </head>
@@ -8,20 +8,22 @@
 
 <div data-th-replace="header :: header">머리말</div>
 
-<h1 data-th-text="${boardName}">게시판 or 가입인사</h1>
-<form action='/app/board/update' method='post' enctype='multipart/form-data' data-th-object="${board}">
-  <input name='category' type='hidden' data-th-value="${category}">
+<h1 data-th-text="${boardName}">게시글</h1>
+<form action="update" data-th-action="@{update}" data-th-object="${board}"
+      enctype='multipart/form-data'
+      method='post'>
+  <input data-th-value="${category}" name='category' type='hidden'>
   <div>
-    번호: <input readonly name='no' type='text' data-th-value="*{no}">
+    번호: <input data-th-value="*{no}" name='no' readonly type='text' value="100">
   </div>
   <div>
-    제목: <input name='title' type='text' data-th-value="*{title}">
+    제목: <input data-th-value="*{title}" name='title' type='text' value="제목입니다.">
   </div>
   <div>
-    내용: <textarea name='content' data-th-text="*{content}"></textarea>
+    내용: <textarea data-th-text="*{content}" name='content'>내용입니다.</textarea>
   </div>
   <div>
-    작성자: <input readonly type='text' data-th-value="*{writer.name}">
+    작성자: <input data-th-value="*{writer.name}" readonly type='text' value="홍길동">
   </div>
 
   <div data-th-if="${category == 1}">
@@ -38,7 +40,7 @@
 
   <div>
     <button>변경</button>
-    <a href='/app/board/delete?category=${category}&no=${board.no}'>[삭제]</a>
+    <a data-th-href="@{delete(category=${category},no=*{no})}">[삭제]</a>
   </div>
 </form>
 

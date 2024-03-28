@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a84827e7-6d13-4c5e-bb9d-79b24217473a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_03_27/note.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_03_27/note.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../summary/Summary/app/src/main/java/summary/class_2024_03_27/note.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,8 +62,7 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="myapp" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="build" type="c8890929:TasksNode$1" />
+                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
               </path>
             </expand>
             <select />
@@ -109,6 +108,7 @@
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "DefaultHtmlFileTemplate": "HTML File",
+    "Gradle.myapp [bootRun].executor": "Run",
     "Gradle.myapp [classes].executor": "Run",
     "Gradle.myapp [run].executor": "Run",
     "Gradle.myapp:app [:app:App.main()].executor": "Run",
@@ -123,7 +123,7 @@
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_directory_selection": "/Users/eomjinyoung/git/bitcamp-study/myapp/app/src/main/java/bitcamp/myapp",
-    "last_opened_file_path": "/Users/wonjun-yeon/Desktop/bitcamp/git/myStudy/bitcamp/myapp/app/src/main/resources/config",
+    "last_opened_file_path": "/Users/wonjun-yeon/Desktop/bitcamp/git/myStudy/bitcamp/myapp/app/src/main/resources",
     "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
@@ -132,11 +132,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/resources" />
       <recent name="$PROJECT_DIR$/app/src/main/resources/config" />
       <recent name="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/templates/board" />
       <recent name="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/templates/member" />
       <recent name="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/templates/assignment" />
-      <recent name="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/templates" />
     </key>
     <key name="MoveMembersDialog.RECENTS_KEY">
       <recent name="bitcamp.myapp.Prompt" />
@@ -144,11 +144,11 @@
       <recent name="bitcamp.myapp.AssignmentMenu" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/resources/bitcamp/myapp/dao" />
+      <recent name="$PROJECT_DIR$/app/src/main/resources/static" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/app/src/main/webapp/WEB-INF/jsp" />
       <recent name="$PROJECT_DIR$/app/src/main/resources/config" />
-      <recent name="$PROJECT_DIR$/app/src/main/resources" />
-      <recent name="$PROJECT_DIR$/app/src/main/java" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
@@ -161,20 +161,7 @@
       <recent name="bitcamp.myapp.controller.assignment" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.myapp [run]">
-    <configuration name="App (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="bitcamp.myapp.App" />
-      <module name="myapp.app-73-web.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="bitcamp.myapp.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Gradle.myapp [bootRun]">
     <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -186,6 +173,28 @@
         </option>
         <option name="taskNames">
           <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="myapp [bootRun]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="bootRun" />
+          </list>
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
@@ -284,7 +293,7 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Application.App (1)" />
+      <item itemvalue="Gradle.myapp [bootRun]" />
       <item itemvalue="Gradle.myapp [classes]" />
       <item itemvalue="Gradle.myapp:app [run]" />
       <item itemvalue="Gradle.myapp:app-73-web [run]" />
@@ -292,17 +301,18 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.myapp [bootRun]" />
         <item itemvalue="Gradle.myapp [run]" />
         <item itemvalue="Gradle.myapp [classes]" />
         <item itemvalue="Gradle.myapp:app-73-web [run]" />
         <item itemvalue="Gradle.myapp:app [run]" />
-        <item itemvalue="Application.App (1)" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
+        <option value="jdk-17.0.10-corretto-17.0.10-3183f394aec4-96c0d24d" />
         <option value="jdk-21.0.2-corretto-21.0.2-f644763e9732-d6553c93" />
       </set>
     </attachedChunks>
