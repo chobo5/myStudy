@@ -22,6 +22,8 @@ insert into boards(board_no,title,content,writer,category)
 insert into boards(board_no,title,content,writer,category)
   values(5, '제목5','내용5',104, 2);
 
+
+
 -- board_files 테이블 데이터
 insert into board_files(file_no,file_path,board_no) values
   (1,'a1.gif', 1), (2,'a2.gif', 1), (3,'a3.gif', 1),

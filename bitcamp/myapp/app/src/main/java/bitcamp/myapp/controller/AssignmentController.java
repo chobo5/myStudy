@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RequiredArgsConstructor
 @Controller
@@ -31,8 +32,24 @@ public class AssignmentController {
   }
 
   @GetMapping("list")
-  public void list(Model model) throws Exception {
-    model.addAttribute("list", assignmentService.list());
+  public void list(
+          @RequestParam(defaultValue = "1") int pageNo,
+          @RequestParam(defaultValue = "3") int pageSize,
+          Model model) throws Exception {
+    if (pageNo < 1) {
+      pageNo = 1;
+    }
+    if (pageSize < 3) {
+      pageSize = 3;
+    } else if (pageSize > 20) {
+      pageSize = 20;
+    }
+    int length = assignmentService.countAll();
+    int numOfPage = (length / pageSize) + (length % pageSize == 0 ? 0 : 1);
+    model.addAttribute("pageNo", pageNo);
+    model.addAttribute("pageSize", pageSize);
+    model.addAttribute("numOfPage", numOfPage);
+    model.addAttribute("list", assignmentService.list(pageNo, pageSize));
   }
 
   @GetMapping("view")

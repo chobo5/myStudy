@@ -2,8 +2,7 @@ package bitcamp.myapp.vo;
 
 import java.io.Serializable;
 import java.sql.Date;
-
-import lombok.*;
+import lombok.Data;
 
 @Data // = @Getter + @Setter + @ToString + @EqualsAndHashCode + @RequiredArgsConstructor
 public class Assignment implements Serializable {

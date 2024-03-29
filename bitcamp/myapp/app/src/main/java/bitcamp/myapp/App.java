@@ -9,12 +9,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @SpringBootApplication
 @EnableTransactionManagement
-@PropertySource({"classpath:config/ncp.properties", "classpath:config/ncp-secret.properties"})
+@PropertySource({
+    "classpath:config/ncp.properties",
+    "classpath:config/ncp-secret.properties"
+})
 @Controller
 public class App {
 
   public static void main(String[] args) throws Exception {
-    System.out.println("과제 관리 시스템 서버 실행!");
+    System.out.println("과제관리 시스템 서버 실행!");
     SpringApplication.run(App.class, args);
   }
 

@@ -3,7 +3,7 @@ package bitcamp.myapp.vo;
 import java.io.Serializable;
 import java.util.Date;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+
 
 @Data
 public class Member implements Serializable {
