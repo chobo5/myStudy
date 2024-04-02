@@ -12,13 +12,13 @@ public interface AssignmentDao {
 
   int delete(int no);
 
-  List<Assignment> findAll(@Param("offset") int offset,
-                           @Param("rowCount") int rowCount);
+  List<Assignment> findAll(
+      @Param("offset") int offset,
+      @Param("rowCount") int rowCount);
 
   Assignment findBy(int no);
 
   int update(Assignment assignment);
 
   int countAll();
-
 }

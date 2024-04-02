@@ -53,23 +53,33 @@ public class MemberController implements InitializingBean {
   }
 
   @GetMapping("list")
-  public void list(@RequestParam(defaultValue = "1") int pageNo,
-                   @RequestParam(defaultValue = "3") int pageSize,
-                   Model model) throws Exception {
-    pageNo = (pageNo < 1) ? 1 : pageNo;
+  public void list(
+      @RequestParam(defaultValue = "1") int pageNo,
+      @RequestParam(defaultValue = "3") int pageSize,
+      Model model) throws Exception {
 
-    if (pageSize < 3) {
+    if (pageSize < 3 || pageSize > 20) {
       pageSize = 3;
-    } else if(pageSize > 20) {
-      pageSize = 20;
     }
 
-    int count = memberService.countAll();
-    int numOfPage = (count / pageSize) + (count % pageSize == 0 ? 0 : 1);
+    if (pageNo < 1) {
+      pageNo = 1;
+    }
+
+    int numOfRecord = memberService.countAll();
+    int numOfPage = numOfRecord / pageSize + ((numOfRecord % pageSize) > 0 ? 1 : 0);
+
+    log.debug(String.format("numOfRecord: %s", numOfRecord));
+    log.debug(String.format("numOfPage: %s", numOfPage));
+
+    if (pageNo > numOfPage) {
+      pageNo = numOfPage;
+    }
+
+    model.addAttribute("list", memberService.list(pageNo, pageSize));
     model.addAttribute("pageNo", pageNo);
     model.addAttribute("pageSize", pageSize);
     model.addAttribute("numOfPage", numOfPage);
-    model.addAttribute("list", memberService.list(pageNo, pageSize));
   }
 
   @GetMapping("view")

@@ -31,6 +31,8 @@
       created_date
     from
       members
+    order by
+      name
     limit #{rowCount} offset #{offset}
   </select>
 
@@ -73,6 +75,6 @@
   </select>
 
   <select id="countAll" resultType="int">
-    select count(*) from members
+    select count(*) from members;
   </select>
 </mapper>
