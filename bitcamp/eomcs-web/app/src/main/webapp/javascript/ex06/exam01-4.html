@@ -39,11 +39,28 @@ var el = document.querySelectorAll(".btn1");
 
 // 다음과 같이 각 태그 객체에 리스너를 추가하던가!
 
-// for (var e of el) {
-// 	e.onclick = function() {
-// 		console.log(this);
-// 	}
-// }
+<!-- for (var e of el) {-->
+<!-- 	e.onclick = function() {-->
+<!-- 		console.log(this);-->
+<!-- 	}-->
+<!-- }-->
+
+ let students = [
+    {name:"홍길동", kor:100, math:100, eng:100},
+    {name:"임꺽정", kor:90, math:90, eng:90}
+ ];
+
+ function x() {
+    this.sum = this.kor + this.math + this.eng;
+    console.log(this.sum);
+ }
+
+ for (let student of students) {
+    student.compute = x;
+ }
+
+ students[0].compute();
+ students[1].compute();
 
 
 
