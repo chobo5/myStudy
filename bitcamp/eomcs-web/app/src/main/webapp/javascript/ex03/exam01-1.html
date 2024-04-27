@@ -27,6 +27,15 @@ console.log("---------------------");
 //
 f1.call();
 
+console.log("---------------------");
+function f2(name) {
+    console.log(name, "님 반갑습니다.");
+}
+f2("홍길동");
+f2.call(null, "임꺽정");
+
+
+
 </script>
 </body>
 </html>
