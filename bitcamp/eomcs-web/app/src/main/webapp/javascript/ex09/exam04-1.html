@@ -13,25 +13,34 @@
     <tbody>
     </tbody>
 </table>
-
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
     "use strict"
     var tbody = document.querySelector("tbody");
 
-    axios.get('http://localhost:3000/boards');
-    .then(() => {
+    axios.get({
+        method: 'get',
+        url: 'http://localhost:3000/boards',
+        params: {
+            name : '홍길동',
+            age : 20
+        },
+        responseType: 'json'
+    })
+    .then(function(response) {
         console.log("then,,,");
+        console.log(response);
     })
-    .catch(() => {
+    .catch(function(error) {
         console.log("catch,,,");
+        console.log(error)
     })
-    .finally(() => {
+    .finally(function() {
         console.log("finally,,,");
     });
 
 
-    $.ajax("http://localhost:3000/boards", {
+    /* $.ajax("http://localhost:3000/boards", {
         method: 'get',
         dataType: 'json'
     })
@@ -44,9 +53,10 @@
                 "<td>" + b.viewCnt + "</td>";
             tbody.appendChild(tr);
         }
-    });
+    }); */
 
 
 </script>
+
 </body>
 </html>

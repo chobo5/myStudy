@@ -25,8 +25,14 @@
         }
     })
     .then((response) => {
-        console.log("then,,,");
-        console.log(response);
+        for (var b of response.data) {
+            var tr = document.createElement("tr");
+            tr.innerHTML = "<td>" + b.no + "</td>" +
+                "<td>" + b.title + "</td>" +
+                "<td>" + b.writer + "</td>" +
+                "<td>" + b.viewCnt + "</td>";
+            tbody.appendChild(tr);
+        }
     })
     .catch(() => {
         console.log("catch,,,");
@@ -36,20 +42,6 @@
     });
 
 
-    /* $.ajax("http://localhost:3000/boards", {
-        method: 'get',
-        dataType: 'json'
-    })
-    .done(function(arr) {
-        for (var b of arr) {
-            var tr = document.createElement("tr");
-            tr.innerHTML = "<td>" + b.no + "</td>" +
-                "<td>" + b.title + "</td>" +
-                "<td>" + b.writer + "</td>" +
-                "<td>" + b.viewCnt + "</td>";
-            tbody.appendChild(tr);
-        }
-    }); */
 
 
 </script>

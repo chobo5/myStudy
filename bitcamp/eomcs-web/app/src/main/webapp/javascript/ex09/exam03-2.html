@@ -14,23 +14,23 @@
     </tbody>
 </table>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
     "use strict"
     var tbody = document.querySelector("tbody");
 
     $.ajax("http://localhost:3000/boards", {
         method: 'get',
-        dataType: 'json',
-        success: function(arr) {
-            for (var b of arr) {
-                var tr = document.createElement("tr");
-                tr.innerHTML = "<td>" + b.no + "</td>" +
-                    "<td>" + b.title + "</td>" +
-                    "<td>" + b.writer + "</td>" +
-                    "<td>" + b.viewCnt + "</td>";
-                tbody.appendChild(tr);
-            }
+        dataType: 'json'
+    })
+    .done(function(arr) {
+        for (var b of arr) {
+            var tr = document.createElement("tr");
+            tr.innerHTML = "<td>" + b.no + "</td>" +
+                "<td>" + b.title + "</td>" +
+                "<td>" + b.writer + "</td>" +
+                "<td>" + b.viewCnt + "</td>";
+            tbody.appendChild(tr);
         }
     });
 
