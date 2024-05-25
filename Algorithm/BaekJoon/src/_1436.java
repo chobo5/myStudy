@@ -10,8 +10,8 @@ public class _1436 {
         int current = 666;
         for (int i = 0; i < n; i++) {
             int next1 = current + 1000;
-            int next2 = current * 10
-            if (next > current) {
+            int next2 = current * 10;
+            if (next1 > current) {
 
             }
         }
@@ -19,20 +19,5 @@ public class _1436 {
 
 
 }
-666
-1666
-2666
-3666
-4666
-5666
-6660
-6661
-6662
-6663
-6664
-6665
-6666
-6667
-6668
-6669
+
 
