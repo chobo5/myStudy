@@ -7,17 +7,32 @@ public class _2444 {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(in.readLine());
         in.close();
+        StringBuilder sb = new StringBuilder();
 
-        int count = 0;
         for (int i = 1; i <= n; i++) {
-            for (int j = n - i; j >= 0; j--) {
-                System.out.print(" ");
+            for (int j = n - 1; j >= i ; j--) {
+                sb.append(" ");
             }
-            for (int j = 0; j < i; j++) {
-                
+
+            for (int j = 0; j < 2*i - 1 ; j++) {
+                sb.append("*");
             }
-            System.out.println();
+
+            sb.append("\n");
+
         }
+
+        for (int i = n - 1; i > 0 ; i--) {
+            for (int j = 0; j < n-i; j++) {
+                sb.append(" ");
+            }
+
+            for (int j = 2*i -1; j > 0 ; j--) {
+                sb.append("*");
+            }
+            sb.append("\n");
+        }
+        System.out.println(sb);
 
     }
 }
