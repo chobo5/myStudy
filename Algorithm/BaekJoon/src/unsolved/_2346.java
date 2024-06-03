@@ -30,7 +30,6 @@ public class _2346 {
         while (deque.size() != 1) {
             if (move > 0) {
                int minMove = move % deque.size();
-                System.out.println("minMovew " + minMove);
                 if (minMove != 0) {
                     for (int i = 0; i < move - 1; i++) {
                         deque.addLast(deque.pollFirst());
@@ -40,15 +39,13 @@ public class _2346 {
                 sb.append(deleted.key).append(" ");
                 move = deleted.move;
             } else {
-
                 int minMove = Math.abs(move) % deque.size();
-                System.out.println("minMovew " + minMove);
                 if (minMove != 0) {
-                    for (int i = 0; i < move - 1; i++) {
+                    for (int i = 0; i <= move - 1; i++) {
                         deque.addFirst(deque.pollLast());
                     }
                 }
-                deleted = deque.pollLast();
+                deleted = deque.pollFirst();
                 sb.append(deleted.key).append(" ");
                 move = deleted.move;
             }
@@ -69,6 +66,14 @@ public class _2346 {
         Baloon(int order, int value) {
             this.key = order;
             this.move = value;
+        }
+
+        @Override
+        public String toString() {
+            return "Baloon{" +
+                    "key=" + key +
+                    ", move=" + move +
+                    '}';
         }
     }
 }
