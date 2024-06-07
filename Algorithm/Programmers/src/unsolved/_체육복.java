@@ -1,48 +1,47 @@
 package unsolved;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+
 public class _체육복 {
-    class Solution {
-        public int solution(int n, int[] lost, int[] reserve) {
-            int answer = 0;
-            int[] arr = new int[n];
+    public static void main(String[] args) {
+        class Solution {
+            public int solution(int n, int[] lost, int[] reserve) {
+                int answer = n - lost.length;
 
-            for (int i = 0; i < lost.length; i++) {
-                arr[lost[i] - 1] -= 1;
-            }
-
-            for (int i = 0; i < reserve.length; i++) {
-                arr[reserve[i] - 1] += 1;
-            }
-
-            for (int i = 0; i < n; i++) {
-                arr[i] += 1;
-                if (arr[i] == 0) {
-                    if (i == 0) {
-                        if (arr[i] == 0 || arr[i + 1] > 1) {
-                            arr[i] += 1;
-                            arr[i + 1] -= 1;
+                for (int i = 0; i < lost.length; i++) {
+                    for (int j = 0; j < reserve.length; j++) {
+                        if (lost[i] == reserve[j]) {
+                            reserve[j] = 0;
+                            lost[i] = 0;
+                            answer++;
+                            break;
                         }
-                    } else if (i == n - 1) {
-                        if (arr[i] == 0 || arr[i - 1] > 1) {
-                            arr[i] += 1;
-                            arr[i - 1] -= 1;
-                        }
-                    } else {
-                        if (arr[i] == 0) {
-                            if (arr[i + 1] > 1) {
-                                arr[i] += 1;
-                                arr[i + 1] -= 1;
-                            } else if (arr[i - 1] > 1) {
-                                arr[i] += 1;
-                                arr[i - 1] -= 1;
-                            }
-                        }
-
                     }
                 }
-                if (arr[i] > 0) answer++;
+
+                for (int i = 0; i < lost.length; i++) {
+                    if (lost[i] == 0) {
+                        continue;
+                    }
+                    for (int j = 0; j < reserve.length; j++) {
+                        if (reserve[j] == 0) {
+                            continue;
+                        }
+                        if (lost[i] - 1 == reserve[j] || lost[i] + 1 == reserve[j]) {
+                            reserve[j]  = 0;
+                            answer++;
+                            break;
+                        }
+                    }
+                }
+
+
+
+                return answer;
             }
-            return answer;
         }
     }
 }
