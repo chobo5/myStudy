@@ -32,8 +32,5 @@ public class _성격유형검사하기 {
                 return answer;
             }
         }
-        String[] survey = {"AN", "CF", "MJ", "RT", "NA"};
-        int[] choices = {}
-        Solution.solution()
     }
 }
