@@ -3,21 +3,32 @@ package unsolved;
 public class _뒤에있는큰수찾기 {
     public static void main(String[] args) {
         class Solution {
-            public int[] solution(int[] numbers) {
+            public static int[] solution(int[] numbers) {
                 int[] answer = new int[numbers.length];
+
                 for (int i = 0; i < numbers.length; i++) {
-                    for (int j = i; j < numbers.length; j++) {
-                        if (numbers[j] > numbers[i]) {
-                            answer[i] = numbers[j];
+                    int n = numbers[i];
+                    boolean flag = true;
+                    int index = i;
+                    while (index++ < numbers.length - 1) {
+                        if (numbers[index] > n) {
+                            answer[i] = numbers[index];
+                            flag = false;
                             break;
                         }
                     }
-                    if (answer[i] == 0) {
+
+                    if (flag) {
                         answer[i] = -1;
                     }
+
                 }
+
+
                 return answer;
             }
         }
+        int[] numbers = {9, 1, 5, 3, 6, 2};
+        System.out.println(Solution.solution(numbers));
     }
 }
