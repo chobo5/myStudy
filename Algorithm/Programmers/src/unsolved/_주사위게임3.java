@@ -1,3 +1,5 @@
+package unsolved;
+
 import java.util.Arrays;
 
 public class _주사위게임3 {
