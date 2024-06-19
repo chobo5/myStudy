@@ -7,7 +7,8 @@ public class _겹치는선분의길이 {
         class Solution {
             public static int solution(int[][] lines) {
                 List<Integer> list = new ArrayList<>();
-                Deque<Integer> dequeue = new ArrayDeque<>();
+                Set<Integer> set = new HashSet<>();
+                int count = 0;
                 for (int i = 0; i < lines.length; i++) {
                     for (int j = lines[i][0]; j <=lines[i][1] ; j++) {
                         list.add(j);
@@ -18,34 +19,23 @@ public class _겹치는선분의길이 {
 
                 for (int i = 0; i < list.size() - 1; i++) {
                     if (list.get(i) == list.get(i + 1)) {
-                        if (dequeue.isEmpty()) {
-                            dequeue.addLast(list.get(i));
-                        } else {
-                            if (dequeue.peekLast() != list.get(i)) {
-                                dequeue.addLast(list.get(i));
-                            }
-                        }
+                        set.add(i);
                     }
                 }
 
-                if (dequeue.isEmpty()) {
-                    return 0;
-                }
+                Integer[] arr = set.toArray(new Integer[0]);
+                Arrays.sort(arr);
 
-                int count = 0;
-                int before = dequeue.poll();
-
-                while (!dequeue.isEmpty()) {
-                    int now = dequeue.poll();
-                    if (before + 1 == now) {
+                for (int i = 0; i < arr.length - 1; i++) {
+                    if (arr[i] == arr[i + 1]) {
                         count++;
                     }
-                    before = now;
                 }
+
                 return count;
             }
         }
         int[][] lines = {{0, 1}, {2, 5}, {3, 9}};
-        Solution.solution(lines);
+        System.out.println(Solution.solution(lines));
     }
 }
