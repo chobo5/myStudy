@@ -5,28 +5,24 @@ import java.util.Arrays;
 public class _H_index {
     public static void main(String[] args) {
         class Solution {
-            public int solution(int[] citations) {
+            public static int solution(int[] citations) {
                 int answer = 0;
+                // 0 1 3 5 6
                 Arrays.sort(citations);
+
                 for (int i = citations.length - 1; i >= 0; i--) {
-                    int x = citations[i];
-                    if (x > citations.length) {
+                    int h = citations[i];
+                    if (h > citations.length) {
                         continue;
                     }
-                    int count = 0;
-                    for (int j = 0; j < citations.length; j++) {
-                        if (citations[j] >= x) {
-                            count++;
-                        }
+                    if (h <= citations.length - i) {
+                        return h;
                     }
-
-                    if (x <= count) {
-                        return x;
-                    }
-
                 }
-                return 0;
+                return answer;
             }
         }
+        int[] arr = {0, 2, 5, 6 ,8, 10, 11, 23, 45, 1,23, 6, 4, 1 ,6 ,8};
+        System.out.println(Solution.solution(arr));
     }
 }
