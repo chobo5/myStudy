@@ -1,5 +1,3 @@
-package unsolved;
-
 import java.util.Arrays;
 
 public class _H_index {
@@ -10,19 +8,16 @@ public class _H_index {
                 // 0 1 3 5 6
                 Arrays.sort(citations);
 
-                for (int i = citations.length - 1; i >= 0; i--) {
-                    int h = citations[i];
-                    if (h > citations.length) {
-                        continue;
-                    }
-                    if (h <= citations.length - i) {
+                for (int i = 0; i < citations.length; i++) {
+                    int h = citations.length - i;
+                    if (citations[i] >= h) {
                         return h;
                     }
                 }
                 return answer;
             }
         }
-        int[] arr = {0, 2, 5, 6 ,8, 10, 11, 23, 45, 1,23, 6, 4, 1 ,6 ,8};
+        int[] arr = {3, 0, 6, 1, 5, 4, 4};
         System.out.println(Solution.solution(arr));
     }
 }
