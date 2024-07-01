@@ -1,5 +1,3 @@
-package unsolved;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
@@ -12,15 +10,12 @@ public class _k진수에서소수개수구하기 {
             int answer = 0;
             String number = makeNumber(n, k);
             String[] numbers = number.split("0");
-            List<Integer> filteredNumbers = Arrays.stream(numbers)
-                    .filter(s -> !s.isEmpty())
-                    .map(Integer::parseInt)
-                    .sorted()
-                    .collect(Collectors.toList());
-            boolean[] primes = getPrimes(filteredNumbers.get(filteredNumbers.size() - 1));
 
-            for (int i = 0; i < filteredNumbers.size(); i++) {
-                if (!primes[filteredNumbers.get(i)]) {
+            for (String strNum : numbers) {
+                if (strNum.equals("")) {
+                    continue;
+                }
+                if (isPrime(Long.parseLong(strNum))) {
                     answer++;
                 }
             }
@@ -42,18 +37,17 @@ public class _k진수에서소수개수구하기 {
             return sb.toString();
         }
 
-        public static boolean[] getPrimes(int num) {
-            boolean[] primes = new boolean[num + 1];
-            primes[0] = primes[1] = true; //true - 소수x, flase - 소수
+        public static boolean isPrime(long num) {
+            if (num == 1) {
+                return false;
+            }
+
             for (int i = 2; i <= Math.sqrt(num); i++) {
-                if (primes[i]) {
-                    continue;
-                }
-                for (int j = i * i; j < primes.length; j += i) {
-                    primes[j] = true;
+                if (num % i == 0) {
+                    return false;
                 }
             }
-            return primes;
+            return true;
         }
     }
 
