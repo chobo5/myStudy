@@ -1,5 +1,3 @@
-package unsolved;
-
 import java.util.*;
 
 public class _n진수게임 {
@@ -31,8 +29,9 @@ public class _n진수게임 {
                 int rest = num % n;
                 if (rest >= 10) {
                     stack.add(String.valueOf((char) ('A' + (rest % 10))));
+                } else {
+                    stack.add(String.valueOf(rest));
                 }
-                stack.add(String.valueOf(rest));
                 num /= n;
             }
             if (num >= 10) {
