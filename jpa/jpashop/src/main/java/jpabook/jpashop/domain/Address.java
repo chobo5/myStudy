@@ -7,11 +7,10 @@ import lombok.*;
 @Embeddable //내장 타입
 @Getter
 @AllArgsConstructor
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 public class Address {
     private String city;
     private String street;
     private String zipcode;
-
 
 }

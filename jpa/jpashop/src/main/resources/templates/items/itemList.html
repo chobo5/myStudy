@@ -1,10 +1,10 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/header :: header" />
+<html>
+<head data-th-replace="fragments/header :: header" />
 <body>
 
 <div class="container">
-    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+    <div data-th-replace="fragments/bodyHeader :: bodyHeader"/>
 
     <div>
         <table class="table table-striped">
@@ -18,20 +18,20 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="item : ${items}">
-                <td th:text="${item.id}"></td>
-                <td th:text="${item.name}"></td>
-                <td th:text="${item.price}"></td>
-                <td th:text="${item.stockQuantity}"></td>
+            <tr data-th-each="item : ${items}">
+                <td data-th-text="${item.id}"></td>
+                <td data-th-text="${item.name}"></td>
+                <td data-th-text="${item.price}"></td>
+                <td data-th-text="${item.stockQuantity}"></td>
                 <td>
-                    <a href="#" th:href="@{/items/{id}/edit (id=${item.id})}" class="btn btn-primary" role="button">수정</a>
+                    <a href="#" data-th-href="@{/items/{id}/edit (id=${item.id})}" class="btn btn-primary" role="button">수정</a>
                 </td>
             </tr>
             </tbody>
         </table>
     </div>
 
-    <div th:replace="fragments/footer :: footer"/>
+    <div data-th-replace="fragments/footer :: footer"/>
 
 </div> <!-- /container -->
 

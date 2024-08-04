@@ -1,10 +1,10 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/header :: header" />
+<html>
+<head data-th-replace="fragments/header :: header" />
 <body>
 
 <div class="container">
-    <div th:replace="fragments/bodyHeader :: bodyHeader" />
+    <div data-th-replace="fragments/bodyHeader :: bodyHeader" />
     <div>
         <table class="table table-striped">
             <thead>
@@ -17,18 +17,18 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="member : ${members}">
-                <td th:text="${member.id}"></td>
-                <td th:text="${member.name}"></td>
-                <td th:text="${member.address?.city}"></td>
-                <td th:text="${member.address?.street}"></td>
-                <td th:text="${member.address?.zipcode}"></td>
+            <tr data-th-each="member : ${members}">
+                <td data-th-text="*{member.id}"></td>
+                <td data-th-text="*{member.username}"></td>
+                <td data-th-text="*{member.address?.city}"></td>
+                <td data-th-text="*{member.address?.street}"></td>
+                <td data-th-text="*{member.address?.zipcode}"></td>
             </tr>
             </tbody>
         </table>
     </div>
 
-    <div th:replace="fragments/footer :: footer" />
+    <div data-th-replace="fragments/footer :: footer" />
 
 </div> <!-- /container -->
 

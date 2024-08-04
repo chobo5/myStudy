@@ -1,24 +1,24 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/header :: header"/>
+<html>
+<head data-th-replace="fragments/header :: header"/>
 <body>
 
 <div class="container">
 
-    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+    <div data-th-replace="fragments/bodyHeader :: bodyHeader"/>
 
     <div>
         <div>
-            <form th:object="${orderSearch}" class="form-inline">
+            <form data-th-object="${orderSearch}" class="form-inline">
                 <div class="form-group mb-2">
-                    <input type="text" th:field="*{memberName}" class="form-control" placeholder="회원명"/>
+                    <input type="text" data-th-field="*{memberName}" class="form-control" placeholder="회원명"/>
                 </div>
                 <div class="form-group mx-sm-1 mb-2">
-                    <select th:field="*{orderStatus}" class="form-control">
+                    <select data-th-field="*{orderStatus}" class="form-control">
                         <option value="">주문상태</option>
-                        <option th:each="status : ${T(jpabook.jpashop.domain.OrderStatus).values()}"
-                                th:value="${status}"
-                                th:text="${status}">option
+                        <option data-th-each="status : ${T(jpabook.jpashop.domain.OrderStatus).values()}"
+                                data-th-value="${status}"
+                                data-th-text="${status}">option
                         </option>
                     </select>
                 </div>
@@ -40,16 +40,16 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="item : ${orders}">
-                <td th:text="${item.id}"></td>
-                <td th:text="${item.member.name}"></td>
-                <td th:text="${item.orderItems[0].item.name}"></td>
-                <td th:text="${item.orderItems[0].orderPrice}"></td>
-                <td th:text="${item.orderItems[0].count}"></td>
-                <td th:text="${item.status}"></td>
-                <td th:text="${item.orderDate}"></td>
+            <tr data-th-each="item : ${orders}">
+                <td data-th-text="${item.id}"></td>
+                <td data-th-text="${item.member.username}"></td>
+                <td data-th-text="${item.orderItems[0].item.name}"></td>
+                <td data-th-text="${item.orderItems[0].orderPrice}"></td>
+                <td data-th-text="${item.orderItems[0].count}"></td>
+                <td data-th-text="${item.orderStatus}"></td>
+                <td data-th-text="${item.orderDate}"></td>
                 <td>
-                    <a th:if="${item.status.name() == 'ORDER'}" href="#" th:href="'javascript:cancel('+${item.id}+')'"
+                    <a data-th-if="${item.orderStatus.name() == 'ORDER'}" href="#" data-th-href="'javascript:cancel('+${item.id}+')'"
                        class="btn btn-danger">CANCEL</a>
                 </td>
             </tr>
@@ -58,7 +58,7 @@
         </table>
     </div>
 
-    <div th:replace="fragments/footer :: footer"/>
+    <div data-th-replace="fragments/footer :: footer"/>
 
 </div> <!-- /container -->
 
