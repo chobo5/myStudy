@@ -1,7 +1,11 @@
 package study.querydsl.entity;
 
+import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.QueryResults;
 import com.querydsl.core.Tuple;
+import com.querydsl.core.types.ExpressionUtils;
+import com.querydsl.core.types.Predicate;
+import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.CaseBuilder;
 import com.querydsl.core.types.dsl.Expressions;
 import com.querydsl.jpa.JPAExpressions;
@@ -18,6 +22,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
+import study.querydsl.dto.MemberDto;
+import study.querydsl.dto.QMemberDto;
+import study.querydsl.dto.UserDto;
 
 import java.util.List;
 
@@ -354,4 +361,116 @@ class MemberTest {
         result.forEach(System.out::println);
     }
 
+    @Test
+    public void simplePorjection() {
+        List<String> result = query.select(member.username)
+                .from(member)
+                .fetch();
+        result.forEach(System.out::println);
+    }
+
+    @Test
+    public void tupleProjection() {
+        List<Tuple> result = query.select(member.username, member.age)
+                .from(member)
+                .fetch();
+        result.forEach(tuple -> {
+            String name = tuple.get(member.username);
+            int age = tuple.get(member.age);
+            System.out.println(name + " " + age);
+        });
+    }
+
+    @Test
+    public void findDtoBySetter() {
+        List<MemberDto> result = query.select(Projections.bean(MemberDto.class, member.username, member.age))
+                .from(member)
+                .fetch();
+
+        result.forEach(System.out::println);
+    }
+
+    @Test
+    public void findDtoByField() {
+        List<MemberDto> result = query.select(Projections.fields(MemberDto.class, member.username, member.age))
+                .from(member)
+                .fetch();
+
+        result.forEach(System.out::println);
+    }
+
+    @Test
+    public void findDtoByConstructor() {
+        List<MemberDto> result = query.select(Projections.constructor(MemberDto.class, member.username, member.age))
+                .from(member)
+                .fetch();
+
+        result.forEach(System.out::println);
+    }
+
+    @Test
+    public void findUserDto() {
+        QMember subMember = new QMember("sub");
+        List<UserDto> result = query.select(Projections.fields(UserDto.class,
+                        member.username.as("name"),
+                        ExpressionUtils.as(JPAExpressions.select(subMember.age.max()).from(subMember), "age")))
+                .from(member)
+                .fetch();
+        result.forEach(System.out::println);
+    }
+
+    @Test
+    public void findDtoByQueryProjection() {
+        List<MemberDto> result = query.select(new QMemberDto(member.username, member.age))
+                .from(member)
+                .fetch();
+
+        result.forEach(System.out::println);
+
+    }
+
+    @Test
+    public void dynamicQueryBooleanBuilder() {
+        String usernameParam = "member1";
+        Integer ageParam = 10;
+        List<Member> result = searchMember1(usernameParam, null);
+        assertThat(result.size()).isEqualTo(1);
+    }
+
+    private List<Member> searchMember1(String usernameParam, Integer ageParam) {
+        BooleanBuilder builder = new BooleanBuilder();
+        if (usernameParam != null) {
+            builder.and(member.username.eq(usernameParam));
+        }
+
+        if (ageParam != null) {
+            builder.and(member.age.eq(ageParam));
+        }
+        return query.selectFrom(member)
+                .where(builder)
+                .fetch();
+    }
+
+    @Test
+    public void dynamicQueryWhere() {
+        String usernameParam = "member1";
+        Integer ageParam = 10;
+        List<Member> result = searchMember2(usernameParam, ageParam);
+        assertThat(result.size()).isEqualTo(1);
+    }
+
+    private List<Member> searchMember2(String usernameParam, Integer ageParam) {
+        return query.selectFrom(member)
+                .where(usernameEq(usernameParam), ageEq(ageParam))
+                .fetch();
+
+    }
+
+    private Predicate usernameEq(String usernameParam) {
+        return usernameParam != null ? member.username.eq(usernameParam) : null;
+    }
+
+    private Predicate ageEq(Integer ageParam) {
+        return ageParam != null ? member.age.eq(ageParam) : null;
+    }
 }
