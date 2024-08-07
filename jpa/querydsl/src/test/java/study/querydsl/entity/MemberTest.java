@@ -473,4 +473,54 @@ class MemberTest {
     private Predicate ageEq(Integer ageParam) {
         return ageParam != null ? member.age.eq(ageParam) : null;
     }
+
+    @Test
+    @Commit
+    public void bulkUpdate() {
+        long count = query.update(member)
+                .set(member.username, "비회원")
+                .where(member.age.lt(28))
+                .execute();
+
+        entityManager.flush();
+        entityManager.clear();
+    }
+
+    @Test
+    public void bulkAdd() {
+        long count = query.update(member)
+                .set(member.age, member.age.add(1))
+                .execute();
+
+
+    }
+
+    @Test
+    public void bulkDelete() {
+        long count = query.delete(member)
+                .where(member.age.lt(18))
+                .execute();
+    }
+
+    @Test
+    public void sqlFunction() {
+        List<String> result = query.select(
+                        Expressions.stringTemplate("function('replace', {0}, {1}, {2})", member.username, "member", "M")
+                )
+                .from(member)
+                .fetch();
+
+        result.forEach(System.out::println);
+    }
+
+    @Test
+    public void sqlFunction2() {
+        List<String> result = query.select(member.username)
+                .from(member)
+//                .where(member.username.eq(
+//                        Expressions.stringTemplate("function('lower', {0})", member.username)))
+                .where(member.username.eq(member.username.lower()))
+                .fetch();
+        result.forEach(System.out::println);
+    }
 }
