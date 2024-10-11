@@ -40,6 +40,14 @@ public class Member {
                 ", email='" + email + '\'' +
                 '}';
     }
+
+    public String allToString() {
+        return "Member{" +
+                "name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }
 
 

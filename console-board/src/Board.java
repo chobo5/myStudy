@@ -1,20 +1,17 @@
 public class Board {
 
-    private Member writer;
+    private String writer;
     private String title;
     private String content;
 
-    public Board(Member writer, String title, String content) {
+    public Board(String writer, String title, String content) {
         this.writer = writer;
         this.title = title;
         this.content = content;
     }
 
-    public Member getWriter() {
-        return writer;
-    }
 
-    public void setWriter(Member writer) {
+    public void setWriter(String writer) {
         this.writer = writer;
     }
 
@@ -37,7 +34,7 @@ public class Board {
 
     @Override
     public String toString() {
-        return "작성자: '" + writer.getName() + '\'' +
+        return "작성자: '" + writer + '\'' +
                 ", 제목: '" + title + '\'' +
                 ", 내용: '" + content + '\'';
     }
