@@ -4,16 +4,16 @@ import java.io.BufferedReader;
 
 public class MenuItem implements Menu {
     private String name;
-    private MenuHandler menuHandler;
+    private MenuCommand menuCommand;
 
-    public MenuItem(String name, MenuHandler menuHandler) {
+    public MenuItem(String name, MenuCommand menuCommand) {
         this.name = name;
-        this.menuHandler = menuHandler;
+        this.menuCommand = menuCommand;
     }
 
     @Override
     public void execute(BufferedReader in) {
-        menuHandler.action();
+        menuCommand.action();
     }
 
     @Override

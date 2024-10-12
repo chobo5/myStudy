@@ -20,36 +20,32 @@ public class Main {
 
         MenuGroup boardMenu = new MenuGroup("게시판 메뉴");
         BoardRepository boardRepository = new BoardRepository();
-        boardMenu.add(new MenuItem("게시글 생성", new BoardCreateHandler(in, boardRepository)));
-        boardMenu.add(new MenuItem("게시글 상세", new BoardViewHandler(in, boardRepository)));
-        boardMenu.add(new MenuItem("게시글 수정", new BoardModifyHandler(in, boardRepository)));
-        boardMenu.add(new MenuItem("게시글 삭제", new BoardDeleteHandler(in, boardRepository)));
-        boardMenu.add(new MenuItem("게시글 목록", new BoardListHandler(in, boardRepository)));
+        boardMenu.add(new MenuItem("게시글 생성", new BoardCreateCommand(in, boardRepository)));
+        boardMenu.add(new MenuItem("게시글 상세", new BoardViewCommand(in, boardRepository)));
+        boardMenu.add(new MenuItem("게시글 수정", new BoardModifyCommand(in, boardRepository)));
+        boardMenu.add(new MenuItem("게시글 삭제", new BoardDeleteCommand(in, boardRepository)));
+        boardMenu.add(new MenuItem("게시글 목록", new BoardListCommand(in, boardRepository)));
         mainMenu.add(boardMenu);
-
 
         MenuGroup assignmentMenu = new MenuGroup("과제 메뉴");
         AssignmentRepository assignmentRepository = new AssignmentRepository();
-        assignmentMenu.add(new MenuItem("과제 생성", new AssignmentCreateHandler(in, assignmentRepository)));
-        assignmentMenu.add(new MenuItem("과제 상세", new AssignmentViewHandler(in, assignmentRepository)));
-        assignmentMenu.add(new MenuItem("과제 수정", new AssignmentModifyHandler(in, assignmentRepository)));
-        assignmentMenu.add(new MenuItem("과제 삭제", new AssignmentDeleteHandler(in, assignmentRepository)));
-        assignmentMenu.add(new MenuItem("과제 목록", new AssignmentListHandler(in, assignmentRepository)));
+        assignmentMenu.add(new MenuItem("과제 생성", new AssignmentCreateCommand(in, assignmentRepository)));
+        assignmentMenu.add(new MenuItem("과제 상세", new AssignmentViewCommand(in, assignmentRepository)));
+        assignmentMenu.add(new MenuItem("과제 수정", new AssignmentModifyCommand(in, assignmentRepository)));
+        assignmentMenu.add(new MenuItem("과제 삭제", new AssignmentDeleteCommand(in, assignmentRepository)));
+        assignmentMenu.add(new MenuItem("과제 목록", new AssignmentListCommand(in, assignmentRepository)));
         mainMenu.add(assignmentMenu);
-
 
         MenuGroup memberMenu = new MenuGroup("회원 메뉴");
         MemberRepository memberRepository = new MemberRepository();
-        memberMenu.add(new MenuItem("회원 가입", new MemberCreateHandler(in, memberRepository)));
-        memberMenu.add(new MenuItem("회원 상세", new MemberViewHandler(in, memberRepository)));
-        memberMenu.add(new MenuItem("회원 수정", new MemberModifyHandler(in, memberRepository)));
-        memberMenu.add(new MenuItem("회원 탈퇴", new MemberResignHandler(in, memberRepository)));
-        memberMenu.add(new MenuItem("회원 목록", new MemberListHandler(in, memberRepository)));
+        memberMenu.add(new MenuItem("회원 가입", new MemberCreateCommand(in, memberRepository)));
+        memberMenu.add(new MenuItem("회원 상세", new MemberViewCommand(in, memberRepository)));
+        memberMenu.add(new MenuItem("회원 수정", new MemberModifyCommand(in, memberRepository)));
+        memberMenu.add(new MenuItem("회원 탈퇴", new MemberResignCommand(in, memberRepository)));
+        memberMenu.add(new MenuItem("회원 목록", new MemberListCommand(in, memberRepository)));
         mainMenu.add(memberMenu);
 
-
         mainMenu.execute(in);
-
 
     }
 }
