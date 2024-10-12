@@ -1,4 +1,4 @@
-package v1;
+package v2.member;
 
 public class Member {
     private String name;

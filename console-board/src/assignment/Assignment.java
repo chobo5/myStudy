@@ -1,10 +1,10 @@
-package v1;
+package assignment;
 
 public class Assignment {
 
-    public String title;
-    public String content;
-    public String deadline;
+    private String title;
+    private String content;
+    private String deadline;
 
     public Assignment(String title, String content, String deadline) {
         this.title = title;

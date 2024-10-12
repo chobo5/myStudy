@@ -1,3 +1,5 @@
+package v2;
+
 import assignment.*;
 import board.*;
 import member.*;

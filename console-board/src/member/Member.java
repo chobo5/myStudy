@@ -1,3 +1,5 @@
+package member;
+
 public class Member {
     private String name;
     private String email;
@@ -35,14 +37,14 @@ public class Member {
 
     @Override
     public String toString() {
-        return "Member{" +
+        return "member.Member{" +
                 "name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 '}';
     }
 
     public String allToString() {
-        return "Member{" +
+        return "member.Member{" +
                 "name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +

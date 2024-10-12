@@ -1,8 +1,10 @@
+package v2.assignment;
+
 public class Assignment {
 
-    public String title;
-    public String content;
-    public String deadline;
+    private String title;
+    private String content;
+    private String deadline;
 
     public Assignment(String title, String content, String deadline) {
         this.title = title;
@@ -36,7 +38,7 @@ public class Assignment {
 
     @Override
     public String toString() {
-        return "Assignment{" +
+        return "assignment.Assignment{" +
                 "title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 ", deadline='" + deadline + '\'' +
