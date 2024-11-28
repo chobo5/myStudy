@@ -18,7 +18,8 @@ public class Recursion {
         System.out.println(answer3);
 
         //하노이탑
-
+        int answer4 = hanoi(4);
+        System.out.println(answer4);
 
 
     }
@@ -58,5 +59,16 @@ public class Recursion {
         return save[n];
     }
 
-    private static int hanoi()
+    /*
+    a1 = 1
+    a2 - 3
+    a3 =
+     */
+
+    private static int hanoi(int n) {
+         if (n == 1) {
+             return 1;
+         }
+         return 2 * hanoi(n - 1) + 1;
+    }
 }
