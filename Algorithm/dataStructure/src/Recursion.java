@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Recursion {
     /*
     재귀는 어떤 문제나 함수 등이 자신과 성격이 똑같지만 크기나 더 작은 문제를 하나 이상 포함하고 있을때
@@ -20,6 +22,11 @@ public class Recursion {
         //하노이탑
         int answer4 = hanoi(4);
         System.out.println(answer4);
+
+        //선택적 정렬
+        int[] arr = {5,3,4,1,2};
+        selectionSort(arr, 4);
+        Arrays.stream(arr).forEach(System.out::println);
 
 
     }
@@ -70,5 +77,22 @@ public class Recursion {
              return 1;
          }
          return 2 * hanoi(n - 1) + 1;
+    }
+
+    private static void selectionSort(int[] arr, int n) {
+        if (n > 0) {
+            int max = Integer.MIN_VALUE;
+            int index = 0;
+            for (int i = 0; i < n; i++) {
+                int value = arr[i];
+                if (value > max) {
+                    index = i;
+                    max = value;
+                }
+            }
+            arr[index] = arr[n];
+            arr[n] = max;
+            selectionSort(arr, n - 1);
+        }
     }
 }
