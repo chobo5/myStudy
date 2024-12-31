@@ -3,20 +3,16 @@ package unsolved;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Stack;
 
-public class _4811 {
+public class _11729 {
     public static void main(String[] args) throws IOException {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        int[][] dp = new int[31][31];
-        dp[1][1] = 1;
-        /*
-        1 - WH 1개
-        2 - WHWH, WWHH 2개
+        int n = Integer.parseInt(in.readLine());
+        in.close();
 
-        3 - WHWHWH, WHWWHH,WWHHWH, WWHWHH, WWWHHH 5개
-        4 - 14개
-         */
-
-
+        Stack<Integer> stack1 = new Stack<>();
+        Stack<Integer> stack2 = new Stack<>();
+        Stack<Integer> stack3 = new Stack<>();
     }
 }
