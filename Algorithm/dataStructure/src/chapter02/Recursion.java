@@ -1,3 +1,5 @@
+package chapter02;
+
 import java.util.Arrays;
 
 public class Recursion {
