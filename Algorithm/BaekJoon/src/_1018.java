@@ -1,55 +1,53 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
 import java.util.StringTokenizer;
 
 public class _1018 {
     public static void main(String[] args) throws IOException {
-        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(in.readLine(), " ");
-        int n = Integer.parseInt(st.nextToken());
-        int m = Integer.parseInt(st.nextToken());
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+        int x = Integer.parseInt(st.nextToken());
+        int y = Integer.parseInt(st.nextToken());
 
-        Boolean[][] chessBoard = new Boolean[n][m];
-        List<Integer> whiteCounts = new ArrayList<>();
-
-        for (int i = 0; i < n; i++) {
-            String str = in.readLine();
-            for (int j = 0; j < m; j++) {
+        boolean[][] arr = new boolean[x][y];
+        for (int i = 0; i < x; i++) {
+            String str = br.readLine();
+            for (int j = 0; j < y; j++) {
                 if (str.charAt(j) == 'W') {
-                    chessBoard[i][j] = true;
+                    arr[i][j] = true;
                 } else {
-                    chessBoard[i][j] = false;
-                }
+                    arr[i][j] = false;
+                };
             }
         }
 
-        for (int i = 0; i < n - 7; i++) {
-            for (int j = 0; j < m - 7; j++) {
-                int whites = 0;
-                for (int k = i; k < i + 8; k++) {
-                    for (int l = j; l < j + 8; l++) {
-                        if (chessBoard[k][l] == true) {
-                            whites++;
-                        }
-                    }
-                }
-                if (whites == 32) {
-                    System.out.println(0);
-                    return;
-                } else if (whites > 32) {
-                    whiteCounts.add(whites);
-                }
+        int min = Integer.MAX_VALUE;
+        for (int i = 0; i < x - 7; i++) {
+            for (int j = 0; j < y - 7; j++) {
+                int count = readCheckBoard(i, j, arr);
+                min = Math.min(min, count);
             }
         }
 
-        whiteCounts.sort(((o1, o2) -> o2.compareTo(o1)));
-        System.out.println(whiteCounts.get(0) - 32);
+         System.out.println(min);
+    }
 
+    private static int readCheckBoard(int startX, int startY, boolean[][] arr) {
+        int endX = startX + 8;
+        int endY = startY + 8;
+        boolean first = arr[startX][startY];
+        int count = 0;
 
-
+        for (int i = startX; i < endX; i++) {
+            for (int j = startY; j < endY; j++) {
+                if (arr[i][j] != first) {
+                    count++;
+                }
+                first = !first;
+            }
+            first = !first;
+        }
+        return Math.min(count, 64 - count);
     }
 }
