@@ -13,14 +13,14 @@ public class _17103 {
         for (int i = 0; i < n; i++) {
             int x = Integer.parseInt(br.readLine());
             max = Math.max(max, x);
-            inputs[i] = max;
+            inputs[i] = x;
         }
 
         //false is prime
         boolean[] primes = new boolean[max + 1];
         primes[0] = true;
         primes[1] = true;
-        for (int i = 2; i < Math.sqrt(max); i++) {
+        for (int i = 2; i <= Math.sqrt(max); i++) {
             for (int j = 2; j <= max / i; j++) {
                 primes[i * j] = true;
             }
@@ -37,13 +37,8 @@ public class _17103 {
 
     private static int goldPartition(int x, boolean[] primes) {
         int count = 0;
-        Map<Integer, Integer> history = new HashMap<>();
-        for (int i = 2; i <= x; i++) {
+        for (int i = 2; i <= x / 2; i++) {
             if (!primes[i] && !primes[x - i]) {
-                history.put(i, x - i);
-                if (history.get(x - i) != null) {
-                    count--;
-                }
                 count++;
             }
         }
