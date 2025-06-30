@@ -21,7 +21,7 @@ public class 게임 {
         }
 
         z++;
-        y = z * (x + a) / 100 - a
+//        y = z * (x + a) / 100 - a
     }
 
     private static int percent(int y, int x) {
